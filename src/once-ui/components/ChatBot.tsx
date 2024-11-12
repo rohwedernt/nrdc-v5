@@ -1,6 +1,7 @@
 'use client';
 
 import React, { ChangeEventHandler, forwardRef, KeyboardEventHandler, useState } from 'react';
+import { useChat } from 'ai/react';
 import classNames from 'classnames';
 import { Input } from './Input';
 import { Flex } from './Flex';
@@ -17,39 +18,28 @@ type ChatBotProps = {
 const selectOptions = [
   {
     description: 'Small model for fast, lightweight tasks',
-    label: 'GPT 4o mini',
-    value: 'GPT 4o mini'
+    label: 'GPT-4o mini',
+    value: 'GPT-4o mini'
   },
   {
     description: 'For complex, multi-step tasks',
-    label: 'GPT 4o',
-    value: 'GPT 4o'
+    label: 'GPT-4o',
+    value: 'GPT-4o'
   }
 ]
 
-const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({
-
-}, ref) => {
-  const [messages, setMessages] = useState<string[]>([]);
+const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({}, ref) => {
   const [selectValue, setSelectValue] = useState(selectOptions[0].value);
-  const [inputValue, setInputValue] = useState<string>("");
-
-  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setInputValue(e.target.value);
-  };
+  const { messages, input, handleSubmit, handleInputChange, isLoading } =
+    useChat();
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') {
-        e.preventDefault();
-        if (inputValue.trim()) {
-          handleAddMessage(inputValue.trim());
-            setInputValue('');
-        }
+      e.preventDefault();
+      if (input.trim()) {
+        handleSubmit();
+      }
     }
-};
-
-  const handleAddMessage = (newMsg: string) => {
-    setMessages(prevItems => [...prevItems, newMsg]);
   };
 
   return (
@@ -65,13 +55,13 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({
           ChatBot
         </Text>
         <Flex maxWidth={9}>
-        <Select
-          id="gptselect"
-          height="s"
-          options={selectOptions}
-          value={selectValue}
-          onSelect={(option) => setSelectValue(option.value)}
-        />
+          <Select
+            id="gptselect"
+            height="s"
+            options={selectOptions}
+            value={selectValue}
+            onSelect={(option) => setSelectValue(option.value)}
+          />
         </Flex>
       </Flex>
       <Flex
@@ -82,13 +72,13 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({
         justifyContent="flex-end"
         minHeight={20}
         fillHeight>
-        {messages.map((msg) => (
+        {messages.map((message) => (
           <Flex
             paddingX="16"
             paddingY="12"
             background="brand-strong"
-            className={styles.msgsent}>
-            <span>{msg}</span>
+            className={message.role === 'user' ? styles.msgsent : styles.msgreceived}>
+            <span>{message.content}</span>
           </Flex>
         ))}
       </Flex>
@@ -96,11 +86,12 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({
         <Input
           id="chatbotinput"
           label="Send a message..."
-          value={inputValue}
+          value={input}
           onKeyDown={handleKeyDown}
+          disabled={isLoading}
           hasSuffix={
             <IconButton
-              onClick={() => handleAddMessage(inputValue)}
+              onClick={handleSubmit}
               size="s"
               icon="send"
               variant="ghost"
