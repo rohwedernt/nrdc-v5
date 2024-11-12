@@ -130,8 +130,8 @@
     --page-background:              var(--neutral-background-weak);
     --backdrop:                     var(--static-black-medium);
     --link-area-hover:              var(--hover-black-dark);
-    --custom-gradient:              var(--custom-gradient-dark);
-
+    --gradient:                     var(--gradient-dark);
+    --gradient-distinct:            var(--gradient-distinct-dark)
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);
@@ -315,8 +315,8 @@
     --page-background:              var(--neutral-background-weak);
     --backdrop:                     var(--static-white-medium);
     --link-area-hover:              var(--hover-black-light);
-    --custom-gradient:              var(--custom-gradient-light);
-
+    --gradient:                     var(--gradient-light);
+    --gradient-distinct:            var(--gradient-distinct-light)
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);

@@ -2,10 +2,10 @@ const baseURL = 'demo.once-ui.com'
 
 // default customization applied to the HTML in the main layout.tsx
 const style = {
-    theme:       'light',        // dark | light
+    theme:       'dark',        // dark | light
     neutral:     'gray',        // sand | gray | slate
     brand:       'blue',        // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-    accent:      'green',      // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
+    accent:      'emerald',      // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
     solid:       'color',       // color | contrast
     solidStyle:  'flat',        // flat | plastic
     border:      'playful',     // rounded | playful | conservative

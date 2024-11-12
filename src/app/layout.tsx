@@ -10,9 +10,8 @@ import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/co
 import { Background, Flex } from '@/once-ui/components'
 
 //import { Inter } from 'next/font/google'
-import { Roboto_Mono } from 'next/font/google';
-import { Montserrat } from 'next/font/google';
-import { Manrope } from 'next/font/google';
+import { Roboto_Mono, Montserrat, Pacifico } from 'next/font/google';
+//import { Manrope } from 'next/font/google';
 
 // const primary = Inter({
 // 	variable: '--font-primary',
@@ -40,15 +39,17 @@ type FontConfig = {
 	Replace with code for secondary and tertiary fonts
 	from https://once-ui.com/customize
 */
-const secondary = Manrope({
+const secondary = Montserrat({
 	variable: '--font-secondary',
 	subsets: ['latin'],
 	display: 'swap'
 });
 
-const tertiary: FontConfig | undefined = undefined;
-/*
-*/
+const tertiary = Pacifico({
+	variable: '--font-label',
+	subsets: ['cyrillic'],
+	weight: '400'
+});
 
 export async function generateMetadata(): Promise<Metadata> {
 	const host = (await headers()).get("host");
@@ -106,8 +107,7 @@ export default function RootLayout({
 			data-scaling={style.scaling}
 			className={classNames(
 				primary.variable, code.variable,
-				secondary ? secondary.variable : '',
-				tertiary ? tertiary.variable : ''
+				secondary.variable, tertiary.variable
 			)}>
 			<head>
 				<script

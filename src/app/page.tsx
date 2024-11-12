@@ -2,9 +2,12 @@
 
 import React, { useState } from 'react';
 
-import { Heading, Text, Flex, Button, Grid, Icon, Logo, Arrow, Dialog, IconButton } from '@/once-ui/components';
+import { Heading, Text, Flex, Button, Grid, Icon, Logo, Arrow, Dialog, IconButton, SegmentedControl, SmartImage, Avatar } from '@/once-ui/components';
 import Link from 'next/link';
 import { LetterFxMultiWord } from '@/once-ui/components/LetterFxMultiWord';
+import ProfileSVG from '../../public/images/profile.svg';
+import Image from 'next/image';
+
 
 export default function Home() {
 	const [isHelloDialogOpen, setIsHelloDialogOpen] = useState(false);
@@ -70,7 +73,7 @@ export default function Home() {
 				position="relative"
 				fillWidth paddingTop="s"
 				justifyContent="space-between">
-				<Flex gap="32">
+				<Flex gap="l">
 					<IconButton
 						onClick={() => { }}
 						icon="linkedin"
@@ -96,14 +99,40 @@ export default function Home() {
 						variant="ghost"
 					/>
 				</Flex>
-				<IconButton
-					onClick={() => { }}
-					icon="cog"
-					size="xl"
-					tooltip="Settings"
-					tooltipPosition="bottom"
-					variant="ghost"
-				/>
+				<Flex gap="l">
+					<SegmentedControl
+						buttons={[
+							{
+								label: '',
+								prefixIcon: 'sun',
+								suffixIcon: '',
+								value: 'Light'
+							},
+							{
+								label: '',
+								prefixIcon: 'moon',
+								suffixIcon: '',
+								value: 'Dark'
+							},
+							{
+								label: '',
+								prefixIcon: 'laptop',
+								suffixIcon: '',
+								value: 'System'
+							}
+						]}
+						onToggle={() => { }}
+						defaultSelected="Dark"
+					/>
+					<IconButton
+						onClick={() => { }}
+						icon="cog"
+						size="xl"
+						tooltip="Settings"
+						tooltipPosition="bottom"
+						variant="ghost"
+					/>
+				</Flex>
 			</Flex>
 			<Flex
 				position="relative"
@@ -119,7 +148,7 @@ export default function Home() {
 						fillWidth gap="24" paddingTop='xl'>
 						<Flex
 							position="relative"
-							flex={2} paddingTop="20" paddingX="xxl">
+							flex={2} paddingTop="40" paddingX="xxl">
 							<Logo size="xxl" icon={false} style={{ zIndex: '1' }} />
 						</Flex>
 						<Flex
@@ -141,7 +170,7 @@ export default function Home() {
 								</span>
 								<span className="font-code" style={{ display: "block", opacity: 0.9 }}>
 									<LetterFxMultiWord
-										speed="fast" wordSet={["Mentor", "Collaborator", "Mentee"]}>
+										speed="fast" wordSet={["Mentor", "Learner", "Mentee"]}>
 									</LetterFxMultiWord>
 								</span>
 							</Heading>
@@ -150,7 +179,7 @@ export default function Home() {
 					<Flex fillWidth justifyContent='center'>
 						<Button
 							id="helloBtn"
-							variant="secondary"
+							variant="accent"
 							size="l"
 							onClick={() => setIsHelloDialogOpen(true)}
 						>
@@ -166,46 +195,56 @@ export default function Home() {
 						onClose={() => setIsHelloDialogOpen(false)}
 						isOpen={isHelloDialogOpen}
 						title="Nate Rohweder"
+						data-border="conservative"
 					>
-						<Flex>
-							<Flex direction="column" justifyContent='center' fillWidth>
-								<Heading
-									as="h3"
-									variant="heading-default-l"
-									paddingBottom='12'
-								>
-									Engineering Manager
-								</Heading>
-								<Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
-								<Flex direction="row" justifyContent="space-evenly" paddingTop='32' fillWidth>
-									<IconButton
-										onClick={() => { }}
-										icon="linkedin"
-										size="l"
-										tooltip="LinkedIn"
-										tooltipPosition="top"
-										variant="ghost"
-									/>
-									<IconButton
-										onClick={() => { }}
-										icon="github"
-										size="l"
-										tooltip="GitHub"
-										tooltipPosition="top"
-										variant="ghost"
-									/>
-									<IconButton
-										onClick={() => { }}
-										icon="resume"
-										size="l"
-										tooltip="Resume"
-										tooltipPosition="top"
-										variant="ghost"
-									/>
+						<Grid
+							columns="repeat(1, 1fr)"
+							tabletColumns="1col"
+							mobileColumns="1col"
+							fillWidth
+							gap="s">
+							<Flex gap="s" direction="row" alignItems="center" fillWidth>
+								<Flex direction="column" justifyContent='center' fillWidth>
+									<Heading
+										as="h3"
+										variant="heading-default-l"
+										paddingBottom='12'
+									>
+										Engineering Manager
+									</Heading>
+									<Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
 								</Flex>
+								<Avatar size="xl" src="/images/profile.jpg" />
 							</Flex>
-						</Flex>
+									<Flex direction="row" justifyContent="space-evenly" paddingTop='32' fillWidth>
+										<IconButton
+											onClick={() => { }}
+											icon="linkedin"
+											size="l"
+											tooltip="LinkedIn"
+											tooltipPosition="top"
+											variant="ghost"
+										/>
+										<IconButton
+											onClick={() => { }}
+											icon="github"
+											size="l"
+											tooltip="GitHub"
+											tooltipPosition="top"
+											variant="ghost"
+										/>
+										<IconButton
+											onClick={() => { }}
+											icon="resume"
+											size="l"
+											tooltip="Resume"
+											tooltipPosition="top"
+											variant="ghost"
+										/>
+									</Flex>
+						</Grid>
 					</Dialog>
+
 
 
 
@@ -219,7 +258,7 @@ export default function Home() {
 							<Flex gap="s" direction="column" alignItems="stretch" fillWidth>
 								<Flex
 									radius="l"
-									shadow="l"
+									//shadow="s"
 									padding="m"
 									direction="column"
 									fillWidth
@@ -235,14 +274,15 @@ export default function Home() {
 									padding="m"
 									direction="column"
 									fillWidth
-									style={{ backgroundImage: "linear-gradient(45deg, var(--brand-background-strong), var(--accent-background-strong))" }}
+
+									style={{ background: "linear-gradient(45deg, var(--brand-background-strong), var(--accent-background-strong))" }}
 								>
 									2
 								</Flex>
 							</Flex>
 							<Flex
 								radius="l"
-								shadow="l"
+								//shadow="m"
 								padding="m"
 								borderStyle="solid-1"
 								border="neutral-weak"
@@ -256,7 +296,7 @@ export default function Home() {
 						</Flex>
 						<Flex
 							radius="l"
-							shadow="l"
+							shadow="s"
 							padding="m"
 							direction="column"
 							fillWidth
@@ -307,6 +347,17 @@ export default function Home() {
 							</Link>
 						))}
 					</Grid>
+				</Flex>
+
+
+			</Flex>
+			<Flex
+				as="footer"
+				position="relative"
+				fillWidth paddingY="l"
+				justifyContent="end">
+				<Flex>
+
 				</Flex>
 			</Flex>
 

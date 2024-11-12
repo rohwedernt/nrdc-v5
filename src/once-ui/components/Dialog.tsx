@@ -114,7 +114,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
             aria-labelledby="dialog-title">
             <Flex
                 style={{ maxHeight: '100%' }}
-                className={classNames(styles.dialog, { [styles.open]: isAnimating })}
+                className={classNames(styles.dialoganimate, { [styles.open]: isAnimating })}
                 ref={dialogRef}
                 fillWidth
                 radius="s"

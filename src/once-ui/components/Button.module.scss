@@ -29,7 +29,8 @@
     border-color: var(--solid-border-color-brand);
     color: var(--brand-on-solid-strong);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background: var(--brand-solid-strong);
     }
 }
@@ -41,7 +42,8 @@
     border: 1px solid var(--neutral-border-medium);
     color: var(--neutral-on-background-strong);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background: var(--neutral-background-strong);
         border-color: var(--neutral-border-strong);
     }
@@ -53,7 +55,8 @@
     border: 1px solid var(--neutral-border-medium);
     color: var(--neutral-on-background-strong);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background: var(--neutral-background-medium);
         border-color: var(--neutral-border-strong);
     }
@@ -64,7 +67,8 @@
     background: var(--static-transparent);
     color: var(--neutral-on-background-medium);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         color: var(--neutral-on-background-strong);
     }
 }
@@ -77,8 +81,29 @@
     border-color: var(--solid-border-color-danger);
     color: var(--danger-on-solid-strong);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background: var(--danger-solid-strong);
+    }
+}
+
+.accent {
+    //background-image: linear-gradient(#bbd5ee, var(--scheme-emerald-1100));
+    background: linear-gradient(217deg, rgba(0, 89, 255, 0.567), rgba(255, 0, 0, 0) 70.71%),
+        linear-gradient(127deg, rgba(0, 255, 0, .4), rgba(0, 255, 0, 0) 70.71%),
+        linear-gradient(336deg, rgba(0, 0, 255, .4), rgba(0, 0, 255, 0) 70.71%);
+    border-style: solid;
+    border: 1px solid var(--neutral-border-weak);
+    color: var(--neutral-on-background-strong);
+    box-shadow:  15px 5px 40px -12px rgb(211, 163, 79), -15px -5px 40px -12px rgb(141, 134, 221); 
+
+    &:hover,
+    &:focus {
+        background: linear-gradient(217deg, rgb(216, 9, 9), rgba(255, 0, 0, 0) 70.71%),
+        linear-gradient(127deg, rgb(47, 203, 47), rgba(0, 255, 0, 0) 70.71%),
+        linear-gradient(336deg, rgba(0, 0, 255, 1), rgba(0, 0, 255, 0) 70.71%);
+        border: 2px solid var(--code-gray);
+        box-shadow:  15px 5px 40px -20px rgb(255, 200, 104), -15px -5px 40px -20px rgb(176, 169, 255); 
     }
 }
 

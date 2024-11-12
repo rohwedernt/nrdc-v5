@@ -20,7 +20,9 @@ import {
 	HiExclamationCircle,
 	HiCheckCircle,
 	HiOutlineMusicalNote,
-	HiGlobeAmericas
+	HiGlobeAmericas,
+	HiOutlineSun,
+	HiOutlineMoon
 } from "react-icons/hi2";
 
 import { HiCog } from "react-icons/hi";
@@ -37,6 +39,8 @@ import { GrDocumentDownload } from "react-icons/gr";
 import { MdOutlineEmail } from "react-icons/md";
 
 import { BiCodeCurly } from "react-icons/bi";
+
+import { IoLaptopOutline } from "react-icons/io5";
 
 
 export const iconLibrary: Record<string, IconType> = {
@@ -66,5 +70,8 @@ export const iconLibrary: Record<string, IconType> = {
 	code: BiCodeCurly,
 	music: HiOutlineMusicalNote,
 	travel: HiGlobeAmericas,
-	cog: HiCog
+	cog: HiCog,
+	sun: HiOutlineSun,
+	moon: HiOutlineMoon,
+	laptop: IoLaptopOutline
 };
