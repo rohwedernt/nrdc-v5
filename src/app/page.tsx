@@ -259,10 +259,10 @@ export default function Home() {
 						tabletColumns="1col"
 						mobileColumns="1col"
 						fillWidth
-						gap="s"
+						gap="l"
 						paddingBottom="24">
-						<Flex gap="s" direction="row" fillWidth>
-							<Flex gap="s" direction="column" alignItems="stretch" fillWidth>
+						<Flex gap="l" direction="row" fillWidth>
+							<Flex gap="l" direction="column" alignItems="stretch" fillWidth>
 								<Flex
 									radius="l"
 									padding="m"

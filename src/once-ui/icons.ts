@@ -42,6 +42,8 @@ import { BiCodeCurly, BiSend } from "react-icons/bi";
 
 import { IoLaptopOutline } from "react-icons/io5";
 
+import { AiOutlineOpenAI } from "react-icons/ai";
+
 
 export const iconLibrary: Record<string, IconType> = {
 	chevronUp: HiChevronUp,
@@ -74,5 +76,7 @@ export const iconLibrary: Record<string, IconType> = {
 	sun: HiOutlineSun,
 	moon: HiOutlineMoon,
 	laptop: IoLaptopOutline,
-	send: BiSend
+	send: BiSend,
+	openAI: AiOutlineOpenAI
+
 };

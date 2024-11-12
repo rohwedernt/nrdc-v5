@@ -10,6 +10,7 @@ import { Text } from './Text';
 import { IconButton } from './IconButton';
 import styles from './ChatBot.module.scss';
 import { Spinner } from './Spinner';
+import { Icon } from './Icon';
 
 
 type ChatBotProps = {
@@ -51,10 +52,16 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
         alignItems='center'
         style={{ borderBottom: "solid #303030" }}
       >
+        <Flex gap="s">
+        <Icon name="openAI" size="l" style={{ paddingBottom: "2px" }} />
         <Text
-          variant="heading-default-m" onBackground="neutral-medium">
+          variant="heading-default-m"
+          onBackground="neutral-medium"
+          style={{ lineHeight:"30px" }}
+        >
           ChatBot
         </Text>
+        </Flex>
         <Flex maxWidth={9}>
           <Select
             id="gptselect"
