@@ -1,0 +1,14 @@
+.wrapper {
+    @media (--s) {
+        //align-items: end;
+    }
+}
+
+.heading {
+    @media (--s) {
+        text-align: right;
+    }
+    @media (--xs) {
+        text-align: center;
+    }
+}

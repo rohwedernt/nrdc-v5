@@ -117,7 +117,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
                 style={{ maxHeight: '100%' }}
                 className={classNames(styles.dialoganimate, { [styles.open]: isAnimating })}
                 ref={dialogRef}
-                fillWidth
+                //fillWidth
                 radius="s"
                 direction="column">
                 <Flex

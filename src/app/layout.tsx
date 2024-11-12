@@ -1,13 +1,13 @@
-import "@/once-ui/styles/index.scss";
-import "@/once-ui/tokens/index.scss";
+import "@/components/styles/index.scss";
+import "@/components/tokens/index.scss";
 
 import classNames from 'classnames';
 import { headers } from "next/headers";
 import { Metadata } from "next";
 
-import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config"
+import { baseURL, style, meta, og, schema, social } from "@/components/resources/config"
 
-import { Background, Flex } from '@/once-ui/components'
+import { Background, Flex } from '@/components/generic'
 
 //import { Inter } from 'next/font/google'
 import { Roboto_Mono, Montserrat, Pacifico } from 'next/font/google';

@@ -1,6 +1,6 @@
 'use client';
 
-import {  Flex, Icon, IconButton, Tag, Text, ToggleButton } from "@/once-ui/components";
+import {  Flex, Icon, IconButton, Tag, Text, ToggleButton } from "@/components/generic";
 import { usePathname } from 'next/navigation';
 
 const Sidebar: React.FC = ({

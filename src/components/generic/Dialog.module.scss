@@ -42,30 +42,40 @@
 
 .dialoganimate {
     display: block;
-    position: absolute;
+    position: fixed;
     top: 25%;
-    left: 25%;
+    left: 50%;
     z-index: 5;
-    transform: scale(0.2);
+    transform: scale(0.2), translate(-50%, 0);
     opacity: 0;
     box-shadow: var(--shadow-xl);
-    max-width: 40rem;
+    max-width: 50%;
+    width: 50%;
+    margin-left: -20%;
     transition: var(--transition-macro-medium);
     animation: HoverCard 3.5s ease-in-out infinite;
 
     &.open {
-        transform: scale(1);
+        transform: scale(1), translate(-50%, 0);
         opacity: 1;
         visibility: visible;
         background: linear-gradient(80deg, var(--scheme-yellow-300), var(--scheme-yellow-700));
     }
 
+    @media (--m) {
+        max-width: 70%;
+        width: 70%;
+        margin-left: -35%;
+    }
+
     @media (--s) {
-        position: fixed;
         bottom: var(--static-space-8);
-        top: var(--static-space-8);
+        top: 10%;
         left: var(--static-space-8);
         max-width: calc(100% - (2 * var(--static-space-8)));
+        width: calc(100% - (2 * var(--static-space-8)));
+        height: fit-content;
+        margin-inline: auto;
     }
 }
 
