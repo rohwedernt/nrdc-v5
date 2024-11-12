@@ -7,7 +7,7 @@ import styles from './Input.module.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     id: string;
-    label: string;
+    label?: string;
     height?: 's' | 'm';
     error?: React.ReactNode;
     description?: React.ReactNode;
@@ -91,7 +91,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
                     { !labelAsPlaceholder && (
                         <Text
                             as="label"
-                            variant="label-default-m"
+                            variant="label-default-s"
                             htmlFor={id}
                             className={classNames(styles.label, styles.inputLabel, {
                                 [styles.floating]: isFocused || isFilled,

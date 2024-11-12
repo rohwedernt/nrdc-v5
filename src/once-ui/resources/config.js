@@ -1,4 +1,4 @@
-const baseURL = 'demo.once-ui.com'
+const baseURL = 'naterohweder.com'
 
 // default customization applied to the HTML in the main layout.tsx
 const style = {
@@ -39,9 +39,9 @@ const schema = {
 
 // social links
 const social = {
-    twitter: 'https://www.twitter.com/_onceui',
-    linkedin: 'https://www.linkedin.com/company/once-ui/',
-    discord: 'https://discord.com/invite/5EyAQ4eNdS'
+    github: 'https://github.com/rohwedernt',
+    linkedin: 'https://www.linkedin.com/in/naterohweder/',
+    email: 'mailto:rohwedernt@gmail.com'
 }
 
 export { baseURL, style, meta, og, schema, social };

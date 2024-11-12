@@ -38,7 +38,7 @@ import { GrDocumentDownload } from "react-icons/gr";
 
 import { MdOutlineEmail } from "react-icons/md";
 
-import { BiCodeCurly } from "react-icons/bi";
+import { BiCodeCurly, BiSend } from "react-icons/bi";
 
 import { IoLaptopOutline } from "react-icons/io5";
 
@@ -73,5 +73,6 @@ export const iconLibrary: Record<string, IconType> = {
 	cog: HiCog,
 	sun: HiOutlineSun,
 	moon: HiOutlineMoon,
-	laptop: IoLaptopOutline
+	laptop: IoLaptopOutline,
+	send: BiSend
 };

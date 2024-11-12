@@ -53,7 +53,7 @@ const Avatar: React.FC<AvatarProps> = forwardRef<HTMLDivElement, AvatarProps>(({
     if (loading) {
         return (
             <Skeleton
-                style={{border: '1px solid var(--neutral-border-medium)'}}
+                style={{border: '1px solid var(--neutral-border-weak)'}}
                 shape="circle"
                 width={size}
                 height={size}

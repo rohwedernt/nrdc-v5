@@ -16,7 +16,7 @@
     background-color: var(--neutral-alpha-weak);
     backdrop-filter: var(--backdrop-filter);
     border-radius: var(--radius-l);
-    min-height: var(--static-space-56);
+    //min-height: var(--static-space-56);
     transition: var(--transition-micro-medium);
 
     &.focused, &.filled {
@@ -66,6 +66,7 @@
     transform: translateY(-50%);
 
     &.floating {
+        opacity: 0;
         transform: scale(0.75);
     }
 }
@@ -74,27 +75,32 @@
     top: var(--static-space-16);
 
     &.floating {
+        opacity: 0;
         transform: scale(0.75) translateY(calc(-1 * var(--static-space-16)));
     }
 }
 
 .s {
-    min-height: var(--static-space-48);
+    min-height: var(--static-space-32);
 
     &:has(.labelAsPlaceholder) {
-        min-height: var(--static-space-40);
+        min-height: var(--static-space-32);
     }
 
     .label {
         &.floating {
+            opacity: 0;
             top: var(--static-space-4);
         }
     }
 }
 
 .m {
+    min-height: var(--static-space-56);
+
     .label {
         &.floating {
+            opacity: 0;
             top: calc(var(--static-space-8) - var(--static-space-2));
         }
     }
@@ -121,11 +127,11 @@
     }
 
     &:not(.labelAsPlaceholder) {
-        padding-top: var(--static-space-16);
+        //padding-top: var(--static-space-16);
     }
 
     &.labelAsPlaceholder.hasChildren {
-        padding-top: var(--static-space-16);
+        //padding-top: var(--static-space-16);
     }
 
     &::placeholder {

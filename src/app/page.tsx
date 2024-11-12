@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { LetterFxMultiWord } from '@/once-ui/components/LetterFxMultiWord';
 import ProfileSVG from '../../public/images/profile.svg';
 import Image from 'next/image';
+import { ChatBot } from '@/once-ui/components/ChatBot';
+import { social } from "@/once-ui/resources/config"
+
 
 
 export default function Home() {
@@ -81,6 +84,7 @@ export default function Home() {
 						tooltip="LinkedIn"
 						tooltipPosition="bottom"
 						variant="ghost"
+						href={social.linkedin}
 					/>
 					<IconButton
 						onClick={() => { }}
@@ -89,6 +93,7 @@ export default function Home() {
 						tooltip="GitHub"
 						tooltipPosition="bottom"
 						variant="ghost"
+						href={social.github}
 					/>
 					<IconButton
 						onClick={() => { }}
@@ -97,6 +102,7 @@ export default function Home() {
 						tooltip="Email Me"
 						tooltipPosition="bottom"
 						variant="ghost"
+						href={social.email}
 					/>
 				</Flex>
 				<Flex gap="l">
@@ -145,7 +151,7 @@ export default function Home() {
 					fillWidth fillHeight gap="l">
 					<Flex
 						mobileDirection="column"
-						fillWidth gap="24" paddingTop='xl'>
+						fillWidth gap="24" paddingY='xl'>
 						<Flex
 							position="relative"
 							flex={2} paddingTop="40" paddingX="xxl">
@@ -176,7 +182,7 @@ export default function Home() {
 							</Heading>
 						</Flex>
 					</Flex>
-					<Flex fillWidth justifyContent='center'>
+					<Flex fillWidth justifyContent='center' paddingBottom='l'>
 						<Button
 							id="helloBtn"
 							variant="accent"
@@ -216,32 +222,32 @@ export default function Home() {
 								</Flex>
 								<Avatar size="xl" src="/images/profile.jpg" />
 							</Flex>
-									<Flex direction="row" justifyContent="space-evenly" paddingTop='32' fillWidth>
-										<IconButton
-											onClick={() => { }}
-											icon="linkedin"
-											size="l"
-											tooltip="LinkedIn"
-											tooltipPosition="top"
-											variant="ghost"
-										/>
-										<IconButton
-											onClick={() => { }}
-											icon="github"
-											size="l"
-											tooltip="GitHub"
-											tooltipPosition="top"
-											variant="ghost"
-										/>
-										<IconButton
-											onClick={() => { }}
-											icon="resume"
-											size="l"
-											tooltip="Resume"
-											tooltipPosition="top"
-											variant="ghost"
-										/>
-									</Flex>
+							<Flex direction="row" justifyContent="space-evenly" paddingTop='32' fillWidth>
+								<IconButton
+									onClick={() => { }}
+									icon="linkedin"
+									size="l"
+									tooltip="LinkedIn"
+									tooltipPosition="top"
+									variant="ghost"
+								/>
+								<IconButton
+									onClick={() => { }}
+									icon="github"
+									size="l"
+									tooltip="GitHub"
+									tooltipPosition="top"
+									variant="ghost"
+								/>
+								<IconButton
+									onClick={() => { }}
+									icon="resume"
+									size="l"
+									tooltip="Resume"
+									tooltipPosition="top"
+									variant="ghost"
+								/>
+							</Flex>
 						</Grid>
 					</Dialog>
 
@@ -253,15 +259,16 @@ export default function Home() {
 						tabletColumns="1col"
 						mobileColumns="1col"
 						fillWidth
-						gap="s">
+						gap="s"
+						paddingBottom="24">
 						<Flex gap="s" direction="row" fillWidth>
 							<Flex gap="s" direction="column" alignItems="stretch" fillWidth>
 								<Flex
 									radius="l"
-									//shadow="s"
 									padding="m"
 									direction="column"
 									fillWidth
+									fillHeight
 									background="neutral-weak"
 									borderStyle="solid-1"
 									border="neutral-weak"
@@ -274,7 +281,7 @@ export default function Home() {
 									padding="m"
 									direction="column"
 									fillWidth
-
+									fillHeight
 									style={{ background: "linear-gradient(45deg, var(--brand-background-strong), var(--accent-background-strong))" }}
 								>
 									2
@@ -282,8 +289,6 @@ export default function Home() {
 							</Flex>
 							<Flex
 								radius="l"
-								//shadow="m"
-								padding="m"
 								borderStyle="solid-1"
 								border="neutral-weak"
 								direction="column"
@@ -291,7 +296,7 @@ export default function Home() {
 								fillHeight
 								background="neutral-weak"
 							>
-								3
+								<ChatBot />
 							</Flex>
 						</Flex>
 						<Flex
@@ -311,7 +316,7 @@ export default function Home() {
 
 
 
-					<Grid
+					{/* <Grid
 						radius="l"
 						border="neutral-medium"
 						borderStyle="solid-1"
@@ -339,19 +344,19 @@ export default function Home() {
 											{link.title}
 										</Text>
 									</Flex>
-									{/* <Text
+									<Text
 										variant="body-default-s" onBackground="neutral-weak">
 										{link.description}
-									</Text> */}
+									</Text>
 								</Flex>
 							</Link>
 						))}
-					</Grid>
+					</Grid> */}
 				</Flex>
 
 
 			</Flex>
-			<Flex
+			{/* <Flex
 				as="footer"
 				position="relative"
 				fillWidth paddingY="l"
@@ -359,7 +364,7 @@ export default function Home() {
 				<Flex>
 
 				</Flex>
-			</Flex>
+			</Flex> */}
 
 		</Flex>
 	);

@@ -19,6 +19,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(({
     options,
     value,
     style,
+    height = 'm',
     onSelect,
     renderDropdownOptions,
     renderCustomDropdownContent,
@@ -81,6 +82,7 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(({
                 value={value}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                height={height}
                 readOnly
                 className={classNames({
                     [inputStyles.filled]: isFilled,

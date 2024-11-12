@@ -51,7 +51,7 @@
     box-shadow: var(--shadow-xl);
     max-width: 40rem;
     transition: var(--transition-macro-medium);
-    animation: HoverCard 5s ease-in-out infinite;
+    animation: HoverCard 3.5s ease-in-out infinite;
 
     &.open {
         transform: scale(1);
@@ -89,18 +89,3 @@
     }
     
 }
-
-// .dialog-animate::before {
-//     //transition: 0.1s;  
-//     top: -50px;
-//     left: 50px;
-//     transition: 0.1s;
-//     animation: animate 2s ease-in-out infinite;
-// }
-
-// .dialog-animate::after {
-//     transition: 0.5s;
-//     animation: animate 2s ease-in-out infinite;
-//     bottom: -50px;
-//     right: 50px;
-// }
