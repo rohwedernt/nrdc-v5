@@ -9,6 +9,7 @@ import { Select } from './Select';
 import { Text } from './Text';
 import { IconButton } from './IconButton';
 import styles from './ChatBot.module.scss';
+import { Spinner } from './Spinner';
 
 
 type ChatBotProps = {
@@ -28,7 +29,7 @@ const selectOptions = [
   }
 ]
 
-const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({}, ref) => {
+const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
   const [selectValue, setSelectValue] = useState(selectOptions[0].value);
   const { messages, input, handleSubmit, handleInputChange, isLoading } =
     useChat();
@@ -81,6 +82,7 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({}, ref) => {
             <span>{message.content}</span>
           </Flex>
         ))}
+        {isLoading && <Spinner size="l" />}
       </Flex>
       <Flex paddingTop="s" paddingX="s">
         <Input
@@ -88,7 +90,6 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({}, ref) => {
           label="Send a message..."
           value={input}
           onKeyDown={handleKeyDown}
-          disabled={isLoading}
           hasSuffix={
             <IconButton
               onClick={handleSubmit}
