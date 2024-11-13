@@ -4,21 +4,17 @@ import React from 'react';
 import { Flex, Logo } from '@/components/generic';
 import { Descriptors } from '@/components/custom/Descriptors';
 import { HelloButton } from '@/components/custom/HelloButton';
-import { Toolbar } from '@/components/custom/Toolbar';
 import { Modules } from '@/components/custom/Modules';
 
 
 export default function Home() {
 	return (
-		<Flex
-			fillWidth paddingX="l"
-			direction="column" alignItems="center" flex={1}>
-			<Toolbar />
 			<Flex
 				position="relative"
 				as="section" overflow="hidden"
 				fillWidth minHeight="0" maxWidth={68}
-				direction="column" alignItems="center" flex={1}>
+				direction="column" alignItems="center" flex={1}
+				paddingBottom="80">
 				<Flex
 					as="main"
 					direction="column" justifyContent="center"
@@ -37,6 +33,5 @@ export default function Home() {
 					<Modules />
 				</Flex>
 			</Flex>
-		</Flex>
 	);
 }

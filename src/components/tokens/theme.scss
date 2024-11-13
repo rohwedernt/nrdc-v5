@@ -131,7 +131,9 @@
     --backdrop:                     var(--static-black-medium);
     --link-area-hover:              var(--hover-black-dark);
     --gradient:                     var(--gradient-dark);
-    --gradient-distinct:            var(--gradient-distinct-dark)
+    --gradient-distinct:            var(--gradient-distinct-dark);
+    --glass:                        var(--glass-dark);
+    --glass-strong:                 var(--glass-strong-dark);
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);
@@ -316,7 +318,9 @@
     --backdrop:                     var(--static-white-medium);
     --link-area-hover:              var(--hover-black-light);
     --gradient:                     var(--gradient-light);
-    --gradient-distinct:            var(--gradient-distinct-light)
+    --gradient-distinct:            var(--gradient-distinct-light);
+    --glass:                        var(--glass-light);
+    --glass-strong:                 var(--glass-strong-dark);
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);
@@ -332,8 +336,8 @@
     --code-orange:                  var(--scheme-orange-600);
     
     /* brand */  
-    --brand-background-strong:      var(--function-brand-800);
-    --brand-background-medium:      var(--function-brand-1000);
+    --brand-background-strong:      var(--function-brand-500);
+    --brand-background-medium:      var(--function-brand-800);
     --brand-background-weak:        var(--static-white);
 
     --brand-on-background-strong:   var(--function-brand-100);

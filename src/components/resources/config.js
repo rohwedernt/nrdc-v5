@@ -31,7 +31,7 @@ const og = {
 // default schema data
 const schema = {
     logo: '',
-    type: 'Organization',
+    type: 'Personal',
     name: 'Nate Rohweder Dot Com',
     description: '',
     email: 'rohwedernt@gmail.com'

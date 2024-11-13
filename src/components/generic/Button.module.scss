@@ -92,8 +92,8 @@
     background: linear-gradient(217deg, rgba(0, 89, 255, 0.567), rgba(255, 0, 0, 0) 70.71%),
         linear-gradient(127deg, rgba(255, 240, 73, 0.652), rgba(0, 255, 0, 0) 70.71%),
         linear-gradient(336deg, rgba(255, 77, 0, 0.4), rgba(0, 0, 255, 0) 70.71%);
-    border-style: solid;
-    border: 1px solid var(--static-black);
+    border-style: none;
+    //border: 1px solid var(--static-black);
     color: var(--neutral-on-background-strong);
     box-shadow:  15px 5px 40px -12px rgb(211, 163, 79), -15px -5px 40px -12px rgb(141, 134, 221); 
 

@@ -19,7 +19,7 @@ const HelloButton = forwardRef<HTMLDivElement, HelloButtonProps>(({ }, ref) => {
 
   return (
     <>
-      <Flex fillWidth justifyContent='center' paddingBottom='l'>
+      <Flex fillWidth justifyContent='center' paddingBottom='xl'>
         <Button
           id="helloBtn"
           variant="accent"

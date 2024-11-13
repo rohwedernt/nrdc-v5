@@ -1,0 +1,17 @@
+.select {
+    position:absolute;
+    width: 100%;
+    justify-content: end;
+    top: 15px;
+    padding-right: 10px;
+
+    @media (--s) {
+        top: 20px;
+        padding-right: 15px;
+    }
+
+    @media (--xs) {
+        top: 15px;
+        padding-right: 10px;
+    }
+}

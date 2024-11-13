@@ -49,10 +49,11 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
       direction="column"
       fillWidth
       fillHeight
-      //background="neutral-weak"
-      style={{ background: "linear-gradient(130deg, var(--page-background) 0 30%, var(--accent-background-medium), var(--brand-background-medium))" }}
+      className={styles.wrapper}
+      // style={{ boxShadow: "inset 0 0 2000px rgba(255, 255, 255, .5);",
+      //   filter: "blur(15px);" }}
     >
-      <Flex direction="column" fillWidth>
+      <Flex direction="column" fillWidth className={styles.container}>
         <Flex
           padding="s"
           justifyContent="space-between"
@@ -85,7 +86,7 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
           gap="xs"
           direction="column"
           justifyContent="flex-end"
-          minHeight={20}
+          minHeight={25}
           fillHeight>
           {messages.map((message) => (
             <Flex
@@ -98,7 +99,7 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
           ))}
           {isLoading && <Spinner size="l" />}
         </Flex>
-        <Flex paddingTop="s" paddingX="s">
+        <Flex paddingTop="s" paddingX="s" paddingBottom="8">
           <Input
             id="chatbotinput"
             label="Send a message..."

@@ -37,23 +37,24 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
                 paddingX="20" paddingY="12"
                 className={classNames(styles.badge, effect && styles.animation)}
                 alignItems="center"
-                radius="full" background="neutral-weak" shadow="l">
+                radius="full" shadow="l" style={{ background:"var(--glass-strong)" }}>
                 { icon && (
                     <Icon className="mr-8"
-                        size="s"
+                        size="xl"
                         name={icon}
                         onBackground="brand-medium"/>
                 )}
                 {title && (
                     <Text
-                        onBackground="brand-strong"
-                        variant="label-strong-s">
+                        //onBackground="info-weak"
+                        style={{ color:"var(--static-black-weak)" }}
+                        variant="display-strong-s">
                         {title}
                     </Text>
                 )}
                 {children}
                 { arrow && (
-                    <Arrow trigger="#badge"/>
+                    <Arrow trigger="#badge" scale={2} />
                 )}
             </Flex>
         ),

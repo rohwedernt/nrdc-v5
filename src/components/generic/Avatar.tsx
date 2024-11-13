@@ -18,7 +18,7 @@ interface AvatarProps {
     className?: string;
 }
 
-const sizeMapping: Record<'xs' | 's' | 'm' | 'l' | 'xl', number> = {
+export const sizeMapping: Record<'xs' | 's' | 'm' | 'l' | 'xl', number> = {
     xs: 20,
     s: 24,
     m: 32,

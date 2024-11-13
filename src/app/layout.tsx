@@ -6,11 +6,10 @@ import { headers } from "next/headers";
 import { Metadata } from "next";
 
 import { baseURL, style, meta, og, schema, social } from "@/components/resources/config"
-
 import { Background, Flex } from '@/components/generic'
 
-//import { Inter } from 'next/font/google'
 import { Roboto_Mono, Montserrat, Pacifico } from 'next/font/google';
+//import { Inter } from 'next/font/google'
 //import { Manrope } from 'next/font/google';
 
 // const primary = Inter({
@@ -123,7 +122,7 @@ export default function RootLayout({
 					mask="topLeft"
 					gradient={{
 						display: true,
-						opacity: 1.2,
+						opacity: 1,
 					}} />
 				<Flex
 					flex={1} direction="column">

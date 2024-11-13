@@ -44,6 +44,9 @@ importers:
       react-icons:
         specifier: ^5.2.1
         version: 5.3.0(react@18.3.1)
+      react-spotify-embed:
+        specifier: ^2.0.4
+        version: 2.0.4
       sass:
         specifier: ^1.77.6
         version: 1.80.6
@@ -1196,6 +1199,10 @@ packages:
     resolution: {integrity: sha512-DnUk8aFbTyQPSkCfF8dbX6kQjXA9DktMeJqfjrg6cK9vwQVMxmcA3BfP4QoiztVmEHtwlTgLFsPuH2NskKT6eg==}
     peerDependencies:
       react: '*'
+
+  react-spotify-embed@2.0.4:
+    resolution: {integrity: sha512-bVIToA3Rsw/HhFqBpvveUMJyvijgX0Rw8kpkm5lWRr0GgNyjNynr2rcdpH2OuCTMKkN3ynBn+Zw5nJ794N8vJw==}
+    engines: {node: '>=14'}
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -2419,6 +2426,11 @@ snapshots:
   react-icons@5.3.0(react@18.3.1):
     dependencies:
       react: 18.3.1
+
+  react-spotify-embed@2.0.4:
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   react@18.3.1:
     dependencies:

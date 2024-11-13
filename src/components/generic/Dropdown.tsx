@@ -8,6 +8,7 @@ import styles from './Dropdown.module.scss';
 interface DropdownOptions {
     label: React.ReactNode;
     value: string;
+    link?: string;
     hasPrefix?: React.ReactNode;
     hasSuffix?: React.ReactNode;
     description?: React.ReactNode;

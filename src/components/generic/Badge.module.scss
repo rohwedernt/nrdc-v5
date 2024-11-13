@@ -1,5 +1,6 @@
 .badge {
-    border: 1px solid var(--brand-alpha-medium);
+    //border: 1px solid var(--brand-alpha-medium);
+    backdrop-filter: blur(4px);
 }
 
 .animation {
@@ -20,7 +21,7 @@
             transparent 80%
         );
         transform: skewX(-20deg);
-        animation: shineDefault 9s ease-in-out infinite;
+        animation: shineDefault 15s ease-in-out infinite;
     }
 
     &:hover {

@@ -6,10 +6,16 @@
     --static-white-medium: #ffffff4D;
     --static-black:        #000000;
     --static-black-medium: #000000cc;
+    --static-black-weak:   #000000b3;
+
 
     /* CUSTOM */
     --hover-black-light: #00000015;
     --hover-black-dark: #ffffff15;
+    --glass-light: #0000000d;
+    --glass-dark: #ffffff17;
+    --glass-strong-light: #00000045;
+    --glass-strong-dark: #ffffff45;
     --gradient-light: linear-gradient(--scheme-emerald-1100, --scheme-blue-700);
     --gradient-dark: linear-gradient(--scheme-emerald-600, --scheme-moss-500);
     --gradient-distinct-light: linear-gradient(to right --scheme-emerald-600, --scheme-moss-500);

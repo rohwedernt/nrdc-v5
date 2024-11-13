@@ -5,11 +5,18 @@ import { Flex } from '../generic/Flex';
 import { IconButton } from '../generic/IconButton';
 import { SegmentedControl } from '../generic/SegmentedControl';
 import { social } from "@/components/resources/config"
+import useTheme, { Theme } from '@/app/hooks/useTheme';
 
 
 type ToolbarProps = {};
 
 const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({ }, ref) => {
+  const [theme, setTheme] = useTheme();
+
+  const handleThemeSelect = (selected: string) => {
+    return console.log(selected)
+  };
+
   return (
     <Flex
     as="header"
@@ -52,23 +59,24 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({ }, ref) => {
             label: '',
             prefixIcon: 'sun',
             suffixIcon: '',
-            value: 'Light'
+            value: 'light'
           },
           {
             label: '',
             prefixIcon: 'moon',
             suffixIcon: '',
-            value: 'Dark'
+            value: 'dark'
           },
           {
             label: '',
             prefixIcon: 'laptop',
             suffixIcon: '',
-            value: 'System'
+            value: 'system'
           }
         ]}
-        onToggle={() => { }}
-        defaultSelected="Dark"
+        onToggle={(selected) => setTheme(selected as Theme)}
+        defaultSelected={"dark"}
+        selected={theme.toString()}
       />
       <IconButton
         onClick={() => { }}
