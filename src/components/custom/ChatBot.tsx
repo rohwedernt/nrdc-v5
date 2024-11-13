@@ -70,7 +70,7 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
               ChatBot
             </Text>
           </Flex>
-          <Flex maxWidth={9}>
+          <Flex maxWidth={11}>
             <Select
               id="gptselect"
               height="s"

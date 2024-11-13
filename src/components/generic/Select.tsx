@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import classNames from 'classnames';
-import { DropdownWrapper, Input, InputProps } from '.';
+import { DropdownWrapper, IconButton, Input, InputProps } from '.';
 import { DropdownOptions } from '.';
 import inputStyles from './Input.module.scss';
 
@@ -90,6 +90,13 @@ const Select = forwardRef<HTMLDivElement, SelectProps>(({
                 })}
                 aria-haspopup="listbox"
                 aria-expanded={isDropdownOpen}
+                hasSuffix={
+                    <IconButton
+                      size="s"
+                      icon="chevronDown"
+                      variant="ghost"
+                    />
+                  }
             />
         </DropdownWrapper>
     );

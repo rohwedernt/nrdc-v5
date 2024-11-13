@@ -13,10 +13,6 @@ type ToolbarProps = {};
 const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({ }, ref) => {
   const [theme, setTheme] = useTheme();
 
-  const handleThemeSelect = (selected: string) => {
-    return console.log(selected)
-  };
-
   return (
     <Flex
     as="header"
