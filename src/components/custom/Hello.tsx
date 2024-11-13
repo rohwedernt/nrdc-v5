@@ -10,6 +10,7 @@ import { Grid } from '../generic/Grid';
 import { Avatar } from '../generic/Avatar';
 import { IconButton } from '../generic/IconButton';
 import { Text } from '../generic/Text';
+import { social } from "@/components/resources/config"
 import styles from './Hello.module.scss';
 
 
@@ -63,7 +64,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
           </Flex>
           <Flex direction="row" justifyContent="space-evenly" paddingTop='32' fillWidth>
             <IconButton
-              onClick={() => { }}
+              href={social.linkedin}
               icon="linkedin"
               size="l"
               tooltip="LinkedIn"
@@ -72,7 +73,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
               className={styles.icon}
             />
             <IconButton
-              onClick={() => { }}
+              href={social.github}
               icon="github"
               size="l"
               tooltip="GitHub"
@@ -81,7 +82,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
               className={styles.icon}
             />
             <IconButton
-              onClick={() => { }}
+              onClick={()=>{}}
               icon="resume"
               size="l"
               tooltip="Resume"
