@@ -37,7 +37,7 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
                 paddingX="20" paddingY="12"
                 className={classNames(styles.badge, effect && styles.animation)}
                 alignItems="center"
-                radius="full" shadow="l" style={{ background:"var(--glass-strong)" }}>
+                shadow="l" style={{ background:"var(--glass-strong)", borderRadius: "0% 20px 20px 0%" }}>
                 { icon && (
                     <Icon className="mr-8"
                         size="xl"

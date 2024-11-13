@@ -22,13 +22,14 @@
     box-shadow: var(--shadow-xl);
     max-width: 40rem;
     transition: var(--transition-macro-medium);
+    background-image: black;
+    z-index: 10;
 
     &.open {
         transform: scale(1);
         opacity: 1;
         visibility: visible;
-        background: linear-gradient(80deg, var(--scheme-yellow-300), var(--scheme-yellow-700));
-
+        background: black !important;
     }
 
     @media (--s) {
@@ -53,7 +54,7 @@
     position: fixed;
     top: 25%;
     left: 50%;
-    z-index: 5;
+    z-index: 10;
     transform: scale(0.2), translate(-50%, 0);
     opacity: 0;
     box-shadow: var(--shadow-xl);

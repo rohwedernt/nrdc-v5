@@ -1,0 +1,20 @@
+.container {
+  @media (--xs) {
+    flex-direction: column;
+  }
+}
+
+.logo {
+  padding-right: var(--responsive-space-xxl);
+  padding-left: var(--responsive-space-xxl);
+
+  @media (--s) {
+    padding-left: 0;
+    padding-right: 0;
+
+  }
+
+  @media (--xs) {
+    padding-left: 0;
+  }
+}

@@ -41,6 +41,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
         isOpen={isHelloDialogOpen}
         title="Nate Rohweder"
         data-border="conservative"
+        animate
       >
         <Grid
           columns="repeat(1, 1fr)"

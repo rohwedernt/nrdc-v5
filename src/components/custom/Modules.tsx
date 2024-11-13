@@ -16,9 +16,9 @@ const Modules = forwardRef<HTMLDivElement, ModulesProps>(({ }, ref) => {
       tabletColumns="1col"
       mobileColumns="1col"
       fillWidth
-      gap="m">
-      <Flex gap="m" direction="row" mobileDirection="column" fillWidth>
-        <Flex gap="m" direction="column" alignItems="stretch" fillWidth>
+      gap="l">
+      <Flex gap="l" direction="row" mobileDirection="column" fillWidth>
+        <Flex gap="l" direction="column" alignItems="stretch" fillWidth>
           <MusicPlayer />
           <Travel />
         </Flex>

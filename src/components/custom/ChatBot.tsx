@@ -86,7 +86,7 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
           gap="xs"
           direction="column"
           justifyContent="flex-end"
-          minHeight={25}
+          minHeight={26}
           fillHeight>
           {messages.map((message) => (
             <Flex

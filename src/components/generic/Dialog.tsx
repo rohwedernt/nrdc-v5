@@ -22,6 +22,7 @@ interface DialogProps {
     dangerButtonProps?: DialogButtonProps;
     style?: React.CSSProperties;
     className?: string;
+    animate?: boolean;
 }
 
 const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
@@ -34,7 +35,8 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
     secondaryButtonProps,
     dangerButtonProps,
     style,
-    className
+    className,
+    animate
 }, ref) => {
     const dialogRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(isOpen);
@@ -112,10 +114,11 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
             role="dialog"
             aria-modal="true"
             aria-labelledby="dialog-title"
-            onClick={onClose}>
+            //onClick={onClose}
+            >
             <Flex
                 style={{ maxHeight: '100%' }}
-                className={classNames(styles.dialoganimate, { [styles.open]: isAnimating })}
+                className={classNames({[styles.dialoganimate]: animate}, { [styles.open]: isAnimating })}
                 ref={dialogRef}
                 //fillWidth
                 radius="s"
