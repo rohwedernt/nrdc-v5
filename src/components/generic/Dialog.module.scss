@@ -40,6 +40,14 @@
     }
 }
 
+.title {
+    @media (--xs) {
+        width: 100%;
+        text-align: center;
+        padding-left: 55px;
+    }
+}
+
 .dialoganimate {
     display: block;
     position: fixed;
@@ -51,7 +59,7 @@
     box-shadow: var(--shadow-xl);
     max-width: 50%;
     width: 50%;
-    margin-left: -20%;
+    margin-left: -25%;
     transition: var(--transition-macro-medium);
     animation: HoverCard 3.5s ease-in-out infinite;
 

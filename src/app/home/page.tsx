@@ -3,7 +3,7 @@
 import React from 'react';
 import { Flex, Logo } from '@/components/generic';
 import { Descriptors } from '@/components/custom/Descriptors';
-import { HelloButton } from '@/components/custom/HelloButton';
+import { Hello } from '@/components/custom/Hello';
 import { Modules } from '@/components/custom/Modules';
 
 
@@ -29,7 +29,7 @@ export default function Home() {
 						</Flex>
 						<Descriptors />
 					</Flex>
-					<HelloButton />
+					<Hello />
 					<Modules />
 				</Flex>
 			</Flex>

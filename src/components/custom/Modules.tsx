@@ -24,7 +24,7 @@ const Modules = forwardRef<HTMLDivElement, ModulesProps>(({ }, ref) => {
         </Flex>
         <ChatBot />
       </Flex>
-      <Flex
+      {/* <Flex
         radius="l"
         shadow="s"
         padding="m"
@@ -33,7 +33,7 @@ const Modules = forwardRef<HTMLDivElement, ModulesProps>(({ }, ref) => {
         background="info-medium"
       >
         4
-      </Flex>
+      </Flex> */}
     </Grid>
   );
 });

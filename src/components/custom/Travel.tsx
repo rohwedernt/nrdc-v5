@@ -2,7 +2,6 @@
 
 import React, { forwardRef } from 'react';
 import { Flex, Text, SmartImage, Badge } from '../generic';
-import { sizeMapping } from '../generic/Avatar';
 import styles from './Travel.module.scss';
 
 

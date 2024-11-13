@@ -1,0 +1,21 @@
+.wrapper {
+    @media (--xs) {
+        flex-direction: column;
+    }
+}
+
+.text {
+    @media (--xs) {
+        text-align: center;
+    }
+}
+
+.icon {
+    transition: all 200ms ease-out;
+    &:hover,
+    &:focus {
+        transition: all 200ms ease-in;
+        color: var(--static-black-weak);
+        transform: scale(1.25);
+    }
+}

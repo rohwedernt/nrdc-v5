@@ -133,6 +133,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
                         alignItems="center"
                         gap="8">
                         <Heading
+                            className={styles.title}
                             id="dialog-title"
                             variant="display-default-m">
                             {title}
