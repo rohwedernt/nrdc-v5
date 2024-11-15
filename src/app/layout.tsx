@@ -100,7 +100,8 @@ export default function RootLayout({
 			as="html" lang="en"
 			fillHeight background="page"
 			data-neutral={style.neutral} data-brand={style.brand} data-accent={style.accent}
-			data-border={style.border} data-theme={style.theme}
+			data-border={style.border}
+			//data-theme={style.theme}
 			data-solid={style.solid} data-solid-style={style.solidStyle}
 			data-surface={style.surface} data-transition={style.transition}
 			data-scaling={style.scaling}
@@ -116,6 +117,7 @@ export default function RootLayout({
 			</head>
 			<Flex
 				as="body"
+				style={{ scrollbarGutter: "stable;" }}
 				fillWidth fillHeight margin="0" padding="0">
 				<Background
 					style={{ zIndex: '-1' }}

@@ -92,7 +92,6 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
             <Flex
               paddingX="16"
               paddingY="12"
-              background="brand-strong"
               className={message.role === 'user' ? styles.msgsent : styles.msgreceived}>
               <span>{message.content}</span>
             </Flex>

@@ -17,9 +17,11 @@ const useTheme = (): [Theme, React.Dispatch<React.SetStateAction<Theme>>] => {
 
     applyTheme(theme);
 
+    console.log("theme changed to " + theme);
     return () => {
       root.removeAttribute('data-theme');
     };
+
   }, [theme]);
 
   return [theme, setTheme];

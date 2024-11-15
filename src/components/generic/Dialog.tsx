@@ -80,7 +80,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
 
     useEffect(() => {
         if (isOpen) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'auto';
             window.addEventListener('keydown', handleKeyDown);
         } else {
             document.body.style.overflow = 'unset';
@@ -118,7 +118,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
             >
             <Flex
                 style={{ maxHeight: '100%' }}
-                className={classNames({[styles.dialoganimate]: animate}, { [styles.open]: isAnimating })}
+                className={classNames({[styles.dialoganimate]: animate}, {[styles.dialog]: !animate}, { [styles.open]: isAnimating })}
                 ref={dialogRef}
                 //fillWidth
                 radius="s"

@@ -29,7 +29,8 @@
         transform: scale(1);
         opacity: 1;
         visibility: visible;
-        background: black !important;
+        background: linear-gradient(135deg, #343180, var(--scheme-blue-200));
+        border: 1px solid var(--static-white-medium)
     }
 
     @media (--s) {

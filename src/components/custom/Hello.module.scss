@@ -11,10 +11,10 @@
 }
 
 .icon {
-    transition: all 200ms ease-out;
+    transition: all 100ms ease-out;
     &:hover,
     &:focus {
-        transition: all 200ms ease-in;
+        transition: all 100ms ease-in;
         color: var(--static-black-weak);
         transform: scale(1.25);
     }

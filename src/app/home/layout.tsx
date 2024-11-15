@@ -1,7 +1,7 @@
 'use client';
 
-import useTheme from "../hooks/useTheme";
-import { Toolbar } from "@/components/custom/Toolbar"
+import useTheme, { Theme } from "../hooks/useTheme";
+import { Toolbar } from "@/components/custom/toolbar/Toolbar"
 import { Flex } from "@/components/generic"
 
 
@@ -10,11 +10,11 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode
 }) {
-  	const [theme, setTheme] = useTheme();
+  	const [theme] = useTheme();
 
   return (
     <Flex
-      data-theme={theme}
+      data-theme={theme as Theme}
       fillWidth paddingX="l"
       direction="column"
       alignItems="center"

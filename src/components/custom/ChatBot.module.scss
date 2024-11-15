@@ -13,11 +13,13 @@
 }
 
 .msgsent {
+    background-color: var(--scheme-blue-300);
     border-radius: 15px 15px 3px 15px;
     align-self: flex-end;
 }
 
 .msgreceived {
+    background-color: var(--scheme-slate-300);
     border-radius: 15px 15px 15px 3px;
     align-self: flex-start;
 }
