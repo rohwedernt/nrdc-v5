@@ -3,6 +3,7 @@
 import React, { forwardRef } from 'react';
 import { Flex, Text, SmartImage, Badge } from '../generic';
 import styles from './Travel.module.scss';
+import Link from 'next/link';
 
 
 type TravelProps = {};
@@ -17,25 +18,32 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
       fillWidth
       style={{ minHeight: "150px" }}
     >
-      <Badge
-        arrow
-        effect
-        className={styles.travelbadge}
-        title="Travel Blog"
-      />
-      {/* <Text
+      <Link
+        target="_blank"
+        style={{ height: '150px' }}
+        href={'http://localhost:3000/travel'}
+        className="hoverLink"
+        >
+        <Badge
+          arrow
+          effect
+          className={styles.travelbadge}
+          title="Travel Blog"
+        />
+        {/* <Text
         variant="display-default-m"
         style={{ position: "absolute", top: "15px", left: "5px", zIndex: "5" }}
       >
         Travel
       </Text> */}
-      <SmartImage
-        radius="l"
-        src="/images/travel.jpg"
-        fill
-        alt="travel"
+        <SmartImage
+          radius="l"
+          src="/images/travel.jpg"
+          fill
+          alt="travel"
         //sizes={`${sizeMapping['xl']}px`}
-      />
+        />
+      </Link>
     </Flex>
   );
 });

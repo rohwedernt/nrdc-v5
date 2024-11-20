@@ -101,7 +101,7 @@ export default function RootLayout({
 			fillHeight background="page"
 			data-neutral={style.neutral} data-brand={style.brand} data-accent={style.accent}
 			data-border={style.border}
-			//data-theme={style.theme}
+			data-theme={style.theme}
 			data-solid={style.solid} data-solid-style={style.solidStyle}
 			data-surface={style.surface} data-transition={style.transition}
 			data-scaling={style.scaling}

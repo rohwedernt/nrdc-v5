@@ -6,6 +6,7 @@ import { IconButton } from '../../generic/IconButton';
 import { SegmentedControl } from '../../generic/SegmentedControl';
 import { Dialog, Switch } from '../../generic';
 import { FeatureSwitch } from './FeatureSwitch';
+import { ThemeSelect } from './ThemeSelect';
 
 
 type SettingsProps = {};
@@ -31,6 +32,7 @@ const Settings = forwardRef<HTMLDivElement, SettingsProps>(({ }, ref) => {
         title="Settings"
       >
         <Flex direction='column' gap="l" padding='l'>
+          <ThemeSelect />
           <FeatureSwitch
             label="Enable Feature 1"
             description="Feature description"

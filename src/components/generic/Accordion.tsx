@@ -102,7 +102,7 @@ const Accordion: React.FC<AccordionProps> = forwardRef(({
             <Flex 
                 tabIndex={0}
                 className={styles.accordion}
-                paddingY="16"
+                paddingY="32"
                 paddingLeft="m" paddingRight="m"
                 alignItems="center" justifyContent="space-between"
                 onClick={toggleAccordion}
