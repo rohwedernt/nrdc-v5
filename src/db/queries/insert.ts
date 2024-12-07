@@ -82,7 +82,7 @@ export async function handleFoodSelection(
     }
     return acc;
   }, {} as Record<number, number>);
-
+  
   // Update progress for each associated category
   for (const [categoryId, increment] of Object.entries(categoryCounts)) {
     await trackProgress(userId, Number(categoryId), weekStartDate, increment);

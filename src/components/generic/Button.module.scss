@@ -13,8 +13,8 @@
 
     &:disabled {
         box-shadow: none;
-        background: var(--neutral-solid-weak);
-        color: var(--neutral-on-solid-weak);
+        //background: var(--neutral-solid-weak);
+        color: var(--neutral-solid-strong);
         border: none;
         pointer-events: none;
         cursor: not-allowed;

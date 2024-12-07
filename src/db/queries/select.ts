@@ -2,14 +2,26 @@ import { asc, between, count, eq, and, or, getTableColumns, sql } from 'drizzle-
 import { db } from '../index';
 import { SelectUser, categoriesTable, foodItemsTable, progressTable, usersTable } from '../schema';
 
-export async function getUserById(id: SelectUser['id']): Promise<
-  Array<{
-    id: number;
-    username: string;
-    email: string;
-  }>
-> {
-  return db.select().from(usersTable).where(eq(usersTable.id, id));
+export async function getUserById(
+  id: SelectUser['id']
+): Promise<{
+  id: number;
+  username: string;
+  email: string;
+  createdAt: string;
+} | null> {
+  const result = await db
+    .select({
+      id: usersTable.id,
+      username: usersTable.username,
+      email: usersTable.email,
+      createdAt: usersTable.createdAt,
+    })
+    .from(usersTable)
+    .where(eq(usersTable.id, id))
+    .limit(1); // Ensure only one record is returned
+
+  return result.length > 0 ? result[0] : null; // Return the single record or null if not found
 }
 
 export async function getCategories(userId: number, weekStartDate: string) {

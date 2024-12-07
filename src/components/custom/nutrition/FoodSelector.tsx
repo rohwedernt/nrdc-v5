@@ -51,20 +51,19 @@ const FoodSelector = forwardRef<HTMLDivElement, FoodSelectorProps>(({
 
   const handleSubmit = async (selectedFoods: string[]) => {
     setIsLoadingSubmit(true);
+
+    setSelectedValues([]);
+
     try {
       const response = await fetch('/api/health/add', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify({
           userId,
           weekStartDate,
           selectedFoods,
         }),
       });
-
-      console.log("resp: ", response)
 
       if (response.ok) {
         console.log('Progress updated!');

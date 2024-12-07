@@ -110,7 +110,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
             </Text>
             <Text
               variant="display-default-s" onBackground="neutral-strong" align='center' paddingY='m'>
-              0/{category.target}
+              {category.progressCount}/{category.target}
             </Text>
           </Flex>
         ))}
