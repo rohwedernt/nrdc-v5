@@ -211,4 +211,23 @@ const nutrition = {
     }
 }
 
-export { gallery, nutrition };
+const defaultCategoryOrder = [
+    'Fish',
+    'Poultry',
+    'Red or Game Meat',
+    'Whole Grains',
+    'Fruit',
+    'Eggs',
+    'Leafy',
+    'Cruciferous',
+    'Vibrant',
+    'Starchy',
+    'Avocados',
+    'Legumes',
+    'Nuts & Seeds',
+    'Dark Chocolate',
+    'Tea',
+    'Fermented',
+  ];
+
+export { gallery, nutrition, defaultCategoryOrder };

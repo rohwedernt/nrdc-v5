@@ -9,7 +9,7 @@ import iconStyles from './IconButton.module.scss';
 
 interface CommonProps {
     icon?: string;
-    size?: 's' | 'm' | 'l' | 'xl';
+    size?: 'xs' | 's' | 'm' | 'l' | 'xl';
     tooltip?: string;
     tooltipPosition?: 'top' | 'bottom' | 'left' | 'right';
     variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'ghost';
@@ -57,7 +57,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps | AnchorProps>(
             {children ? (
                 children
             ) : (
-                <Icon name={icon} size="l" />
+                <Icon name={icon} size={size} />
             )}
             {tooltip && isTooltipVisible && (
                 <div style={{ position: "absolute" }} className={iconStyles[tooltipPosition]}>

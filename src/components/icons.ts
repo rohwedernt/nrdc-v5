@@ -22,7 +22,8 @@ import {
 	HiOutlineMusicalNote,
 	HiGlobeAmericas,
 	HiOutlineSun,
-	HiOutlineMoon
+	HiOutlineMoon,
+	HiPencil
 } from "react-icons/hi2";
 
 import { HiCog } from "react-icons/hi";
@@ -40,7 +41,7 @@ import { MdOutlineEmail } from "react-icons/md";
 
 import { BiCodeCurly, BiSend } from "react-icons/bi";
 
-import { IoLaptopOutline } from "react-icons/io5";
+import { IoLaptopOutline, IoReload } from "react-icons/io5";
 
 import { AiOutlineOpenAI } from "react-icons/ai";
 
@@ -77,6 +78,7 @@ export const iconLibrary: Record<string, IconType> = {
 	moon: HiOutlineMoon,
 	laptop: IoLaptopOutline,
 	send: BiSend,
-	openAI: AiOutlineOpenAI
-
+	openAI: AiOutlineOpenAI,
+	pencil: HiPencil,
+	load: IoReload
 };

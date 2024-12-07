@@ -117,7 +117,7 @@ export default function RootLayout({
 			</head>
 			<Flex
 				as="body"
-				style={{ scrollbarGutter: "stable;" }}
+				style={{ scrollbarGutter: "stable" }}
 				fillWidth fillHeight margin="0" padding="0">
 				<Background
 					style={{ zIndex: '-1' }}

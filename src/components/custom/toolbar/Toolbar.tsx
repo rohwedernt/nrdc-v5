@@ -5,7 +5,7 @@ import { Flex } from '../../generic/Flex';
 import { IconButton } from '../../generic/IconButton';
 import { social } from "@/components/resources/config"
 import { Settings } from './Settings';
-import { ThemeSelect } from './ThemeSelect';
+import { SignIn } from './SignIn';
 
 
 type ToolbarProps = {};
@@ -47,8 +47,8 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({ }, ref) => {
         />
       </Flex>
       <Flex gap="l">
-        <ThemeSelect />
         <Settings />
+        {/* <SignIn /> */}
       </Flex>
     </Flex>
   );

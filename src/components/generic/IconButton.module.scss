@@ -22,6 +22,14 @@
 	transform: translateY(-50%);
 }
 
+.xs {
+	border-radius: var(--radius-s);
+	min-height: var(--static-space-16);
+	min-width: var(--static-space-16);
+	height: var(--static-space-16);
+	width: var(--static-space-16);
+}
+
 .s {
 	border-radius: var(--radius-s);
 	min-height: var(--static-space-24);
