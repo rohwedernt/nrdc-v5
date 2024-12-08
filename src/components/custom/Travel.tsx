@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import { Flex, Text, SmartImage, Badge } from '../generic';
 import styles from './Travel.module.scss';
 import Link from 'next/link';
@@ -22,13 +22,15 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
         target="_blank"
         style={{ height: '150px' }}
         href={'http://localhost:3000/travel'}
-        className="hoverLink"
+        className={styles.hoverlink}
+        id="travel_module"
         >
         <Badge
           arrow
           effect
           className={styles.travelbadge}
           title="Travel Blog"
+          trigger='#travel_module'
         />
         {/* <Text
         variant="display-default-m"
@@ -41,6 +43,9 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
           src="/images/travel.jpg"
           fill
           alt="travel"
+          style={{ cursor: "pointer" }}
+          //onMouseEnter={handleMouseEnter}
+          //onMouseLeave={handleMouseLeave}
         //sizes={`${sizeMapping['xl']}px`}
         />
       </Link>

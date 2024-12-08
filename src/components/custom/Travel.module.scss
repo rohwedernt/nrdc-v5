@@ -1,5 +1,5 @@
 .travelbadge {
-    position:absolute;
+    position: absolute;
     min-width: 200px;
     width: 100%;
     height: 80px;
@@ -13,5 +13,14 @@
 
     @media (--xs) {
         top: 27%;
+    }
+}
+
+.hoverlink {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        outline: 4px solid var(--code-gray);
+        border-radius: 1.1rem;
     }
 }

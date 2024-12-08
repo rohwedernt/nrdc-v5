@@ -15,6 +15,7 @@ interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
     style?: React.CSSProperties;
     className?: string;
     effect?: boolean;
+    trigger?: string;
 }
 
 const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
@@ -24,6 +25,7 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
     children,
     href,
     effect = true,
+    trigger = "#badge",
     style,
     className,
     ...props
@@ -54,7 +56,7 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
                 )}
                 {children}
                 { arrow && (
-                    <Arrow trigger="#badge" scale={2} />
+                    <Arrow trigger={trigger} scale={2} />
                 )}
             </Flex>
         ),
