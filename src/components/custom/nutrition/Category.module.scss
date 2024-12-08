@@ -1,14 +1,14 @@
 .container {
-  background: linear-gradient(80deg, var(--glass), #182848);
+  background: var(--category-card);
   box-shadow: inset 0px 0px 40px 10px var(--glass);
 }
 
 .add {
   cursor: pointer;
+  transition: all 500ms ease;
 
   &:hover, &:focus {
-    background: linear-gradient(80deg, var(--glass-strong), #243b69);
-
+    filter: saturate(250%);
   }
 }
 
