@@ -2,12 +2,10 @@ import { FoodSelector } from "@/components/custom/nutrition/FoodSelector";
 import { HealthTracker } from "@/components/custom/nutrition/HealthTracker";
 import { WeekSelector } from "@/components/custom/nutrition/WeekSelector";
 import { Accordion, Flex } from "@/components/generic";
-import { handleFoodSelection } from "@/db/queries/insert";
 import { getCategories, getFoodItems, getUserById, getUserWeeklyProgress } from "@/db/queries/select";
-import { InputNumber, Radio } from "antd";
 
 
-export async function getUserDataForCategoryCards(userId: number, weekStartDate: string) {
+async function getUserDataForCategoryCards(userId: number, weekStartDate: string) {
   const [categories, progress] = await Promise.all([
     getCategories(userId, weekStartDate),
     getUserWeeklyProgress(userId, weekStartDate),
