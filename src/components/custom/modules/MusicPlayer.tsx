@@ -2,7 +2,7 @@
 
 import React, { useState, forwardRef } from 'react';
 import { Spotify } from 'react-spotify-embed';
-import { DropdownOptions, Flex, Select } from '../generic';
+import { DropdownOptions, Flex, Select } from '../../generic';
 import styles from './MusicPlayer.module.scss';
 
 

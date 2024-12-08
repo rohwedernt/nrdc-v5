@@ -22,15 +22,16 @@ const Header: React.FC<HeaderProps> = ({
     return (
         <Flex
             style={{
-                borderBottom: '1px solid var(--neutral-border-medium)'
+                //borderBottom: '1px solid var(--neutral-border-medium)'
             }}
             as="header"
             fillWidth paddingX="m" height="56"
             alignItems="center"
-            background="surface">
+            //background="surface"
+            >
             <Flex
                 hide="s">
-                <Logo/>
+                <Logo icon={false} />
             </Flex>
             <Flex
                 show="s"
@@ -124,20 +125,16 @@ const Header: React.FC<HeaderProps> = ({
                         fillWidth gap="4" paddingX="l"
                         alignItems="center">
                         <SmartLink
-                            href="">
+                            href="/home">
                             Home
                         </SmartLink>
                         <SmartLink
-                            href="">
-                            Product
+                            href="travel">
+                            Travel
                         </SmartLink>
                         <SmartLink
-                            href="">
-                            Solutions
-                        </SmartLink>
-                        <SmartLink
-                            href="">
-                            Pricing
+                            href="/nutrition">
+                            Health
                         </SmartLink>
                     </Flex>
                     <Flex
@@ -150,7 +147,7 @@ const Header: React.FC<HeaderProps> = ({
                             href=""/>
                         <Button
                             size="s"
-                            variant="primary"
+                            variant="accent"
                             label="Sign up"
                             href=""/>
                     </Flex>

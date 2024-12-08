@@ -16,6 +16,7 @@ interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;
     effect?: boolean;
     trigger?: string;
+    radius?: string;
 }
 
 const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
@@ -26,6 +27,7 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
     href,
     effect = true,
     trigger = "#badge",
+    radius = "20px 20px 20px 20px",
     style,
     className,
     ...props
@@ -39,7 +41,7 @@ const Badge = forwardRef<HTMLDivElement | HTMLAnchorElement, BadgeProps>(({
                 paddingX="20" paddingY="12"
                 className={classNames(styles.badge, effect && styles.animation)}
                 alignItems="center"
-                shadow="l" style={{ background:"var(--glass-strong)", borderRadius: "0% 20px 20px 0%" }}>
+                shadow="l" style={{ background:"var(--glass-strong)", borderRadius: radius }}>
                 { icon && (
                     <Icon className="mr-8"
                         size="xl"

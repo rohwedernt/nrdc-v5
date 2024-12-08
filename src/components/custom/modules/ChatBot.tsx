@@ -2,13 +2,13 @@
 
 import React, { forwardRef, KeyboardEventHandler, useState } from 'react';
 import { useChat } from 'ai/react';
-import { Input } from '../generic/Input';
-import { Flex } from '../generic/Flex';
-import { Select } from '../generic/Select';
-import { Text } from '../generic/Text';
-import { IconButton } from '../generic/IconButton';
-import { Spinner } from '../generic/Spinner';
-import { Icon } from '../generic/Icon';
+import { Input } from '../../generic/Input';
+import { Flex } from '../../generic/Flex';
+import { Select } from '../../generic/Select';
+import { Text } from '../../generic/Text';
+import { IconButton } from '../../generic/IconButton';
+import { Spinner } from '../../generic/Spinner';
+import { Icon } from '../../generic/Icon';
 import styles from './ChatBot.module.scss';
 
 

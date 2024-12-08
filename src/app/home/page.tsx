@@ -4,7 +4,7 @@ import React from 'react';
 import { Flex, Logo } from '@/components/generic';
 import { Descriptors } from '@/components/custom/Descriptors';
 import { Hello } from '@/components/custom/Hello';
-import { Modules } from '@/components/custom/Modules';
+import { Modules } from '@/components/custom/modules/Modules';
 import styles from './page.module.scss';
 
 

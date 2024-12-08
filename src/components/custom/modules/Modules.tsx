@@ -1,10 +1,11 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { Flex, Grid } from '../generic';
+import { Flex, Grid } from '../../generic';
 import { ChatBot } from './ChatBot';
 import { MusicPlayer } from './MusicPlayer';
 import { Travel } from './Travel';
+import { HealthModule } from './Health';
 
 
 type ModulesProps = {};
@@ -24,6 +25,7 @@ const Modules = forwardRef<HTMLDivElement, ModulesProps>(({ }, ref) => {
         </Flex>
         <ChatBot />
       </Flex>
+        <HealthModule />
       {/* <Flex
         radius="l"
         shadow="s"

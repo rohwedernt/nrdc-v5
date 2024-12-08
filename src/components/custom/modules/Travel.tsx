@@ -1,7 +1,7 @@
 'use client';
 
 import React, { forwardRef, useRef } from 'react';
-import { Flex, Text, SmartImage, Badge } from '../generic';
+import { Flex, Text, SmartImage, Badge } from '../../generic';
 import styles from './Travel.module.scss';
 import Link from 'next/link';
 
@@ -21,7 +21,7 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
       <Link
         target="_blank"
         style={{ height: '150px' }}
-        href={'http://localhost:3000/travel'}
+        href={'/travel'}
         className={styles.hoverlink}
         id="travel_module"
         >
@@ -31,6 +31,7 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
           className={styles.travelbadge}
           title="Travel Blog"
           trigger='#travel_module'
+          radius="0% 20px 20px 0%"
         />
         {/* <Text
         variant="display-default-m"

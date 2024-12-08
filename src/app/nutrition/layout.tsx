@@ -19,7 +19,7 @@ export default function HealthLayout({
         direction="column"
         alignItems="center"
         flex={1}>
-        <Toolbar />
+        <Toolbar showNav />
         {children}
       </Flex>
   )
