@@ -47,12 +47,11 @@ const groupedCategories = orderedCategories.reduce<Record<string, Category[]>>((
 // Separate untyped categories
 const untypedCategories = orderedCategories.filter((category) => !category.type);
 
-
   return (
     <Grid
       radius="l"
       columns="repeat(3, 1fr)"
-      tabletColumns="1col"
+      tabletColumns="2col"
       mobileColumns="1col"
       fillWidth
       gap="20">

@@ -20,6 +20,7 @@ const WeekSelector = forwardRef<HTMLDivElement, WeekSelectorProps>(({
   const [currentWeek, setCurrentWeek] = useState<Date>(getDefaultCurrentWeek());
 
   const handlePreviousWeek = () => {
+    console.log("handle previous, createdAt: " + createdAt)
     if (currentWeek) {
       const previousWeek = new Date(currentWeek);
       previousWeek.setDate(currentWeek.getDate() - 7);
@@ -30,6 +31,7 @@ const WeekSelector = forwardRef<HTMLDivElement, WeekSelectorProps>(({
   };
 
   const handleNextWeek = () => {
+    console.log("handle next, current week: " + currentWeek)
     if (currentWeek) {
       const nextWeek = new Date(currentWeek);
       nextWeek.setDate(currentWeek.getDate() + 7);
@@ -57,7 +59,11 @@ const WeekSelector = forwardRef<HTMLDivElement, WeekSelectorProps>(({
         size="m"
         variant="ghost"
         style={{ cursor: "pointer" }}
-        disabled={!createdAt || currentWeek <= createdAt}
+        disabled={!createdAt || (() => {
+          const previousSunday = new Date(currentWeek); // Clone currentWeek
+          previousSunday.setDate(currentWeek.getDate() - 7); // Subtract 7 days to get the previous Sunday
+          return previousSunday < new Date(createdAt); // Compare with createdAt
+        })()}
         onClick={handlePreviousWeek}
       />
       <Text variant="heading-default-s" onBackground="neutral-medium">

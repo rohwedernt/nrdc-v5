@@ -66,3 +66,8 @@ VALUES
 -- Insert a user into the users table
 INSERT INTO users (id, username, email, created_at)
 VALUES (1, 'nate', 'rohwedernt@gmail.com', NOW());
+
+-- Set createdAt date for a user
+UPDATE users
+SET created_at = '2024-12-01T00:00:00.000Z'
+WHERE id = 1;

@@ -32,14 +32,15 @@ img {
 
 /* LINK */
 a {
-    color: var(--brand-on-background-medium);
+    color: var(--neutral-on-background-medium);
     text-decoration: none;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.25em;
-    text-decoration-color: var(--neutral-border-strong) !important;
+    text-decoration-color: var(--neutral-on-background-medium) !important;
 
     &:hover {
         text-decoration-line: underline;
+        font-weight:500;
     }
 }
 

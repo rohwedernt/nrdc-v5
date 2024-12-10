@@ -1,9 +1,7 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { Flex } from '../../generic/Flex';
-import { Grid, IconButton, Text } from '../../generic';
-import { foodType } from '../../resources/content';
+import { Flex, Grid, IconButton, Text } from '../../generic';
 import styles from './Category.module.scss';
 
 
@@ -66,7 +64,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
       <Grid
         radius="l"
         columns={`repeat(${columns}, 1fr)`}
-        tabletColumns="1col"
+        tabletColumns={type === "Proteins" ? "3col" : "2col"}
         mobileColumns="1col"
         paddingY="m"
         fillWidth
@@ -79,7 +77,12 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
         }}>
         {categories.map((category) => (
           <Flex direction='column' justifyContent='center' className={styles.item} key={category.name}>
-            <Flex justifyContent='space-between' alignItems='center' gap='4' paddingTop='4' paddingX='4'>
+            <Flex
+              className={styles.iconwrapper}
+              alignItems='center'
+              gap='4'
+              paddingTop='4'
+              paddingX='4'>
               <IconButton
                 icon="pencil"
                 size="xs"

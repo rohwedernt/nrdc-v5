@@ -32,7 +32,12 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
       radius='l'>
 
       <Flex direction='column' justifyContent='center'>
-        <Flex justifyContent='space-between' alignItems='center' gap='4' paddingTop='4' paddingX='4'>
+        <Flex
+          justifyContent='space-between'
+          alignItems='center'
+          gap='4'
+          paddingTop='4'
+          paddingX='4'>
           <IconButton
             icon="pencil"
             size="xs"
@@ -53,7 +58,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
         <Flex
           justifyContent='center'>
           <Text
-            variant="display-default-xs" onBackground="neutral-medium">
+            variant="display-default-xs" onBackground="neutral-medium" align="center" paddingX='8'>
             {!type ? name : ""}
           </Text>
         </Flex>

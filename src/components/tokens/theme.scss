@@ -134,7 +134,10 @@
     --gradient-distinct:            var(--gradient-distinct-dark);
     --glass:                        var(--glass-dark);
     --glass-strong:                 var(--glass-strong-dark);
-    --category-card:                var(--category-card-dark);
+    --category-card-blue:           var(--category-card-blue-dark);
+    --category-card-green:          var(--category-card-green-dark);
+    --category-card-purple:         var(--category-card-purple-dark);
+    --solid:                         var(--static-white);
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);
@@ -322,7 +325,10 @@
     --gradient-distinct:            var(--gradient-distinct-light);
     --glass:                        var(--glass-light);
     --glass-strong:                 var(--glass-strong-dark);
-    --category-card:                var(--category-card-light);
+    --category-card-blue:           var(--category-card-blue-light);
+    --category-card-green:          var(--category-card-green-light);
+    --category-card-purple:         var(--category-card-purple-light);
+    --solid:                        var(--static-black);
 
     --solid-border-color-brand:     var(--brand-alpha-strong);
     --solid-border-color-neutral:   var(--neutral-alpha-strong);

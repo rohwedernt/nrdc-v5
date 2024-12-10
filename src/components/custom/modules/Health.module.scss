@@ -7,6 +7,14 @@
     left: 50%;
     cursor: pointer;
     z-index: 5;
+
+    @media (--s) {
+        left: 40%;
+    }
+
+    @media (--xs) {
+        left: 13%;
+    }
 }
 
 .hoverlink {
