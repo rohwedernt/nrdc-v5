@@ -13,7 +13,7 @@ export type FoodItem = {
 
 type FoodSelectorProps = {
   foodItems: Array<FoodItem>;
-  userId: number;
+  userId: string;
   weekStartDate: Date;
   updateCategoriesWithProgress: (selectedFoods: string[]) => void;
 };

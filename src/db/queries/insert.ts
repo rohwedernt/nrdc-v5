@@ -10,7 +10,7 @@ export async function createUser(data: InsertUser) {
 //   await db.insert(postsTable).values(data);
 // }
 
-export async function addCategory(userId: number, data: InsertCategory) {
+export async function addCategory(userId: string, data: InsertCategory) {
   await db.insert(categoriesTable).values({
     ...data,
     userId,
@@ -18,7 +18,7 @@ export async function addCategory(userId: number, data: InsertCategory) {
   });
 }
 
-export async function addFoodItem(userId: number, categoryId: number, name: string, group: string) {
+export async function addFoodItem(userId: string, categoryId: number, name: string, group: string) {
   await db.insert(foodItemsTable).values({
     userId,
     categoryId,
@@ -29,7 +29,7 @@ export async function addFoodItem(userId: number, categoryId: number, name: stri
 }
 
 export async function trackProgress(
-  userId: number,
+  userId: string,
   categoryId: number,
   weekStartDate: string,
   increment: number = 1
@@ -62,7 +62,7 @@ export async function trackProgress(
 }
 
 export async function handleFoodSelection(
-  userId: number,
+  userId: string,
   weekStartDate: string,
   selectedFoods: string[]
 ) {

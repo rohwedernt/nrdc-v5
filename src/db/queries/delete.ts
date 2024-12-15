@@ -6,7 +6,7 @@ export async function deleteUser(id: SelectUser['id']) {
   await db.delete(users).where(eq(users.id, id));
 }
 
-export async function deleteCategory(userId: number, categoryId: number) {
+export async function deleteCategory(userId: string, categoryId: number) {
   await db
     .delete(categoriesTable)
     .where(and(
@@ -16,7 +16,7 @@ export async function deleteCategory(userId: number, categoryId: number) {
     ));
 }
 
-export async function deleteFoodItem(userId: number, foodItemId: number) {
+export async function deleteFoodItem(userId: string, foodItemId: number) {
   await db
     .delete(foodItemsTable)
     .where(and(

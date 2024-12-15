@@ -81,7 +81,7 @@ export const authenticators = pgTable(
 
 export const categoriesTable = pgTable('categories', {
   id: serial('id').primaryKey(),
-  userId: integer('user_id').references(() => users.id, { onDelete: 'cascade' }),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   name: text('name').notNull(),
   type: text('type'), // Can be null for user-defined categories
   unit: text('unit').notNull(),
@@ -92,7 +92,7 @@ export const categoriesTable = pgTable('categories', {
 
 export const foodItemsTable = pgTable('food_items', {
   id: serial('id').primaryKey(),
-  userId: integer('user_id').references(() => users.id, { onDelete: 'cascade' }),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   categoryId: integer('category_id').references(() => categoriesTable.id, { onDelete: 'cascade'}),
   name: text('name').notNull(),
   group: text('group').notNull(),
@@ -102,7 +102,7 @@ export const foodItemsTable = pgTable('food_items', {
 
 export const progressTable = pgTable('progress', {
   id: serial('id').primaryKey(),
-  userId: integer('user_id').references(() => users.id, { onDelete: 'cascade' }),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   categoryId: integer('category_id').references(() => categoriesTable.id, { onDelete: 'cascade'}),
   weekStartDate: date('week_start_date').notNull(), // ISO 8601 formatted start date
   count: integer('count').default(0),

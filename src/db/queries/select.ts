@@ -42,7 +42,7 @@ export async function getCategories(userId: number, weekStartDate: string) {
     );
 }
 
-export async function getFoodItems(userId: number) {
+export async function getFoodItems(userId: string) {
   return await db
     .select()
     .from(foodItemsTable)

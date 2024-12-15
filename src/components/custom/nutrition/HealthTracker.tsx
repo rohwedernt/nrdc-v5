@@ -18,7 +18,7 @@ type Category = {
 };
 
 type HealthTrackerProps = {
-  userId: number;
+  userId: string;
   userStartDate: string;
   foodItems: Array<FoodItem>;
 };

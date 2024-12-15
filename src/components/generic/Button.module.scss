@@ -134,13 +134,14 @@
     //border: 1px solid var(--static-black);
     color: var(--neutral-on-background-strong);
     box-shadow:  15px 5px 40px -12px rgb(211, 163, 79), -15px -5px 40px -12px rgb(141, 134, 221); 
+    transition: background-color 1s ease-in-out;
+
 
     &:hover,
     &:focus {
-        background: linear-gradient(217deg, rgb(217, 51, 51), rgba(255, 0, 0, 0) 70.71%),
-        linear-gradient(127deg, rgb(104, 226, 104), rgba(0, 255, 0, 0) 70.71%),
-        linear-gradient(336deg, rgb(83, 83, 255), rgba(0, 0, 255, 0) 70.71%);
-        border: 2px solid var(--code-gray);
+        background: linear-gradient(217deg, rgba(117, 163, 249, 0.567), rgba(255, 0, 0, 0) 70.71%), 
+        linear-gradient(127deg, #0a8466b3, rgba(0, 255, 0, 0) 70.71%);
+        //border: 2px solid var(--code-gray);
         box-shadow:  15px 5px 40px -20px rgb(255, 200, 104), -15px -5px 40px -20px rgb(176, 169, 255); 
     }
 }

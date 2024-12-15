@@ -24,7 +24,7 @@ import { getCategories, getFoodItems, getUserById, getUserWeeklyProgress } from 
 // }
 
 export default async function NutritionTracker() {
-  const userId = 1; // Replace with actual user ID from session or auth
+  const userId = "1"; // Replace with actual user ID from session or auth
   //const weekStartDate = '2024-12-1'; // Replace with logic to calculate the current week
   const user = await getUserById(userId);
   const foodItems = await getFoodItems(userId);
