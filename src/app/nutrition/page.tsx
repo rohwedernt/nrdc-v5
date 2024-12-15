@@ -5,7 +5,7 @@ import { Accordion, Flex } from "@/components/generic";
 import { getCategories, getFoodItems, getUserById, getUserWeeklyProgress } from "@/db/queries/select";
 
 
-// async function getUserDataForCategoryCards(userId: number, weekStartDate: string) {
+// async function getUserDataForCategoryCards(userId: string, weekStartDate: string) {
 //   const [categories, progress] = await Promise.all([
 //     getCategories(userId, weekStartDate),
 //     getUserWeeklyProgress(userId, weekStartDate),

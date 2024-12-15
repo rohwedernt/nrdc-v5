@@ -11,7 +11,7 @@ export const users = pgTable("user", {
   image: text("image"),
   createdAt: timestamp('created_at', { mode: 'string' }).notNull().defaultNow(),
 })
- 
+
 export const accounts = pgTable(
   "account",
   {
@@ -35,7 +35,7 @@ export const accounts = pgTable(
     }),
   })
 )
- 
+
 export const sessions = pgTable("session", {
   sessionToken: text("sessionToken").primaryKey(),
   userId: text("userId")
@@ -43,7 +43,7 @@ export const sessions = pgTable("session", {
     .references(() => users.id, { onDelete: "cascade" }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
 })
- 
+
 export const verificationTokens = pgTable(
   "verificationToken",
   {
@@ -57,7 +57,7 @@ export const verificationTokens = pgTable(
     }),
   })
 )
- 
+
 export const authenticators = pgTable(
   "authenticator",
   {
@@ -80,7 +80,9 @@ export const authenticators = pgTable(
 )
 
 export const categoriesTable = pgTable('categories', {
-  id: serial('id').primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   name: text('name').notNull(),
   type: text('type'), // Can be null for user-defined categories
@@ -91,9 +93,11 @@ export const categoriesTable = pgTable('categories', {
 });
 
 export const foodItemsTable = pgTable('food_items', {
-  id: serial('id').primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
-  categoryId: integer('category_id').references(() => categoriesTable.id, { onDelete: 'cascade'}),
+  categoryId: text('category_id').references(() => categoriesTable.id, { onDelete: 'cascade' }),
   name: text('name').notNull(),
   group: text('group').notNull(),
   isDefault: boolean('is_default').default(false),
@@ -101,9 +105,11 @@ export const foodItemsTable = pgTable('food_items', {
 });
 
 export const progressTable = pgTable('progress', {
-  id: serial('id').primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
-  categoryId: integer('category_id').references(() => categoriesTable.id, { onDelete: 'cascade'}),
+  categoryId: text('category_id').references(() => categoriesTable.id, { onDelete: 'cascade' }),
   weekStartDate: date('week_start_date').notNull(), // ISO 8601 formatted start date
   count: integer('count').default(0),
 }, (progress) => ({

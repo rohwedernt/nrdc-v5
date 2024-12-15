@@ -26,7 +26,7 @@ export async function getUserById(userId: string): Promise<{
   return result.length > 0 ? result[0] : null;
 }
 
-export async function getCategories(userId: number, weekStartDate: string) {
+export async function getCategories(userId: string, weekStartDate: string) {
   return await db
     .select({
       ...getTableColumns(categoriesTable),
@@ -54,7 +54,7 @@ export async function getFoodItems(userId: string) {
     );
 }
 
-// export async function getUserNutritionData(userId: number, weekStartDate: string) {
+// export async function getUserNutritionData(userId: string, weekStartDate: string) {
 //   // Fetch user-specific categories and their progress
 //   const categories = await db
 //     .select({
@@ -84,7 +84,7 @@ export async function getFoodItems(userId: string) {
 //   return { categories, foodItems };
 // }
 
-export async function getUserWeeklyProgress(userId: number, weekStartDate: string) {
+export async function getUserWeeklyProgress(userId: string, weekStartDate: string) {
   return db
     .select({
       ...getTableColumns(progressTable),

@@ -6,7 +6,7 @@ import { InsertCategory, categoriesTable } from '../schema';
 //   await db.update(postsTable).set(data).where(eq(postsTable.id, id));
 // }
 
-export async function updateCategory(userId: string, categoryId: number, data: Partial<InsertCategory>) {
+export async function updateCategory(userId: string, categoryId: string, data: Partial<InsertCategory>) {
   await db
     .update(categoriesTable)
     .set(data)

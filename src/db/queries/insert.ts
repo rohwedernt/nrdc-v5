@@ -18,7 +18,7 @@ export async function addCategory(userId: string, data: InsertCategory) {
   });
 }
 
-export async function addFoodItem(userId: string, categoryId: number, name: string, group: string) {
+export async function addFoodItem(userId: string, categoryId: string, name: string, group: string) {
   await db.insert(foodItemsTable).values({
     userId,
     categoryId,
@@ -30,7 +30,7 @@ export async function addFoodItem(userId: string, categoryId: number, name: stri
 
 export async function trackProgress(
   userId: string,
-  categoryId: number,
+  categoryId: string,
   weekStartDate: string,
   increment: number = 1
 ) {
@@ -85,6 +85,6 @@ export async function handleFoodSelection(
   
   // Update progress for each associated category
   for (const [categoryId, increment] of Object.entries(categoryCounts)) {
-    await trackProgress(userId, Number(categoryId), weekStartDate, increment);
+    await trackProgress(userId, categoryId, weekStartDate, increment);
   }
 }
