@@ -32,7 +32,9 @@ import { HiCog } from "react-icons/hi";
 import {
 	FaDiscord,
 	FaGithub,
-	FaLinkedin
+	FaLinkedin,
+	FaGoogle,
+	FaApple
 } from "react-icons/fa6";
 
 import { GrDocumentDownload } from "react-icons/gr";
@@ -64,6 +66,8 @@ export const iconLibrary: Record<string, IconType> = {
 	openLink: HiOutlineLink,
 	discord: FaDiscord,
 	github: FaGithub,
+	google: FaGoogle,
+	apple: FaApple,
 	linkedin: FaLinkedin,
 	arrowUpRight: HiArrowUpRight,
 	minus: HiMiniMinus,

@@ -8,7 +8,7 @@ import styles from './Button.module.scss';
 import { ShadowSize } from '../types';
 
 interface CommonProps {
-    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'accent';
+    variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'accent' | 'accent-light' | 'white';
     size?: 's' | 'm' | 'l';
     strong?: boolean;
     label?: string;

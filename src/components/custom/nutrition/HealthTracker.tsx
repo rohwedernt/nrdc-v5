@@ -1,7 +1,7 @@
 'use client';
 
 import React, { forwardRef, useEffect, useState, useMemo } from 'react';
-import { Flex, Grid } from '../../generic';
+import { Flex, Grid, Spinner } from '../../generic';
 import { CategoryGroup } from './CategoryGroup';
 import { CategoryCard } from './CategoryCard';
 import { defaultCategoryOrder } from '@/components/resources/content';
@@ -35,29 +35,34 @@ const HealthTracker = forwardRef<HTMLDivElement, HealthTrackerProps>(({
 }, ref) => {
   const [categoriesWithProgress, setCategoriesWithProgress] = useState<Array<Category & { progressCount: number }>>([]);
   const [selectedWeek, setSelectedWeek] = useState<Date>(getDefaultCurrentWeek());
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getProgressForSelectedWeek();
   }, [selectedWeek]);
 
   const getProgressForSelectedWeek = async () => {
+    setIsLoading(true);
+
     try {
       const response = await fetch('/api/health/progress', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, selectedWeek }),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
-  
+
         // Ensure `progressCount` is 0 if null
         const normalizedData = data.map((category: Category & { progressCount: number | null }) => ({
           ...category,
           progressCount: category.progressCount ?? 0, // Default progress to 0
         }));
-  
+
         setCategoriesWithProgress(normalizedData);
+
+        setIsLoading(false);
       } else {
         console.error("Failed to fetch progress data");
       }
@@ -66,16 +71,16 @@ const HealthTracker = forwardRef<HTMLDivElement, HealthTrackerProps>(({
     }
   };
 
-    // Callback to update a single category's progress
-    const updateCategoriesWithProgress = (selectedFoods: string[]) => {
-      setCategoriesWithProgress((prev) =>
-        prev.map((category) =>
-          selectedFoods.includes(category.name)
-            ? { ...category, progressCount: category.progressCount + 1 }
-            : category
-        )
-      );
-    };
+  // Callback to update a single category's progress
+  const updateCategoriesWithProgress = (selectedFoods: string[]) => {
+    setCategoriesWithProgress((prev) =>
+      prev.map((category) =>
+        selectedFoods.includes(category.name)
+          ? { ...category, progressCount: category.progressCount + 1 }
+          : category
+      )
+    );
+  };
 
   // Memoize ordered and grouped categories to avoid unnecessary recalculations
   const { orderedCategories, groupedCategories, untypedCategories } = useMemo(() => {
@@ -111,48 +116,56 @@ const HealthTracker = forwardRef<HTMLDivElement, HealthTrackerProps>(({
     };
   }, [categoriesWithProgress]); // Only recalculate when categoriesWithProgress changes
 
-  return (
-    <Flex direction="column" gap="8" fillWidth>
-      <FoodSelector
-        foodItems={foodItems}
-        userId={userId}
-        weekStartDate={selectedWeek}
-        updateCategoriesWithProgress={updateCategoriesWithProgress} // Pass callback
-      />
-      <WeekSelector
-        userStartDate={new Date(userStartDate)}
-        selectedWeek={selectedWeek}
-        setSelectedWeek={setSelectedWeek}
-        updateProgress={getProgressForSelectedWeek}
-      />
-      <Grid
-        radius="l"
-        columns="repeat(3, 1fr)"
-        tabletColumns="2col"
-        mobileColumns="1col"
-        fillWidth
-        gap="20">
+  if (isLoading) {
+    return (
+      <Flex fillWidth justifyContent='center'>
+        <Spinner size="xl" />
+      </Flex>
+    );
+  } else {
+    return (
+      <Flex direction="column" gap="8" fillWidth>
+        <FoodSelector
+          foodItems={foodItems}
+          userId={userId}
+          weekStartDate={selectedWeek}
+          updateCategoriesWithProgress={updateCategoriesWithProgress} // Pass callback
+        />
+        <WeekSelector
+          userStartDate={new Date(userStartDate)}
+          selectedWeek={selectedWeek}
+          setSelectedWeek={setSelectedWeek}
+          updateProgress={getProgressForSelectedWeek}
+        />
+        <Grid
+          radius="l"
+          columns="repeat(3, 1fr)"
+          tabletColumns="2col"
+          mobileColumns="1col"
+          fillWidth
+          gap="20">
 
-        {Object.entries(groupedCategories).map(([type, group]) => (
-          <CategoryGroup key={type} type={type} categories={group} />
-        ))}
+          {Object.entries(groupedCategories).map(([type, group]) => (
+            <CategoryGroup key={type} type={type} categories={group} />
+          ))}
 
-        {untypedCategories.map((category) => (
-          <CategoryCard
-            key={category.name}
-            name={category.name}
-            unit={category.unit}
-            progressCount={category.progressCount}
-            target={category.target}
-            type={category.type ?? undefined} // Convert null to undefined
-          />
-        ))}
+          {untypedCategories.map((category) => (
+            <CategoryCard
+              key={category.name}
+              name={category.name}
+              unit={category.unit}
+              progressCount={category.progressCount}
+              target={category.target}
+              type={category.type ?? undefined} // Convert null to undefined
+            />
+          ))}
 
-        <CategoryAdd />
+          <CategoryAdd />
+        </Grid>
+      </Flex>
+    );
+  }
 
-      </Grid>
-    </Flex>
-  );
 });
 
 HealthTracker.displayName = 'HealthTracker';

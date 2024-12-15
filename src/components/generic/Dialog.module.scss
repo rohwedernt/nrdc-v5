@@ -29,7 +29,7 @@
         transform: scale(1);
         opacity: 1;
         visibility: visible;
-        background: linear-gradient(135deg, #343180, var(--scheme-blue-200));
+        background: linear-gradient(135deg, var(--brand-background-medium), var(--brand-background-weak));
         border: 1px solid var(--static-white-medium)
     }
 
