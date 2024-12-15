@@ -14,7 +14,8 @@ export type FoodItem = {
 type FoodSelectorProps = {
   foodItems: Array<FoodItem>;
   userId: number;
-  weekStartDate: string;
+  weekStartDate: Date;
+  updateCategoriesWithProgress: (selectedFoods: string[]) => void;
 };
 
 function getOptionsFromFoodItems(foodItems: Array<FoodItem>): SelectProps['options'] {
@@ -43,7 +44,8 @@ function getOptionsFromFoodItems(foodItems: Array<FoodItem>): SelectProps['optio
 const FoodSelector = forwardRef<HTMLDivElement, FoodSelectorProps>(({
   foodItems,
   userId,
-  weekStartDate
+  weekStartDate,
+  updateCategoriesWithProgress
 }, ref) => {
   const [selectedValues, setSelectedValues] = useState<string[]>([]);
   const [isLoadingSubmit, setIsLoadingSubmit] = useState<boolean>(false);
@@ -51,7 +53,6 @@ const FoodSelector = forwardRef<HTMLDivElement, FoodSelectorProps>(({
 
   const handleSubmit = async (selectedFoods: string[]) => {
     setIsLoadingSubmit(true);
-
     setSelectedValues([]);
 
     try {
@@ -67,6 +68,7 @@ const FoodSelector = forwardRef<HTMLDivElement, FoodSelectorProps>(({
 
       if (response.ok) {
         console.log('Progress updated!');
+        updateCategoriesWithProgress(selectedFoods); // Trigger parent state update
       } else {
         console.error('Failed to update progress.');
       }
@@ -79,7 +81,6 @@ const FoodSelector = forwardRef<HTMLDivElement, FoodSelectorProps>(({
 
   const handleChange = (value: string[]) => {
     setSelectedValues(value)
-    console.log(`selected ${value}`);
   };
 
   return (

@@ -5,46 +5,58 @@ import { Flex, IconButton, Text } from '@/components/generic';
 
 
 type WeekSelectorProps = {
-  userStartDate: string;
+  userStartDate: Date;
+  selectedWeek: Date;
+  setSelectedWeek: (weekStartDate: Date) => void;
+  updateProgress: () => void;
 };
 
-const getDefaultCurrentWeek = () => {
-  const today = new Date();
-  return new Date(today.setDate(today.getDate() - today.getDay())); // Sunday of this week
-}
+// const getDefaultCurrentWeek = (): Date => {
+//   const today = new Date();
+//   return new Date(today.setDate(today.getDate() - today.getDay())); // Sunday of this week
+// }
 
 const WeekSelector = forwardRef<HTMLDivElement, WeekSelectorProps>(({
-  userStartDate
+  userStartDate,
+  selectedWeek,
+  setSelectedWeek,
+  updateProgress
 }, ref) => {
-  const [createdAt, setCreatedAt] = useState<Date>(new Date(userStartDate));
-  const [currentWeek, setCurrentWeek] = useState<Date>(getDefaultCurrentWeek());
+  //const [createdAt, setCreatedAt] = useState<Date>(new Date(userStartDate));
+  //const [selectedWeek, setSelectedWeek] = useState<Date>(getDefaultCurrentWeek());
+
+  // useEffect(() => {
+  //   onWeekChange(selectedWeek);
+  // }, [selectedWeek]);
 
   const handlePreviousWeek = () => {
-    console.log("handle previous, createdAt: " + createdAt)
-    if (currentWeek) {
-      const previousWeek = new Date(currentWeek);
-      previousWeek.setDate(currentWeek.getDate() - 7);
-      if (createdAt && previousWeek >= createdAt) {
-        setCurrentWeek(previousWeek);
+    if (selectedWeek) {
+      const previousWeek = new Date(selectedWeek);
+      previousWeek.setDate(selectedWeek.getDate() - 7);
+      if (userStartDate && previousWeek >= userStartDate) {
+        setSelectedWeek(previousWeek);
+        updateProgress();
+        //setSelectedWeek(previousWeek); // Notify parent of week change
       }
     }
   };
 
   const handleNextWeek = () => {
-    console.log("handle next, current week: " + currentWeek)
-    if (currentWeek) {
-      const nextWeek = new Date(currentWeek);
-      nextWeek.setDate(currentWeek.getDate() + 7);
+    if (selectedWeek) {
+      const nextWeek = new Date(selectedWeek);
+      nextWeek.setDate(selectedWeek.getDate() + 7);
       if (nextWeek <= new Date()) {
-        setCurrentWeek(nextWeek);
+        setSelectedWeek(nextWeek);
+        updateProgress();
+        //onWeekChange(nextWeek); // Notify parent of week change
       }
     }
   };
 
   const isNextWeekInFuture = (): boolean => {
-    if (!currentWeek) return true;
-    const nextWeek = new Date(currentWeek);
-    nextWeek.setDate(currentWeek.getDate() + 7); // Move to the next week's Sunday
+    if (!selectedWeek) return true;
+    const nextWeek = new Date(selectedWeek);
+    nextWeek.setDate(selectedWeek.getDate() + 7); // Move to the next week's Sunday
     return nextWeek > new Date(); // Disable if next week's Sunday is in the future
   };
 
@@ -59,15 +71,15 @@ const WeekSelector = forwardRef<HTMLDivElement, WeekSelectorProps>(({
         size="m"
         variant="ghost"
         style={{ cursor: "pointer" }}
-        disabled={!createdAt || (() => {
-          const previousSunday = new Date(currentWeek); // Clone currentWeek
-          previousSunday.setDate(currentWeek.getDate() - 7); // Subtract 7 days to get the previous Sunday
-          return previousSunday < new Date(createdAt); // Compare with createdAt
+        disabled={!userStartDate || (() => {
+          const previousSunday = new Date(selectedWeek); // Clone currentWeek
+          previousSunday.setDate(selectedWeek.getDate() - 7); // Subtract 7 days to get the previous Sunday
+          return previousSunday < new Date(userStartDate); // Compare with userStartDate
         })()}
         onClick={handlePreviousWeek}
       />
       <Text variant="heading-default-s" onBackground="neutral-medium">
-      {currentWeek.toLocaleDateString('en-US', {
+      {selectedWeek.toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'long',
           day: 'numeric',
