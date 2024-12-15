@@ -81,7 +81,7 @@ export async function handleFoodSelection(
       acc[food.categoryId] = (acc[food.categoryId] || 0) + 1;
     }
     return acc;
-  }, {} as Record<number, number>);
+  }, {} as Record<string, number>);
   
   // Update progress for each associated category
   for (const [categoryId, increment] of Object.entries(categoryCounts)) {
