@@ -9,6 +9,7 @@ export const users = pgTable("user", {
   email: text("email").unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
+  createdAt: timestamp('created_at', { mode: 'string' }).notNull().defaultNow(),
 })
  
 export const accounts = pgTable(

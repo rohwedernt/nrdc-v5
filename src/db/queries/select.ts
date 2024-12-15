@@ -1,27 +1,29 @@
 import { asc, between, count, eq, and, or, getTableColumns, sql } from 'drizzle-orm';
 import { db } from '../index';
-import { SelectUser, categoriesTable, foodItemsTable, progressTable, usersTable } from '../schema';
+import { SelectUser, categoriesTable, foodItemsTable, progressTable, users } from '../schema';
 
-export async function getUserById(
-  id: SelectUser['id']
-): Promise<{
-  id: number;
-  username: string;
-  email: string;
+export async function getUserById(userId: string): Promise<{
+  id: string;
+  name: string | null;
+  email: string | null;
+  emailVerified: Date | null;
+  image: string | null;
   createdAt: string;
 } | null> {
   const result = await db
     .select({
-      id: usersTable.id,
-      username: usersTable.username,
-      email: usersTable.email,
-      createdAt: usersTable.createdAt,
+      id: users.id,
+      name: users.name,
+      email: users.email,
+      emailVerified: users.emailVerified,
+      image: users.image,
+      createdAt: users.createdAt,
     })
-    .from(usersTable)
-    .where(eq(usersTable.id, id))
-    .limit(1); // Ensure only one record is returned
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(1);
 
-  return result.length > 0 ? result[0] : null; // Return the single record or null if not found
+  return result.length > 0 ? result[0] : null;
 }
 
 export async function getCategories(userId: number, weekStartDate: string) {
@@ -107,13 +109,13 @@ export async function getUserWeeklyProgress(userId: number, weekStartDate: strin
 // > {
 //   return db
 //     .select({
-//       ...getTableColumns(usersTable),
+//       ...getTableColumns(users),
 //       postsCount: count(postsTable.id),
 //     })
-//     .from(usersTable)
-//     .leftJoin(postsTable, eq(usersTable.id, postsTable.userId))
-//     .groupBy(usersTable.id)
-//     .orderBy(asc(usersTable.id))
+//     .from(users)
+//     .leftJoin(postsTable, eq(users.id, postsTable.userId))
+//     .groupBy(users.id)
+//     .orderBy(asc(users.id))
 //     .limit(pageSize)
 //     .offset((page - 1) * pageSize);
 // }

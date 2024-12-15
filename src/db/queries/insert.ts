@@ -1,9 +1,9 @@
 import { and, eq, inArray } from 'drizzle-orm';
 import { db } from '../index';
-import { InsertCategory, InsertUser, categoriesTable, foodItemsTable, progressTable, usersTable } from '../schema';
+import { InsertCategory, InsertUser, categoriesTable, foodItemsTable, progressTable, users } from '../schema';
 
 export async function createUser(data: InsertUser) {
-  await db.insert(usersTable).values(data);
+  await db.insert(users).values(data);
 }
 
 // export async function createPost(data: InsertPost) {

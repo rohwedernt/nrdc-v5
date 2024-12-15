@@ -1,9 +1,9 @@
 import { and, eq } from 'drizzle-orm';
 import { db } from '../index';
-import { SelectUser, categoriesTable, foodItemsTable, usersTable } from '../schema';
+import { SelectUser, categoriesTable, foodItemsTable, users } from '../schema';
 
 export async function deleteUser(id: SelectUser['id']) {
-  await db.delete(usersTable).where(eq(usersTable.id, id));
+  await db.delete(users).where(eq(users.id, id));
 }
 
 export async function deleteCategory(userId: number, categoryId: number) {
