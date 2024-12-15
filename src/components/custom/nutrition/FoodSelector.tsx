@@ -6,7 +6,7 @@ import { Select } from "antd";
 import type { SelectProps } from 'antd';
 
 export type FoodItem = {
-  id: number;
+  id: string;
   name: string;
   group: string;
 }
