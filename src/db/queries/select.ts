@@ -42,13 +42,13 @@ export async function getCategories(userId: string, weekStartDate: string) {
     );
 }
 
-export async function getFoodItems(userId: string) {
+export async function getFoodItems() {
   return await db
     .select()
     .from(foodItemsTable)
     .where(
       or(
-        eq(foodItemsTable.userId, userId), // User-specific food items
+        //eq(foodItemsTable.userId, userId), // User-specific food items
         eq(foodItemsTable.isDefault, true) // Default food items
       )
     );

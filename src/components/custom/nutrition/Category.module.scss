@@ -1,20 +1,6 @@
-//$colors: (var(--category-card-blue), var(--category-card-green), var(--category-card-purple));
-//$key: random(length($colors));
-//$nth: nth($colors, $key);
-//$random: $nth !default;
-
-// $colors: red, orange, yellow, green, blue, purple;
-// $repeat: 20;  // How often you want the pattern to repeat.
-// @for $i from 1 through $repeat {
-//   li:nth-child(#{length($colors)}n+#{$i}) {
-//       background: lighten(nth($colors, random(length($colors))), 20%);
-//   }
-// }
-
 .container {
-  //background: var(--category-card);
-  //background: $random;
-  box-shadow: inset 0px 0px 40px 20px var(--glass);
+  background: var(--neutral-alpha-light);
+  box-shadow: inset 0px 0px 40px 20px var(--glass), var(--shadow-xl);
 
   @media (--s) {
     grid-column: unset !important;

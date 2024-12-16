@@ -1,6 +1,7 @@
 'use client';
 
 import React, { forwardRef } from 'react';
+import { useSession } from 'next-auth/react';
 import { Flex, Grid } from '../../generic';
 import { ChatBot } from './ChatBot';
 import { MusicPlayer } from './MusicPlayer';
@@ -11,6 +12,9 @@ import { HealthModule } from './Health';
 type ModulesProps = {};
 
 const Modules = forwardRef<HTMLDivElement, ModulesProps>(({ }, ref) => {
+  const session = useSession();
+  const isAuthenticated = session.status === "authenticated";
+
   return (
     <Grid
       columns="repeat(1, 1fr)"
@@ -25,7 +29,7 @@ const Modules = forwardRef<HTMLDivElement, ModulesProps>(({ }, ref) => {
         </Flex>
         <ChatBot />
       </Flex>
-        <HealthModule />
+        {isAuthenticated && <HealthModule />}
       {/* <Flex
         radius="l"
         shadow="s"

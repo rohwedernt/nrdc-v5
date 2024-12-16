@@ -18,14 +18,9 @@
     --glass-strong-dark: #ffffff45;
     --gradient-light: linear-gradient(--scheme-emerald-1100, --scheme-blue-700);
     --gradient-dark: linear-gradient(--scheme-emerald-600, --scheme-moss-500);
-    --gradient-distinct-light: linear-gradient(to right --scheme-emerald-600, --scheme-moss-500);
-    --gradient-distinct-dark: linear-gradient(80deg, var(--scheme-yellow-300), var(--scheme-yellow-800));
-    --category-card-green-light: linear-gradient(80deg, var(--glass), #d2ebdb);
-    --category-card-blue-light: linear-gradient(80deg, var(--glass), #d2d4eb);
-    --category-card-purple-light: linear-gradient(80deg, var(--glass), #e9d2eb);
-    --category-card-green-dark:linear-gradient(80deg, var(--glass), #18482e);
-    --category-card-blue-dark:linear-gradient(80deg, var(--glass), #182848);
-    --category-card-purple-dark:linear-gradient(80deg, var(--glass), #471848);
+    --gradient-distinct-light: linear-gradient(30deg, var(--scheme-blue-1000), var(--static-white));
+    --gradient-distinct-dark: linear-gradient(80deg, var(--scheme-yellow-300), var(--scheme-yellow-700));
+
 
 
     /* BASE */

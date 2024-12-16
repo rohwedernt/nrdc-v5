@@ -1,34 +1,26 @@
 'use client';
 
-import { Button, Flex, Logo, NavIcon, SmartLink, ToggleButton, UserMenu } from '@/components/generic';
-import { usePathname } from 'next/navigation';
 import React from 'react';
+import { signOut } from 'next-auth/react';
+import { usePathname } from 'next/navigation';
+import { Flex, Logo, NavIcon, SmartLink, ToggleButton, UserMenu } from '@/components/generic';
+
 
 interface HeaderProps {
     authenticated: boolean;
-    avatar?: string;
-    name?: string;
-    subline?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({
-    authenticated,
-    avatar,
-    name,
-    subline
+    authenticated
 }) => {
     const pathname = usePathname() ?? '';
 
     return (
         <Flex
-            style={{
-                //borderBottom: '1px solid var(--neutral-border-medium)'
-            }}
             as="header"
             fillWidth paddingX="m" height="56"
             alignItems="center"
-            //background="surface"
-            >
+        >
             <Flex
                 hide="s">
                 <Logo icon={false} />
@@ -37,8 +29,8 @@ const Header: React.FC<HeaderProps> = ({
                 show="s"
                 gap="4"
                 alignItems="center">
-                <NavIcon/>
-                <Logo wordmark={false}/>
+                <NavIcon />
+                <Logo wordmark={false} />
             </Flex>
             {authenticated ? (
                 <Flex
@@ -51,20 +43,23 @@ const Header: React.FC<HeaderProps> = ({
                             fillWidth gap="4" paddingX="l"
                             alignItems="center">
                             <ToggleButton
-                                selected={true}
-                                href=""
-                                label="Dashboard"/>
+                                selected={pathname === '/home'}
+                                href="/home"
+                                label="Home"
+                            />
                             <ToggleButton
-                                selected={pathname === '/apps'}
-                                href=""
-                                label="Apps"/>
+                                selected={pathname === '/travel'}
+                                href="/travel"
+                                label="Travel"
+                            />
                             <ToggleButton
-                                selected={pathname === '/resources'}
-                                href=""
-                                label="Resources"/>
+                                selected={pathname === '/health'}
+                                href="/health"
+                                label="Health"
+                            />
                         </Flex>
                     </Flex>
-                    <Flex as="nav">
+                    {/* <Flex as="nav">
                         <Flex
                             hide="s">
                             <UserMenu
@@ -74,12 +69,14 @@ const Header: React.FC<HeaderProps> = ({
                                     empty: !avatar,
                                     src: avatar
                                 }}
+                                loading={isLoading}
                                 dropdownOptions={[
                                     {
                                         label: 'Profile',
                                         value: 'profile'
                                     },
                                     {
+                                        dividerAfter: true,
                                         label: 'Settings',
                                         value: 'settings'
                                     },
@@ -88,6 +85,7 @@ const Header: React.FC<HeaderProps> = ({
                                         value: 'logout'
                                     }
                                 ]}
+                                dropdownProps={{ onOptionSelect: () => signOut({ callbackUrl: "/home" }) }}
                             />
                         </Flex>
                         <Flex
@@ -113,45 +111,30 @@ const Header: React.FC<HeaderProps> = ({
                                 ]}
                             />
                         </Flex>
-                    </Flex>
+                    </Flex> */}
                 </Flex>
             ) : (
-                <Flex
-                    fillWidth
-                    alignItems="center" justifyContent="flex-end">
+                <>
                     <Flex
-                        hide="s"
-                        textVariant="label-default-s"
-                        fillWidth gap="4" paddingX="l"
-                        alignItems="center">
-                        <SmartLink
-                            href="/home">
-                            Home
-                        </SmartLink>
-                        <SmartLink
-                            href="travel">
-                            Travel
-                        </SmartLink>
-                        <SmartLink
-                            href="/nutrition">
-                            Health
-                        </SmartLink>
+                        fillWidth
+                        alignItems="center" justifyContent="flex-end">
+                        <Flex
+                            hide="s"
+                            textVariant="label-default-s"
+                            fillWidth gap="4" paddingX="l"
+                            alignItems="center">
+                            <SmartLink
+                                href="/home">
+                                Home
+                            </SmartLink>
+                            <SmartLink
+                                href="travel">
+                                Travel
+                            </SmartLink>
+                        </Flex>
                     </Flex>
-                    <Flex
-                        alignItems="center"
-                        gap="8">
-                        <Button
-                            size="s"
-                            variant="secondary"
-                            label="Login"
-                            href=""/>
-                        <Button
-                            size="s"
-                            variant="accent"
-                            label="Sign up"
-                            href=""/>
-                    </Flex>
-                </Flex>
+
+                </>
             )}
         </Flex>
     );

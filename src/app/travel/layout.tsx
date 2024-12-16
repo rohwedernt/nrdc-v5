@@ -1,6 +1,7 @@
 'use client';
 
 //import useTheme, { Theme } from "../hooks/useTheme";
+import { useSession } from "next-auth/react";
 import { Toolbar } from "@/components/custom/toolbar/Toolbar"
 import { Flex } from "@/components/generic"
 
@@ -10,7 +11,8 @@ export default function TravelLayout({
 }: {
   children: React.ReactNode
 }) {
-  	//const [theme] = useTheme();
+  const { data: session } = useSession();
+  //const [theme] = useTheme();
 
   return (
     <Flex
@@ -19,7 +21,7 @@ export default function TravelLayout({
       direction="column"
       alignItems="center"
       flex={1}>
-      <Toolbar showNav />
+      <Toolbar authenticated={!!session} showNav />
       {children}
     </Flex>
   )

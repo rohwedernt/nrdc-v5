@@ -1,12 +1,12 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { Flex } from '../../generic/Flex';
-import { IconButton } from '../../generic/IconButton';
+import { useSession } from 'next-auth/react';
 import { social } from "@/components/resources/config"
-import { Settings } from './Settings';
-import { SignIn } from './SignIn';
+//import { Settings } from './Settings';
 import { Header } from '@/components/modules';
+import { Flex, IconButton } from '@/components/generic';
+import { SignIn } from './SignIn';
 
 
 type ToolbarProps = {
@@ -16,20 +16,15 @@ type ToolbarProps = {
 const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({
   showNav = false
 }, ref) => {
+  const session = useSession();
+
   return (
     <Flex
       as="header"
       position="relative"
       fillWidth paddingTop="s"
       justifyContent="space-between">
-      {showNav ? (
-        <Header
-          authenticated={false}
-          name="Scott"
-          subline="Infinite Inc."
-          avatar="/images/demos/avatar_01.png"
-        />
-      ) : (
+      {showNav ? ( <Header authenticated={session.status === "authenticated"} /> ) : (
         <Flex gap="l">
           <IconButton
             onClick={() => { }}
@@ -60,20 +55,12 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({
           />
         </Flex>
       )}
-      <Flex gap="m">
-        {!showNav && (
-          <IconButton
-            icon="person"
-            size="xl"
-            tooltip="Login"
-            tooltipPosition="bottom"
-            variant="ghost"
-          />
-        )}
-
-        <Settings />
-        {/* <SignIn /> */}
-      </Flex>
+      <SignIn
+        sessionStatus={session.status}
+        name={session.data?.user?.name ?? ""}
+        subline={session.data?.user?.email ?? ""}
+        avatar={session.data?.user?.image ?? ""}
+      />
     </Flex>
   );
 });

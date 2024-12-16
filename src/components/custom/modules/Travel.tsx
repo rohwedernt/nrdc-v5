@@ -1,7 +1,7 @@
 'use client';
 
-import React, { forwardRef, useRef } from 'react';
-import { Flex, Text, SmartImage, Badge } from '../../generic';
+import React, { forwardRef } from 'react';
+import { Flex, SmartImage, Badge } from '../../generic';
 import styles from './Travel.module.scss';
 import Link from 'next/link';
 
@@ -19,7 +19,6 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
       style={{ minHeight: "150px" }}
     >
       <Link
-        target="_blank"
         style={{ height: '150px' }}
         href={'/travel'}
         className={styles.hoverlink}
@@ -33,21 +32,12 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
           trigger='#travel_module'
           radius="0% 20px 20px 0%"
         />
-        {/* <Text
-        variant="display-default-m"
-        style={{ position: "absolute", top: "15px", left: "5px", zIndex: "5" }}
-      >
-        Travel
-      </Text> */}
         <SmartImage
           radius="l"
           src="/images/travel.jpg"
           fill
           alt="travel"
           style={{ cursor: "pointer" }}
-          //onMouseEnter={handleMouseEnter}
-          //onMouseLeave={handleMouseLeave}
-        //sizes={`${sizeMapping['xl']}px`}
         />
       </Link>
     </Flex>

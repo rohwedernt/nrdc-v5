@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/db'; // Adjust to your database import
+import { db } from '@/db';
 import { categoriesTable, progressTable } from '@/db/schema';
 import { eq, or, and } from 'drizzle-orm';
 

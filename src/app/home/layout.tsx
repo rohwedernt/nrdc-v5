@@ -1,16 +1,16 @@
-'use client';
-
 //import useTheme, { Theme } from "../hooks/useTheme";
+import { auth } from "@/app/auth"
 import { Toolbar } from "@/components/custom/toolbar/Toolbar"
 import { Flex } from "@/components/generic"
 
 
-export default function HomeLayout({
+export default async function HomeLayout({
   children
 }: {
   children: React.ReactNode
 }) {
-  	//const [theme] = useTheme();
+  //const [theme] = useTheme();
+  const session = await auth();
 
   return (
     <Flex

@@ -1,8 +1,9 @@
 'use client';
 
 //import useTheme, { Theme } from "../hooks/useTheme";
+import { useSession } from 'next-auth/react';
 import { Toolbar } from "@/components/custom/toolbar/Toolbar"
-import { Flex } from "@/components/generic"
+import { Flex, Spinner } from "@/components/generic"
 
 
 export default function HealthLayout({
@@ -10,7 +11,16 @@ export default function HealthLayout({
 }: {
   children: React.ReactNode
 }) {
+  const session = useSession();
   //const [theme] = useTheme();
+
+  const renderContent = () => (
+    (session.status === "loading") ? (
+      <Spinner size="xl" />
+    ) : (
+      children
+    )
+  );
 
   return (
       <Flex
@@ -20,7 +30,7 @@ export default function HealthLayout({
         alignItems="center"
         flex={1}>
         <Toolbar showNav />
-        {children}
+        {renderContent()}
       </Flex>
   )
 }

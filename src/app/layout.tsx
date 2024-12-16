@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { headers } from "next/headers";
 import { Metadata } from "next";
 
+import { SessionProvider } from "next-auth/react";
+
 import { baseURL, style, meta, og, schema, social } from "@/components/resources/config"
 import { Background, Flex } from '@/components/generic'
 
@@ -128,7 +130,7 @@ export default function RootLayout({
 					}} />
 				<Flex
 					flex={1} direction="column">
-					{children}
+					<SessionProvider>{children}</SessionProvider>
 				</Flex>
 			</Flex>
 		</Flex>

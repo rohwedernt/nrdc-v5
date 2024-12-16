@@ -14,7 +14,7 @@ const ThemeSelect = forwardRef<HTMLDivElement, ThemeSelectProps>(({ }, ref) => {
     <SegmentedControl
       buttons={[
         {
-          label: '',
+          label: 's',
           prefixIcon: 'sun',
           suffixIcon: '',
           value: 'light'

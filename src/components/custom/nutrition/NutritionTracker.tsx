@@ -17,7 +17,7 @@ type Category = {
   type: string | null; // Type is nullable
 };
 
-type HealthTrackerProps = {
+type NutritionTrackerProps = {
   userId: string;
   userStartDate: string;
   foodItems: Array<FoodItem>;
@@ -28,7 +28,7 @@ const getDefaultCurrentWeek = (): Date => {
   return new Date(today.setDate(today.getDate() - today.getDay())); // Sunday of this week
 }
 
-const HealthTracker = forwardRef<HTMLDivElement, HealthTrackerProps>(({
+const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
   userId,
   userStartDate,
   foodItems
@@ -122,7 +122,7 @@ const HealthTracker = forwardRef<HTMLDivElement, HealthTrackerProps>(({
         <Spinner size="xl" />
       </Flex>
     );
-  } else {
+  } else {    
     return (
       <Flex direction="column" gap="8" fillWidth>
         <FoodSelector
@@ -168,6 +168,6 @@ const HealthTracker = forwardRef<HTMLDivElement, HealthTrackerProps>(({
 
 });
 
-HealthTracker.displayName = 'HealthTracker';
+NutritionTracker.displayName = 'NutritionTracker';
 
-export { HealthTracker };
+export { NutritionTracker };

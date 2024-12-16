@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import { Flex, Logo } from '@/components/generic';
 import { Descriptors } from '@/components/custom/Descriptors';
