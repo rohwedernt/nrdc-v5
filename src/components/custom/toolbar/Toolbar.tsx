@@ -1,9 +1,7 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { useSession } from 'next-auth/react';
 import { social } from "@/components/resources/config"
-//import { Settings } from './Settings';
 import { Header } from '@/components/modules';
 import { Flex, IconButton } from '@/components/generic';
 import { SignIn } from './SignIn';
@@ -16,15 +14,13 @@ type ToolbarProps = {
 const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({
   showNav = false
 }, ref) => {
-  const session = useSession();
-
   return (
     <Flex
       as="header"
       position="relative"
       fillWidth paddingTop="s"
       justifyContent="space-between">
-      {showNav ? ( <Header authenticated={session.status === "authenticated"} /> ) : (
+      {showNav ? ( <Header /> ) : (
         <Flex gap="l">
           <IconButton
             onClick={() => { }}
@@ -55,12 +51,7 @@ const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({
           />
         </Flex>
       )}
-      <SignIn
-        sessionStatus={session.status}
-        name={session.data?.user?.name ?? ""}
-        subline={session.data?.user?.email ?? ""}
-        avatar={session.data?.user?.image ?? ""}
-      />
+      <SignIn />
     </Flex>
   );
 });

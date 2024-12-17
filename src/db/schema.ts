@@ -1,4 +1,4 @@
-import { boolean, date, integer, pgTable, primaryKey, serial, text, timestamp, unique } from 'drizzle-orm/pg-core';
+import { boolean, date, integer, numeric, pgTable, primaryKey, serial, text, timestamp, unique } from 'drizzle-orm/pg-core';
 import type { AdapterAccountType } from "next-auth/adapters"
 
 export const users = pgTable("user", {
@@ -111,7 +111,7 @@ export const progressTable = pgTable('progress', {
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   categoryId: text('category_id').references(() => categoriesTable.id, { onDelete: 'cascade' }),
   weekStartDate: date('week_start_date').notNull(), // ISO 8601 formatted start date
-  count: integer('count').default(0),
+  count: numeric('count', { precision: 10, scale: 2 }).default(0),
 }, (progress) => ({
   userCategoryWeekUnique: unique().on(progress.userId, progress.categoryId, progress.weekStartDate),
 }));
@@ -122,6 +122,19 @@ export const defaultDataTable = pgTable('default_data', {
   type: text('type'),
   unit: text('unit').notNull(),
   target: integer('target').notNull(),
+});
+
+export const settingsTable = pgTable('settings', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: text('user_id')
+    .references(() => users.id, { onDelete: 'cascade' })
+    .notNull(),
+  key: text('key').notNull(), // e.g., 'theme'
+  value: text('value').notNull(), // e.g., 'dark', 'light'
+  createdAt: timestamp('created_at', { mode: 'string' }).defaultNow(),
+  updatedAt: timestamp('updated_at', { mode: 'string' }).defaultNow(),
 });
 
 export type InsertUser = typeof users.$inferInsert;

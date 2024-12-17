@@ -7,4 +7,11 @@ import { db } from "@/db"
 export const { auth, handlers, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db),
   providers: [GitHub, Google],
+  callbacks: {
+    async session({ session, user }) {
+      session.user.id = user.id
+      
+      return session
+    }
+  }
 })

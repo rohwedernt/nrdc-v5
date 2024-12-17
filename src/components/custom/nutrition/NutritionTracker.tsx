@@ -60,6 +60,8 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
           progressCount: category.progressCount ?? 0, // Default progress to 0
         }));
 
+        console.log("Debug: " + JSON.stringify(normalizedData, null, 2));
+
         setCategoriesWithProgress(normalizedData);
 
         setIsLoading(false);
@@ -71,29 +73,46 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
     }
   };
 
-  // Callback to update a single category's progress
   const updateCategoriesWithProgress = (selectedFoods: string[]) => {
+    // Use a Set to avoid duplicates
+    const selectedFoodSet = new Set(selectedFoods);
+
     setCategoriesWithProgress((prev) =>
-      prev.map((category) =>
-        selectedFoods.includes(category.name)
-          ? { ...category, progressCount: category.progressCount + 1 }
-          : category
-      )
+      prev.map((category) => {
+        if (selectedFoodSet.has(category.name)) {
+          return {
+            ...category,
+            progressCount: category.progressCount + 1,
+          };
+        }
+        return category;
+      })
     );
   };
 
-  // Memoize ordered and grouped categories to avoid unnecessary recalculations
   const { orderedCategories, groupedCategories, untypedCategories } = useMemo(() => {
-    // Assign order indices to categories
-    const ordered = categoriesWithProgress.map((category, index) => ({
-      ...category,
-      orderIndex: defaultCategoryOrder.includes(category.name)
-        ? defaultCategoryOrder.indexOf(category.name)
-        : Infinity + index, // User-created categories maintain insertion order
-    }));
+    // Normalize category names for comparison
+    const normalize = (str: string) => str.trim().toLowerCase();
 
-    // Sort the categories
-    ordered.sort((a, b) => a.orderIndex - b.orderIndex);
+    // Assign order indices to categories
+    const ordered = categoriesWithProgress.map((category, index) => {
+      const orderIndex = defaultCategoryOrder
+        .map(normalize) // Normalize defaultCategoryOrder
+        .indexOf(normalize(category.name)); // Compare with normalized category.name
+
+      return {
+        ...category,
+        orderIndex: orderIndex === -1 ? Infinity + index : orderIndex, // Handle unmatched names
+      };
+    });
+
+    // Sort categories
+    ordered.sort((a, b) => {
+      if (a.orderIndex === b.orderIndex) {
+        return a.name.localeCompare(b.name); // Fallback sorting
+      }
+      return a.orderIndex - b.orderIndex;
+    });
 
     // Group categories by type
     const grouped = ordered.reduce<Record<string, Category[]>>((acc, category) => {
@@ -114,7 +133,9 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
       groupedCategories: grouped,
       untypedCategories: untyped,
     };
-  }, [categoriesWithProgress]); // Only recalculate when categoriesWithProgress changes
+  }, [categoriesWithProgress]);
+
+
 
   if (isLoading) {
     return (
@@ -122,14 +143,17 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
         <Spinner size="xl" />
       </Flex>
     );
-  } else {    
+  } else {
     return (
       <Flex direction="column" gap="8" fillWidth>
         <FoodSelector
           foodItems={foodItems}
           userId={userId}
           weekStartDate={selectedWeek}
-          updateCategoriesWithProgress={updateCategoriesWithProgress} // Pass callback
+          updateCategoriesWithProgress={(selectedFoods) => {
+            console.log("Selected foods: ", selectedFoods); // Debug selected foods
+            updateCategoriesWithProgress(selectedFoods);
+          }}
         />
         <WeekSelector
           userStartDate={new Date(userStartDate)}

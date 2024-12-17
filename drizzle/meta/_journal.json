@@ -15,6 +15,13 @@
       "when": 1734296111770,
       "tag": "0001_add-default-data",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1734379213510,
+      "tag": "0002_overconfident_old_lace",
+      "breakpoints": true
     }
   ]
 }

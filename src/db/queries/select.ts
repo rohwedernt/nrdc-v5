@@ -1,6 +1,6 @@
-import { asc, between, count, eq, and, or, getTableColumns, sql } from 'drizzle-orm';
+import { eq, and, or, getTableColumns } from 'drizzle-orm';
 import { db } from '../index';
-import { SelectUser, categoriesTable, foodItemsTable, progressTable, users } from '../schema';
+import { settingsTable, categoriesTable, foodItemsTable, progressTable, users } from '../schema';
 
 export async function getUserById(userId: string): Promise<{
   id: string;
@@ -52,6 +52,22 @@ export async function getFoodItems() {
         eq(foodItemsTable.isDefault, true) // Default food items
       )
     );
+}
+
+export async function getUserSettings(userId: string) {
+  const settings = await db
+    .select({
+      key: settingsTable.key,
+      value: settingsTable.value,
+    })
+    .from(settingsTable)
+    .where(eq(settingsTable.userId, userId));
+    
+  // Transform into a key-value object for easier usage
+  return settings.reduce((acc, setting) => {
+    acc[setting.key] = setting.value;
+    return acc;
+  }, {} as Record<string, string>);
 }
 
 // export async function getUserNutritionData(userId: string, weekStartDate: string) {

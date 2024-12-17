@@ -7,10 +7,18 @@ import { Metadata } from "next";
 
 import { SessionProvider } from "next-auth/react";
 
+import { auth } from "@/app/auth"
+
 import { baseURL, style, meta, og, schema, social } from "@/components/resources/config"
 import { Background, Flex } from '@/components/generic'
 
 import { Roboto_Mono, Montserrat, Pacifico } from 'next/font/google';
+import { getUserSettings } from "@/db/queries/select";
+import { Theme } from "@/components/types";
+import { AppContextProvider, useAppContext } from "./context/AppContext";
+import { DynamicThemeWrapper } from "./context/DynamicThemeWrapper";
+import { MaskType } from "@/components/generic/Background";
+
 //import { Inter } from 'next/font/google'
 //import { Manrope } from 'next/font/google';
 
@@ -92,47 +100,94 @@ const schemaData = {
 	"sameAs": Object.values(social).filter(Boolean)
 };
 
-export default function RootLayout({
+export type UserSettings = {
+	theme: Theme;
+	backgroundMask: MaskType;
+};
+
+export async function fetchUserSettings(): Promise<UserSettings> {
+	const session = await auth();
+
+	const defaultSessionObj: UserSettings = {
+		theme: "dark",
+		backgroundMask: "topLeft"
+	}
+
+	// Check if the user is authenticated
+	if (!session?.user?.id) {
+		console.error("No user ID found in the session.");
+		return defaultSessionObj; // Or handle this case appropriately
+	}
+
+	try {
+		const settings = await getUserSettings(session.user.id);
+
+		// Ensure the settings include all required fields
+		return {
+			theme: (settings?.theme || "dark") as Theme,
+			backgroundMask: (settings?.backgroundMask || "topLeft") as MaskType
+		};
+	} catch (error) {
+		console.error("Error fetching user settings:", error);
+		return defaultSessionObj;
+	}
+}
+
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const userSettings = await fetchUserSettings();
+
+	if (userSettings) {
+		console.log("User settings:", userSettings);
+	} else {
+		console.log("No user settings available.");
+	}
+
 	return (
-		<Flex
-			as="html" lang="en"
-			fillHeight background="page"
-			data-neutral={style.neutral} data-brand={style.brand} data-accent={style.accent}
-			data-border={style.border}
-			data-theme={style.theme}
-			data-solid={style.solid} data-solid-style={style.solidStyle}
-			data-surface={style.surface} data-transition={style.transition}
-			data-scaling={style.scaling}
-			className={classNames(
-				primary.variable, code.variable,
-				secondary.variable, tertiary.variable
-			)}>
-			<head>
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-				/>
-			</head>
+		<AppContextProvider initialSettings={userSettings}>
 			<Flex
-				as="body"
-				style={{ scrollbarGutter: "stable" }}
-				fillWidth fillHeight margin="0" padding="0">
-				<Background
-					style={{ zIndex: '-1' }}
-					mask="topLeft"
-					gradient={{
-						display: true,
-						opacity: 1,
-					}} />
+				as="html" lang="en"
+				fillHeight background="page"
+				data-neutral={style.neutral} data-brand={style.brand} data-accent={style.accent}
+				data-border={style.border}
+				data-theme={userSettings.theme} //data-theme={style.theme}
+				data-solid={style.solid} data-solid-style={style.solidStyle}
+				data-surface={style.surface} data-transition={style.transition}
+				data-scaling={style.scaling}
+				className={classNames(
+					primary.variable, code.variable,
+					secondary.variable, tertiary.variable
+				)}>
+				<head>
+					<script
+						type="application/ld+json"
+						dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+					/>
+				</head>
 				<Flex
-					flex={1} direction="column">
-					<SessionProvider>{children}</SessionProvider>
+					as="body"
+					style={{ scrollbarGutter: "stable" }}
+					fillWidth fillHeight margin="0" padding="0">
+					<Background
+						style={{ zIndex: '-1' }}
+						mask={userSettings.backgroundMask}
+						gradient={{
+							display: true,
+							opacity: 1,
+						}} />
+					<Flex
+						flex={1} direction="column">
+						<SessionProvider>
+							<DynamicThemeWrapper>
+								{children}
+							</DynamicThemeWrapper>
+						</SessionProvider>
+					</Flex>
 				</Flex>
 			</Flex>
-		</Flex>
+		</AppContextProvider>
 	);
 }

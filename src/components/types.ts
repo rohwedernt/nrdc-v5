@@ -70,3 +70,5 @@ export type TextWeight =
 export type TextSize = TShirtSizes
 
 export type TextVariant = `${TextType}-${TextWeight}-${TextSize}`
+
+export type Theme = 'light' | 'dark';

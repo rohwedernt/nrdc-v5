@@ -18,6 +18,7 @@ interface SegmentedControlProps {
     selected?: string;
     className?: string;
     style?: React.CSSProperties;
+    disabled?: boolean;
 }
 
 const SegmentedControl: React.FC<SegmentedControlProps> = ({
@@ -27,6 +28,7 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
     selected,
     className,
     style,
+    disabled = false
 }) => {
     const [internalSelected, setInternalSelected] = useState<string>(() => {
         if (selected !== undefined) return selected;
@@ -87,6 +89,7 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({
                                     suffixIcon={button.suffixIcon}
                                     width="fill"
                                     aria-pressed={index === selectedIndex}
+                                    disabled={disabled}
                                 >
                                     {children}
                                 </ToggleButton>

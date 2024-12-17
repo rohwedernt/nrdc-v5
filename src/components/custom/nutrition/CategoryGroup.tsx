@@ -77,7 +77,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
         }}>
         {categories.map((category) => (
           <Flex direction='column' justifyContent='center' className={styles.item} key={category.name}>
-            <Flex
+            {/* <Flex
               className={styles.iconwrapper}
               alignItems='center'
               gap='4'
@@ -99,7 +99,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
                 variant="ghost"
                 style={{ color: 'var(--brand-on-solid-weak)', cursor: "pointer" }}
               />
-            </Flex>
+            </Flex> */}
             <Flex
               justifyContent='center'>
               <Text

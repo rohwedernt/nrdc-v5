@@ -2,33 +2,61 @@
 
 import React, { forwardRef } from 'react';
 import { SegmentedControl } from '../../generic/SegmentedControl';
-import useTheme, { Theme } from '@/app/hooks/useTheme';
+import { useAppContext } from '@/app/context/AppContext';
+import { updateUserSetting } from '@/app/api/settings/fetch';
+import { UserSettings } from '@/app/layout';
 
+type ThemeSelectProps = {
+  userId: string;
+};
 
-type ThemeSelectProps = {};
+const ThemeSelect = forwardRef<HTMLDivElement, ThemeSelectProps>(({ userId }, ref) => {
+  const { settings, setSettings } = useAppContext();
 
-const ThemeSelect = forwardRef<HTMLDivElement, ThemeSelectProps>(({ }, ref) => {
-  const [theme, setTheme] = useTheme();
+  const handleThemeChange = async (selected: string) => {
+    const newTheme = selected as 'light' | 'dark';
+
+    // Update local settings state
+    setSettings((prevSettings: UserSettings) => ({
+      ...prevSettings,
+      theme: newTheme,
+    }));
+
+    try {
+      // Persist change in database
+      const result = await updateUserSetting({
+        userId,
+        key: 'theme',
+        value: newTheme,
+      });
+
+      if (!result.success) {
+        console.error(result.message || 'Failed to update theme setting.');
+      }
+    } catch (error) {
+      console.error('Error updating theme:', error);
+    }
+  };
 
   return (
     <SegmentedControl
       buttons={[
         {
-          label: 's',
+          label: '',
           prefixIcon: 'sun',
           suffixIcon: '',
-          value: 'light'
+          value: 'light',
         },
         {
           label: '',
           prefixIcon: 'moon',
           suffixIcon: '',
-          value: 'dark'
-        }
+          value: 'dark',
+        },
       ]}
-      onToggle={(selected) => setTheme(selected as Theme)}
-      defaultSelected={"dark"}
-      selected={theme.toString()}
+      onToggle={(selected) => handleThemeChange(selected)}
+      defaultSelected={settings.theme || 'dark'}
+      selected={settings.theme}
     />
   );
 });

@@ -1,18 +1,15 @@
 'use client';
 
 import React from 'react';
-import { signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { Flex, Logo, NavIcon, SmartLink, ToggleButton, UserMenu } from '@/components/generic';
+import { Flex, Logo, NavIcon, SmartLink, ToggleButton } from '@/components/generic';
 
 
-interface HeaderProps {
-    authenticated: boolean;
-}
+interface HeaderProps {}
 
-const Header: React.FC<HeaderProps> = ({
-    authenticated
-}) => {
+const Header: React.FC<HeaderProps> = ({}) => {
+    const session = useSession();
     const pathname = usePathname() ?? '';
 
     return (
@@ -32,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({
                 <NavIcon />
                 <Logo wordmark={false} />
             </Flex>
-            {authenticated ? (
+            {session.status === "authenticated" ? (
                 <Flex
                     fillWidth
                     alignItems="center" justifyContent="space-between">

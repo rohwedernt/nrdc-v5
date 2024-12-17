@@ -1,50 +1,49 @@
 'use client';
 
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { signIn } from "next-auth/react";
 import { Button, Dialog, Flex } from '@/components/generic';
 import { CustomUserMenu } from './CustomUserMenu';
 
 
-type SignInProps = {
-  sessionStatus: 'loading' | 'authenticated' | 'unauthenticated';
-  avatar?: string;
-  name?: string;
-  subline?: string;
-};
+type SignInProps = {};
 
-const SignIn = forwardRef<HTMLDivElement, SignInProps>(({
-  sessionStatus,
-  name,
-  avatar,
-  subline
-}, ref) => {
+const SignIn = forwardRef<HTMLDivElement, SignInProps>(({}, ref) => {
+  const { data: session, status } = useSession(); // Adjust to match your session setup
+  const [content, setContent] = useState<JSX.Element | null>(null);
   const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
 
-  const renderContent = () => {
-    switch (sessionStatus) {
+  const getUserMetaData = () => {
+    const user = session?.user || {};
+    return {
+      userId: user.id || '0',
+      username: user.name || 'Unknown',
+      userEmail: user.email || 'Unknown',
+      userAvatar: user.image || undefined,
+    };
+  };
+
+  useEffect(() => {
+    const { userId, username, userEmail, userAvatar } = getUserMetaData();
+
+    switch (status) {
       case 'loading':
-        return (
-          <CustomUserMenu
-            isLoading
-            avatar={avatar}
-            name={name}
-            subline={subline}
-          />
-        );
+        setContent(<CustomUserMenu userId={userId} isLoading />);
+        break;
       case 'authenticated':
-        return (
+        setContent(
           <CustomUserMenu
-            avatar={avatar}
-            name={name}
-            subline={subline}
+            userId={userId}
+            name={username}
+            subline={userEmail}
+            avatar={userAvatar}
           />
         );
+        break;
       case 'unauthenticated':
-        return (
-          <Flex
-            alignItems="center"
-            gap="8">
+        setContent(
+          <Flex alignItems="center" gap="8">
             <Button
               size="s"
               variant="accent-light"
@@ -53,11 +52,10 @@ const SignIn = forwardRef<HTMLDivElement, SignInProps>(({
             />
           </Flex>
         );
+        break;
       default:
-        return (
-          <Flex
-            alignItems="center"
-            gap="8">
+        setContent(
+          <Flex alignItems="center" gap="8">
             <Button
               size="s"
               variant="accent-light"
@@ -67,11 +65,12 @@ const SignIn = forwardRef<HTMLDivElement, SignInProps>(({
           </Flex>
         );
     }
-  }
+  }, [status, session]);
+
 
   return (
     <>
-      {renderContent()}
+      {content}
 
       {/* Sign in Dialog */}
       <Dialog

@@ -5,9 +5,12 @@ import { signOut } from "next-auth/react";
 import { Dialog, DropdownOptions, Flex, SegmentedControl, UserMenu } from '@/components/generic';
 import { FeatureSwitch } from './FeatureSwitch';
 import { ThemeSelect } from './ThemeSelect';
+import { FeatureSelect } from './FeatureSelect';
+import { useRouter } from 'next/navigation';
 
 
 type CustomUserMenuProps = {
+  userId: string;
   isLoading?: boolean;
   avatar?: string;
   name?: string;
@@ -15,13 +18,14 @@ type CustomUserMenuProps = {
 };
 
 const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
+  userId,
   isLoading,
   avatar,
   name,
   subline
 }, ref) => {
+  const router = useRouter();
   const [isSettingsDialogOpen, setIsSettingsDialogOpen] = useState(false);
-
 
   const handleOptionSelect = (option: DropdownOptions) => {
     switch (option.value) {
@@ -34,6 +38,11 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
       default:
         return console.log("Action not implemented");
     }
+  }
+
+  const handleSettingsDialogClose = () => {
+    setIsSettingsDialogOpen(false);
+    router.refresh();
   }
 
   return (
@@ -83,47 +92,18 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
 
       {/* Settings Dialog */}
       <Dialog
-        onClose={() => setIsSettingsDialogOpen(false)}
+        onClose={handleSettingsDialogClose}
         isOpen={isSettingsDialogOpen}
         title="Settings"
       >
         <Flex direction='column' gap="l" padding='l'>
-          {/* <ThemeSelect /> */}
-          <FeatureSwitch
-            label="Enable Feature 1"
-            description="Feature description"
-          />
-          <FeatureSwitch
-            label="Enable Feature 2"
-            description="Feature description"
-          />
-          <FeatureSwitch
-            label="Enable Feature 3"
-            description="Feature description"
-          />
-          <SegmentedControl
-            buttons={[
-              {
-                label: 'Option 1',
-                prefixIcon: '',
-                suffixIcon: '',
-                value: 'Option 1'
-              },
-              {
-                label: 'Option 2',
-                prefixIcon: '',
-                suffixIcon: '',
-                value: 'Option 2'
-              },
-              {
-                label: 'Option 3',
-                prefixIcon: '',
-                suffixIcon: '',
-                value: 'Option 3'
-              }
-            ]}
-            onToggle={() => { }}
-            defaultSelected="Option 1"
+          <ThemeSelect userId={userId} />
+          <FeatureSelect
+            userId={userId}
+            settingKey="backgroundMask"
+            settingVals={["topLeft", "cursor"]}
+            label="Background Mask Cursor"
+            description="Background color will follow your cursor"
           />
         </Flex>
       </Dialog>

@@ -32,7 +32,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
       radius='l'>
 
       <Flex direction='column' justifyContent='center'>
-        <Flex
+        {/* <Flex
           justifyContent='space-between'
           alignItems='center'
           gap='4'
@@ -54,7 +54,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
             variant="ghost"
             style={{ color: 'var(--brand-on-solid-weak)', cursor: "pointer" }}
             />
-        </Flex>
+        </Flex> */}
         <Flex
           justifyContent='center'>
           <Text
