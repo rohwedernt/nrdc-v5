@@ -138,7 +138,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
                     };
                 case 'topLeft':
                     return {
-                        maskImage: `radial-gradient(circle ${maskSize / 1.2}px at 0% 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%)`,
+                        maskImage: `radial-gradient(circle ${maskSize / 1.5}px at 0% 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%), radial-gradient(circle ${maskSize / 1.5}px at 100% 100%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%)`,
                         maskSize: '100% 100%',
                     };
                 case 'topRight':
@@ -172,6 +172,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(
                             opacity: gradient.opacity,
                             background: 'radial-gradient(100% 100% at 49.99% 0%, var(--static-transparent) 0%, var(--page-background) 100%), radial-gradient(87.4% 84.04% at 6.82% 16.24%, var(--brand-background-medium) 0%, var(--static-transparent) 100%), radial-gradient(217.89% 126.62% at 48.04% 0%, var(--accent-solid-medium) 0%, var(--static-transparent) 100%)',
                             ...maskStyle(),
+
                         }}
                     />
                 )}

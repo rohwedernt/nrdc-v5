@@ -1,21 +1,24 @@
-import { handleFoodSelection } from '@/db/queries/insert';
+import { handleUpdateProgress, logFoodSubmission } from '@/db/queries/insert';
+import { getCategoryNameById } from '@/db/queries/select';
 import { NextRequest, NextResponse } from 'next/server';
 
 
 export async function POST(req: NextRequest) {
-  
   try {
     const body = await req.json();
-    const { userId, weekStartDate, selectedFoods } = body;
+    const { userId, weekStartDate, categoryId, count, foodName, timeStamp } = body;
 
-    if (!userId || !weekStartDate || !Array.isArray(selectedFoods)) {
+    if (!userId || !weekStartDate || !categoryId || !count || !foodName || !timeStamp) {
       return NextResponse.json(
         { error: 'Missing or invalid request body parameters.' },
         { status: 400 }
       );
     }
 
-    await handleFoodSelection(userId, weekStartDate, selectedFoods);
+    let categoryName = await getCategoryNameById(categoryId) ?? "Category Not Found";
+
+    await handleUpdateProgress(userId, weekStartDate, categoryId, count);
+    await logFoodSubmission(userId, foodName, categoryName, count, timeStamp);
 
     return NextResponse.json({ message: 'Progress updated!' }, { status: 200 });
   } catch (error) {

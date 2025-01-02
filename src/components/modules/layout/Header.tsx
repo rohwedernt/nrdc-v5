@@ -20,14 +20,14 @@ const Header: React.FC<HeaderProps> = ({}) => {
         >
             <Flex
                 hide="s">
-                <Logo icon={false} />
+                <Logo icon={false} href={'/home'} />
             </Flex>
             <Flex
                 show="s"
                 gap="4"
                 alignItems="center">
                 <NavIcon />
-                <Logo wordmark={false} />
+                {/* <Logo wordmark={false} /> */}
             </Flex>
             {session.status === "authenticated" ? (
                 <Flex

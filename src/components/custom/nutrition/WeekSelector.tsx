@@ -62,38 +62,38 @@ const WeekSelector = forwardRef<HTMLDivElement, WeekSelectorProps>(({
 
   return (
     <Flex direction='column' justifyContent='center' alignItems='center' paddingTop='20'>
-      <Text variant="label-default-s" onBackground="neutral-weak">WEEK OF</Text>
-    <Flex
-      alignItems='center'
-      justifyContent='center'>
-      <IconButton
-        icon="chevronLeft"
-        size="m"
-        variant="ghost"
-        style={{ cursor: "pointer" }}
-        disabled={!userStartDate || (() => {
-          const previousSunday = new Date(selectedWeek); // Clone currentWeek
-          previousSunday.setDate(selectedWeek.getDate() - 7); // Subtract 7 days to get the previous Sunday
-          return previousSunday < new Date(userStartDate); // Compare with userStartDate
-        })()}
-        onClick={handlePreviousWeek}
-      />
-      <Text variant="heading-default-s" onBackground="neutral-medium">
-      {selectedWeek.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })}
-      </Text>
-      <IconButton
-        icon="chevronRight"
-        size="m"
-        variant="ghost"
-        style={{ cursor: "pointer" }}
-        disabled={isNextWeekInFuture()}
-        onClick={handleNextWeek}
-      />
-    </Flex>
+      <Text variant="label-default-xs" onBackground="neutral-weak">WEEK OF</Text>
+      <Flex
+        alignItems='center'
+        justifyContent='center'>
+        <IconButton
+          icon="chevronLeft"
+          size="s"
+          variant="ghost"
+          style={{ cursor: "pointer" }}
+          disabled={!userStartDate || (() => {
+            const previousSunday = new Date(selectedWeek); // Clone currentWeek
+            previousSunday.setDate(selectedWeek.getDate() - 7); // Subtract 7 days to get the previous Sunday
+            return previousSunday < new Date(userStartDate); // Compare with userStartDate
+          })()}
+          onClick={handlePreviousWeek}
+        />
+        <Text variant="heading-default-xs" onBackground="neutral-medium">
+          {selectedWeek.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </Text>
+        <IconButton
+          icon="chevronRight"
+          size="s"
+          variant="ghost"
+          style={{ cursor: "pointer" }}
+          disabled={isNextWeekInFuture()}
+          onClick={handleNextWeek}
+        />
+      </Flex>
     </Flex>
   );
 });

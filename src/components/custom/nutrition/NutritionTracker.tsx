@@ -1,26 +1,29 @@
 'use client';
 
 import React, { forwardRef, useEffect, useState, useMemo } from 'react';
-import { Flex, Grid, Spinner } from '../../generic';
+import { Flex, Grid, IconButton, Spinner } from '../../generic';
 import { CategoryGroup } from './CategoryGroup';
 import { CategoryCard } from './CategoryCard';
 import { defaultCategoryOrder } from '@/components/resources/content';
 import { CategoryAdd } from './CategoryAdd';
 import { WeekSelector } from './WeekSelector';
-import { FoodItem, FoodSelector } from './FoodSelector';
+import { FoodForm } from './FoodForm';
+import { FoodLog } from './FoodLog';
 
 
-type Category = {
+export type Category = {
+  id: string;
   name: string;
+  type: string | null;
   unit: string;
   target: number;
-  type: string | null; // Type is nullable
+  isDefault: boolean;
+  createdAt: string;
 };
 
 type NutritionTrackerProps = {
   userId: string;
   userStartDate: string;
-  foodItems: Array<FoodItem>;
 };
 
 const getDefaultCurrentWeek = (): Date => {
@@ -30,16 +33,38 @@ const getDefaultCurrentWeek = (): Date => {
 
 const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
   userId,
-  userStartDate,
-  foodItems
+  userStartDate
 }, ref) => {
+  const [categories, setCategories] = useState<Category[]>([]);
   const [categoriesWithProgress, setCategoriesWithProgress] = useState<Array<Category & { progressCount: number }>>([]);
   const [selectedWeek, setSelectedWeek] = useState<Date>(getDefaultCurrentWeek());
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLogDialogOpen, setIsLogDialogOpen] = useState(false);
+
 
   useEffect(() => {
     getProgressForSelectedWeek();
+    getCategories();
   }, [selectedWeek]);
+
+  const getCategories = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(`/api/categories?userId=${userId}`);
+
+      if (response.ok) {
+        const data = await response.json();
+        setCategories(data);
+
+        setIsLoading(false);
+      } else {
+        console.error("Failed to fetch category data");
+      }
+    } catch (error) {
+      console.error("Error fetching category data:", error);
+    }
+  };
 
   const getProgressForSelectedWeek = async () => {
     setIsLoading(true);
@@ -60,8 +85,6 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
           progressCount: category.progressCount ?? 0, // Default progress to 0
         }));
 
-        console.log("Debug: " + JSON.stringify(normalizedData, null, 2));
-
         setCategoriesWithProgress(normalizedData);
 
         setIsLoading(false);
@@ -73,13 +96,10 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
     }
   };
 
-  const updateCategoriesWithProgress = (selectedFoods: string[]) => {
-    // Use a Set to avoid duplicates
-    const selectedFoodSet = new Set(selectedFoods);
-
+  const updateCategoryWithProgress = (categoryId: string) => {
     setCategoriesWithProgress((prev) =>
       prev.map((category) => {
-        if (selectedFoodSet.has(category.name)) {
+        if (category.id === categoryId) {
           return {
             ...category,
             progressCount: category.progressCount + 1,
@@ -135,8 +155,6 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
     };
   }, [categoriesWithProgress]);
 
-
-
   if (isLoading) {
     return (
       <Flex fillWidth justifyContent='center'>
@@ -145,22 +163,38 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
     );
   } else {
     return (
-      <Flex direction="column" gap="8" fillWidth>
-        <FoodSelector
-          foodItems={foodItems}
+      <Flex direction="column" gap="24" padding="m" fillWidth>
+        <FoodForm
+          categories={categories}
           userId={userId}
           weekStartDate={selectedWeek}
-          updateCategoriesWithProgress={(selectedFoods) => {
-            console.log("Selected foods: ", selectedFoods); // Debug selected foods
-            updateCategoriesWithProgress(selectedFoods);
-          }}
+          updateCategoryWithProgress={(category) => updateCategoryWithProgress(category)}
         />
-        <WeekSelector
-          userStartDate={new Date(userStartDate)}
-          selectedWeek={selectedWeek}
-          setSelectedWeek={setSelectedWeek}
-          updateProgress={getProgressForSelectedWeek}
-        />
+        <Flex alignItems='end' justifyContent='space-between' fillWidth paddingX='s'>
+          <WeekSelector
+            userStartDate={new Date(userStartDate)}
+            selectedWeek={selectedWeek}
+            setSelectedWeek={setSelectedWeek}
+            updateProgress={getProgressForSelectedWeek}
+          />
+          <Flex>
+            <IconButton
+              onClick={() => setIsLogDialogOpen(true)}
+              icon="log"
+              size="l"
+              tooltip="Log"
+              tooltipPosition="top"
+              variant="ghost"
+            />
+            <IconButton
+              icon="helpCircle"
+              size="l"
+              tooltip="More info"
+              tooltipPosition="top"
+              variant="ghost"
+            />
+          </Flex>
+        </Flex>
         <Grid
           radius="l"
           columns="repeat(3, 1fr)"
@@ -186,6 +220,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
 
           <CategoryAdd />
         </Grid>
+        <FoodLog userId={userId} isLogDialogOpen={isLogDialogOpen} setIsLogDialogOpen={setIsLogDialogOpen} />
       </Flex>
     );
   }

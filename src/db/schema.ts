@@ -111,7 +111,7 @@ export const progressTable = pgTable('progress', {
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
   categoryId: text('category_id').references(() => categoriesTable.id, { onDelete: 'cascade' }),
   weekStartDate: date('week_start_date').notNull(), // ISO 8601 formatted start date
-  count: numeric('count', { precision: 10, scale: 2 }).default(0),
+  count: numeric('count', { precision: 10, scale: 2 }).default("0"), // Default as a string
 }, (progress) => ({
   userCategoryWeekUnique: unique().on(progress.userId, progress.categoryId, progress.weekStartDate),
 }));
@@ -135,6 +135,17 @@ export const settingsTable = pgTable('settings', {
   value: text('value').notNull(), // e.g., 'dark', 'light'
   createdAt: timestamp('created_at', { mode: 'string' }).defaultNow(),
   updatedAt: timestamp('updated_at', { mode: 'string' }).defaultNow(),
+});
+
+export const foodSubmissionLogTable = pgTable('food_submission_log', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()), // Unique identifier for each log entry
+  userId: text('user_id').notNull(), // User ID who made the submission
+  foodName: text('food_name').notNull(), // Name of the food item submitted
+  categoryName: text('category_name').notNull(), // Category of the food item
+  count: numeric('count', { precision: 10, scale: 2 }).notNull(), // Quantity or progress count
+  timestamp: timestamp('timestamp', { mode: 'string' }).notNull(), // Passed-in timestamp
 });
 
 export type InsertUser = typeof users.$inferInsert;

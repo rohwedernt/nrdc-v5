@@ -111,35 +111,35 @@
     border-style: none;
     //border: 1px solid var(--static-black);
     color: var(--neutral-on-background-strong);
-    box-shadow:  15px 5px 40px -12px rgb(211, 163, 79), -15px -5px 40px -12px rgb(141, 134, 221); 
+    box-shadow:  5px 5px 50px rgb(211, 163, 79), -5px -5px 50px rgb(141, 134, 221); 
 
     &:hover,
     &:focus {
         background: linear-gradient(217deg, rgb(216, 9, 9), rgba(255, 0, 0, 0) 70.71%),
         linear-gradient(127deg, rgb(47, 203, 47), rgba(0, 255, 0, 0) 70.71%),
         linear-gradient(336deg, rgba(0, 0, 255, 1), rgba(0, 0, 255, 0) 70.71%);
-        border: 2px solid var(--code-gray);
-        box-shadow:  15px 5px 40px -20px rgb(255, 200, 104), -15px -5px 40px -20px rgb(176, 169, 255); 
+        border: 1px solid var(--static-white);
+        box-shadow:  1px 1px 10px rgb(211, 163, 79), -1px -1px 10px rgb(141, 134, 221); 
     }
 }
 
 .accent-light {
     //background-image: linear-gradient(#bbd5ee, var(--scheme-emerald-1100));
-    background: linear-gradient(217deg, #0a846661, rgba(0, 255, 0, 0) 70.71%),
-    linear-gradient(127deg, rgba(117, 163, 249, 0.028), rgba(255, 0, 0, 0) 70.71%);
+    //background: linear-gradient(217deg, #0a846661, rgba(0, 255, 0, 0) 70.71%),
+    //linear-gradient(127deg, rgba(117, 163, 249, 0.028), rgba(255, 0, 0, 0) 70.71%);
     border-style: none;
+    background: none;
     //border: 1px solid var(--static-black);
     color: var(--neutral-on-background-strong);
     //box-shadow:  15px 5px 40px -12px rgb(211, 163, 79), -15px -5px 40px -12px rgb(141, 134, 221); 
     transition: background-color 1s ease-in-out;
 
-
     &:hover,
     &:focus {
-        background: linear-gradient(217deg, rgba(117, 163, 249, 0.804), rgba(255, 0, 0, 0) 70.71%), 
-        linear-gradient(127deg, #0a8466d5, rgba(0, 255, 0, 0) 70.71%);
-        //border: 2px solid var(--code-gray);
-        box-shadow:  15px 5px 20px -12px rgb(211, 163, 79), -15px -5px 20px -12px rgb(141, 134, 221); 
+        //background: linear-gradient(217deg, rgba(117, 163, 249, 0.804), rgba(255, 0, 0, 0) 70.71%), 
+        //linear-gradient(127deg, #0a8466d5, rgba(0, 255, 0, 0) 70.71%);
+        border: 2px solid var(--code-gray);
+        //box-shadow:  5px 5px 30px -8px rgb(211, 163, 79), -5px -5px 30px -8px rgb(141, 134, 221); 
     }
 }
 

@@ -31,6 +31,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 direction="column"
                 padding="4"
                 radius="full"
+                justifyContent='center'
                 border={selected ? 'neutral-medium' : 'transparent'}
                 background={selected ? 'neutral-strong' : 'transparent'}
                 style={{ cursor: 'pointer' }}

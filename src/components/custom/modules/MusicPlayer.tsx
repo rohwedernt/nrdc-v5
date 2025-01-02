@@ -38,6 +38,11 @@ const selectOptions: DropdownOptions[] = [
 
 const MusicPlayer = forwardRef<HTMLDivElement, MusicPlayerProps>(({ }, ref) => {
   const [selection, setSelection] = useState<DropdownOptions>(selectOptions[0]);
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = () => {
+    setHasError(true);
+  };
 
   return (
     <Flex
@@ -60,7 +65,11 @@ const MusicPlayer = forwardRef<HTMLDivElement, MusicPlayerProps>(({ }, ref) => {
         onSelect={(option) => setSelection(option)}
       />
       </Flex>
-      <Spotify style={{ width: "100%" }} link={selection.link ?? ""} />
+      {hasError ? (
+        <div>Sorry, the content failed to load.</div>
+      ) : (
+        <Spotify style={{ width: "100%" }} link={selection.link ?? ""} onError={handleError} />
+      )}
     </Flex>
   );
 });

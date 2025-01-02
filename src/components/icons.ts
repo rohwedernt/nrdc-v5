@@ -23,7 +23,8 @@ import {
 	HiGlobeAmericas,
 	HiOutlineSun,
 	HiOutlineMoon,
-	HiPencil
+	HiPencil,
+	HiClipboardDocumentList
 } from "react-icons/hi2";
 
 import { HiCog } from "react-icons/hi";
@@ -34,7 +35,8 @@ import {
 	FaGithub,
 	FaLinkedin,
 	FaGoogle,
-	FaApple
+	FaApple,
+	FaClipboardList
 } from "react-icons/fa6";
 
 import { GrDocumentDownload } from "react-icons/gr";
@@ -45,7 +47,9 @@ import { BiCodeCurly, BiSend } from "react-icons/bi";
 
 import { IoLaptopOutline, IoReload } from "react-icons/io5";
 
-import { AiOutlineOpenAI } from "react-icons/ai";
+import { AiOutlineOpenAI, AiFillBug } from "react-icons/ai";
+
+import { GiJumpingRope } from "react-icons/gi";
 
 
 export const iconLibrary: Record<string, IconType> = {
@@ -84,5 +88,8 @@ export const iconLibrary: Record<string, IconType> = {
 	send: BiSend,
 	openAI: AiOutlineOpenAI,
 	pencil: HiPencil,
-	load: IoReload
+	load: IoReload,
+	log: HiClipboardDocumentList,
+	exercise: GiJumpingRope,
+	bug: AiFillBug
 };

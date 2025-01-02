@@ -2,8 +2,7 @@
 
 import React, { forwardRef, useState } from 'react';
 import { signOut } from "next-auth/react";
-import { Dialog, DropdownOptions, Flex, SegmentedControl, UserMenu } from '@/components/generic';
-import { FeatureSwitch } from './FeatureSwitch';
+import { Dialog, DropdownOptions, Flex, UserMenu } from '@/components/generic';
 import { ThemeSelect } from './ThemeSelect';
 import { FeatureSelect } from './FeatureSelect';
 import { useRouter } from 'next/navigation';

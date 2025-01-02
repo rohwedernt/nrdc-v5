@@ -4,6 +4,7 @@ import React, { forwardRef } from 'react';
 import { Flex } from '../../generic/Flex';
 import { IconButton, Text } from '../../generic';
 import styles from './Category.module.scss';
+import { truncateDecimalsIfWhole } from '@/app/utils/utils';
 
 
 type CategoryCardProps = {
@@ -75,7 +76,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
         </Text>
         <Text
           variant="display-default-s" onBackground="neutral-strong" align='center' paddingY='m'>
-          {progressCount}/{target}
+          {truncateDecimalsIfWhole(progressCount)}/{target}
         </Text>
       </Flex>
     </Flex>

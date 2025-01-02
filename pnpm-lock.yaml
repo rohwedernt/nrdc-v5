@@ -35,6 +35,9 @@ importers:
       compressorjs:
         specifier: ^1.2.1
         version: 1.2.1
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       drizzle-orm:
         specifier: ^0.38.2
         version: 0.38.2(@opentelemetry/api@1.9.0)(@types/pg@8.11.6)(@types/react@18.3.12)(@vercel/postgres@0.10.0)(react@18.3.1)

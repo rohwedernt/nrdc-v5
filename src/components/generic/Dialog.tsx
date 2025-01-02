@@ -23,6 +23,7 @@ interface DialogProps {
     style?: React.CSSProperties;
     className?: string;
     animate?: boolean;
+    wide?: boolean;
 }
 
 const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
@@ -36,7 +37,8 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
     dangerButtonProps,
     style,
     className,
-    animate
+    animate,
+    wide = false
 }, ref) => {
     const dialogRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(isOpen);
@@ -117,7 +119,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
             //onClick={onClose}
             >
             <Flex
-                style={{ maxHeight: '100%' }}
+                style={{ maxHeight: '100%', minWidth: wide ? '75%' : undefined }}
                 className={classNames({[styles.dialoganimate]: animate}, {[styles.dialog]: !animate}, { [styles.open]: isAnimating })}
                 ref={dialogRef}
                 //fillWidth
@@ -138,7 +140,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
                         <Heading
                             className={styles.title}
                             id="dialog-title"
-                            variant="display-default-m">
+                            variant="display-default-s">
                             {title}
                         </Heading>
                         <IconButton

@@ -48,6 +48,7 @@ const SignIn = forwardRef<HTMLDivElement, SignInProps>(({}, ref) => {
               size="s"
               variant="accent-light"
               label="Sign In"
+              style={{ width: "75px" }}
               onClick={() => setIsLoginDialogOpen(true)}
             />
           </Flex>
@@ -60,6 +61,7 @@ const SignIn = forwardRef<HTMLDivElement, SignInProps>(({}, ref) => {
               size="s"
               variant="accent-light"
               label="Sign In"
+              style={{ width: "75px" }}
               onClick={() => setIsLoginDialogOpen(true)}
             />
           </Flex>

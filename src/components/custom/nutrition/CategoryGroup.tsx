@@ -3,6 +3,7 @@
 import React, { forwardRef } from 'react';
 import { Flex, Grid, IconButton, Text } from '../../generic';
 import styles from './Category.module.scss';
+import { truncateDecimalsIfWhole } from '@/app/utils/utils';
 
 
 type CategoryGroupProps = {
@@ -113,7 +114,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
             </Text>
             <Text
               variant="display-default-s" onBackground="neutral-strong" align='center' paddingY='m'>
-              {category.progressCount}/{category.target}
+              {truncateDecimalsIfWhole(category.progressCount)}/{category.target}
             </Text>
           </Flex>
         ))}

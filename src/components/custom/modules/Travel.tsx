@@ -36,6 +36,7 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
           radius="l"
           src="/images/travel.jpg"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt="travel"
           style={{ cursor: "pointer" }}
         />

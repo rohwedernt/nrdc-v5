@@ -21,7 +21,7 @@ export default function TravelLayout({
       direction="column"
       alignItems="center"
       flex={1}>
-      <Toolbar authenticated={!!session} showNav />
+      <Toolbar showNav />
       {children}
     </Flex>
   )

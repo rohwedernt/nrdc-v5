@@ -33,6 +33,7 @@ const HealthModule = forwardRef<HTMLDivElement, HealthModuleProps>(({ }, ref) =>
           radius="l"
           src="/images/nutrition.jpg"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt="travel"
           style={{ cursor: "pointer" }}
         />
