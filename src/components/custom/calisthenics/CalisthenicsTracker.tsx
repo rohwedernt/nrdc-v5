@@ -1,9 +1,7 @@
 'use client';
 
-import React, { forwardRef, useEffect, useState, useMemo } from 'react';
-import { Flex, Grid, Spinner } from '../../generic';
-import { defaultCategoryOrder } from '@/components/resources/content';
-import { CalisthenicsForm } from './CalisthenicsForm';
+import React, { forwardRef, useState } from 'react';
+import { Flex, IconButton, Spinner } from '../../generic';
 import { Tabs, TabsProps } from 'antd';
 import { CalisthenicView } from './CalisthenicView';
 
@@ -54,6 +52,14 @@ const CalisthenicsTracker = forwardRef<HTMLDivElement, CalisthenicsTrackerProps>
           tabPosition="left"
           //style={{ height: 220 }}
           items={userExercises}
+          tabBarExtraContent={
+            <IconButton
+              icon="plus"
+              tooltip="Add an exercise"
+              tooltipPosition="top"
+              variant="ghost"
+            />
+          }
         />
       </Flex>
     );

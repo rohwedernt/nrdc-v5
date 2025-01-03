@@ -9,6 +9,7 @@ import { CategoryAdd } from './CategoryAdd';
 import { WeekSelector } from './WeekSelector';
 import { FoodForm } from './FoodForm';
 import { FoodLog } from './FoodLog';
+import { MoreInfoDialog } from '@/components/generic/MoreInfoDialog';
 
 
 export type Category = {
@@ -40,7 +41,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
   const [selectedWeek, setSelectedWeek] = useState<Date>(getDefaultCurrentWeek());
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLogDialogOpen, setIsLogDialogOpen] = useState(false);
-
+  const [isHelpDialogOpen, setIsHelpDialogOpen] = useState(false);
 
   useEffect(() => {
     getProgressForSelectedWeek();
@@ -187,6 +188,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
               variant="ghost"
             />
             <IconButton
+              onClick={() => setIsHelpDialogOpen(true)}
               icon="helpCircle"
               size="l"
               tooltip="More info"
@@ -220,7 +222,13 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
 
           <CategoryAdd />
         </Grid>
-        <FoodLog userId={userId} isLogDialogOpen={isLogDialogOpen} setIsLogDialogOpen={setIsLogDialogOpen} />
+        <FoodLog userId={userId} isDialogOpen={isLogDialogOpen} setIsDialogOpen={setIsLogDialogOpen} />
+        <MoreInfoDialog
+          title="How to use the Nutrition Tracker"
+          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          isDialogOpen={isHelpDialogOpen}
+          setIsDialogOpen={setIsHelpDialogOpen}
+        />
       </Flex>
     );
   }

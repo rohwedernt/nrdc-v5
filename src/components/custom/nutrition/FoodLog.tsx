@@ -18,14 +18,14 @@ export type FoodSubmissionLog = {
 
 type FoodLogProps = {
   userId: string;
-  isLogDialogOpen: boolean;
-  setIsLogDialogOpen: (isOpen: boolean) => void;
+  isDialogOpen: boolean;
+  setIsDialogOpen: (isOpen: boolean) => void;
 };
 
 const FoodLog = forwardRef<HTMLDivElement, FoodLogProps>(({
   userId,
-  isLogDialogOpen,
-  setIsLogDialogOpen
+  isDialogOpen,
+  setIsDialogOpen
 }, ref) => {
   const [mealLogs, setMealLogs] = useState<Array<FoodSubmissionLog>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -66,8 +66,8 @@ const FoodLog = forwardRef<HTMLDivElement, FoodLogProps>(({
 
   return (
     <Dialog
-      onClose={() => setIsLogDialogOpen(false)}
-      isOpen={isLogDialogOpen}
+      onClose={() => setIsDialogOpen(false)}
+      isOpen={isDialogOpen}
       title="Food Log"
       wide
     >

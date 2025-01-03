@@ -1,8 +1,7 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { Flex, Grid } from '../../generic';
-import { Card } from 'antd';
+import { Grid } from '../../generic';
 import { CalisthenicCard } from './CalisthenicCard';
 
 
@@ -18,8 +17,8 @@ const CalisthenicStats = forwardRef<HTMLDivElement, CalisthenicStatsProps>(({ },
       mobileColumns="1col"
       fillWidth
       gap="20">
-      <CalisthenicCard name="Completed" count={50} />
-      <CalisthenicCard name="Remaining" count={9950} />
+      <CalisthenicCard name="Completed" count={100} />
+      <CalisthenicCard name="Remaining" count={9900} />
       <CalisthenicCard name="Per Day" count={28} />
     </Grid>
   );
