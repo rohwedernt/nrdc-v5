@@ -64,6 +64,11 @@ h1, h2, h3, h4, h5, h6, p {
         font-size:   calc(var(--font-size-display-xs) * var(--font-size-heading-multiplier));
         line-height: calc(var(--line-height-display-xs) * var(--line-height-heading-multiplier));
     }
+
+    &.font-xxs, & > .font-xxs {
+        font-size:   calc(var(--font-size-display-xxs) * var(--font-size-heading-multiplier));
+        line-height: calc(var(--line-height-display-xxs) * var(--line-height-heading-multiplier));
+    }
 }
 
 .font-heading {

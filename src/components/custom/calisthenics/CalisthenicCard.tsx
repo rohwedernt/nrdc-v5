@@ -3,22 +3,25 @@
 import React, { forwardRef } from 'react';
 import { Flex } from '../../generic/Flex';
 import { Text } from '../../generic';
-import styles from '../nutrition/Category.module.scss';
+import styles from './Calisthenic.module.scss';
+import classNames from 'classnames';
 
 
 type CalisthenicCardProps = {
   name: string;
   count: number;
+  shadow?: boolean;
 };
 
 const CalisthenicCard = forwardRef<HTMLDivElement, CalisthenicCardProps>(({
   name,
   count,
+  shadow = false
 }, ref) => {
   return (
     <Flex
       fillWidth
-      className={styles.container}
+      className={classNames(styles.container, { [styles.cardShadow]: shadow })}
       direction="column"
       justifyContent='space-around'
       border='neutral-strong'
@@ -28,7 +31,7 @@ const CalisthenicCard = forwardRef<HTMLDivElement, CalisthenicCardProps>(({
         <Flex
           justifyContent='center'>
           <Text
-            variant="display-default-xs" onBackground="neutral-medium" align="center" paddingX='8'>
+            variant={shadow ? "display-default-xs" : "heading-default-m"} onBackground="neutral-medium" align="center" paddingX='8'>
             {name}
           </Text>
         </Flex>

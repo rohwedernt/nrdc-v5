@@ -148,6 +148,28 @@ export const foodSubmissionLogTable = pgTable('food_submission_log', {
   timestamp: timestamp('timestamp', { mode: 'string' }).notNull(), // Passed-in timestamp
 });
 
+export const exercisesTable = pgTable('exercises', {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()), // UUID for unique exercise
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }), // Linked to user
+  name: text('name').notNull(), // Name of the exercise
+  goal: integer('goal'), // Yearly goal for the exercise
+  count: integer('count').notNull().default(0), // Current completed reps
+  isDefault: boolean('is_default').notNull().default(false), // Whether this is a default exercise
+  createdAt: timestamp('created_at', { mode: 'string' }).notNull().defaultNow(), // Timestamp for creation
+});
+
+export const exerciseLogTable = pgTable('exercise_log', {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()), // UUID for unique log entry
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }), // Linked to user
+  exerciseId: text('exercise_id').references(() => exercisesTable.id, { onDelete: 'cascade' }), // Linked to exercise
+  count: integer('count').notNull(), // Number of reps submitted in this log
+  timestamp: timestamp('timestamp', { mode: 'string' }).notNull(), // When the reps were submitted
+});
+
 export type InsertUser = typeof users.$inferInsert;
 export type SelectUser = typeof users.$inferSelect;
 

@@ -1,7 +1,8 @@
 import { eq, and, or, desc, getTableColumns } from 'drizzle-orm';
 import { db } from '../index';
-import { settingsTable, categoriesTable, foodItemsTable, progressTable, users, foodSubmissionLogTable } from '../schema';
+import { settingsTable, categoriesTable, progressTable, users, foodSubmissionLogTable, exercisesTable } from '../schema';
 import { FoodSubmissionLog } from '@/components/custom/nutrition/FoodLog';
+import { Exercise } from '@/components/custom/calisthenics/CalisthenicsTracker';
 
 
 export async function getUserById(userId: string): Promise<{
@@ -99,6 +100,21 @@ export async function getFoodSubmissionLogsByUser(userId: string): Promise<FoodS
   } catch (error) {
     console.error("Error fetching food submissions for user:", error);
     throw new Error("Failed to fetch food submissions.");
+  }
+}
+
+export async function getExercisesByUser(userId: string): Promise<Exercise[]> {
+  try {
+    const exercises = await db
+      .select()
+      .from(exercisesTable)
+      .where(eq(exercisesTable.userId, userId)) // Filter by userId
+      .orderBy(desc(exercisesTable.createdAt)); // Order by most recent first
+
+    return exercises;
+  } catch (error) {
+    console.error("Error fetching exercises for user:", error);
+    throw new Error("Failed to fetch exercises.");
   }
 }
 

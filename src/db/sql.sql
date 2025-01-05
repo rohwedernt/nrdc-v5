@@ -71,3 +71,14 @@ VALUES (1, 'nate', 'rohwedernt@gmail.com', NOW());
 UPDATE users
 SET created_at = '2024-12-01T00:00:00.000Z'
 WHERE id = 1;
+
+-- Delete an exercise from that table
+DELETE FROM exercises
+WHERE id = '3998d8ff-6c9e-486b-8a58-991302c8936d'
+
+-- Delete exercise with list of ids
+DELETE FROM exercises
+WHERE id IN ('87cf91cd-35a6-418a-b726-9fc21f8cdcfd', 'ad60f0a9-2f3a-413f-b9ce-618b32d10690', '16628b1a-108f-4973-bb37-95d1f2ed3060', '43666027-c902-4513-826e-f2cfb0a34b9e');
+
+-- or
+DELETE FROM exercises;

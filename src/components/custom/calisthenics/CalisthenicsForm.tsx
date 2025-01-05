@@ -7,67 +7,70 @@ import {
   Button,
   DatePicker,
   Form,
-  InputNumber,
-  Select,
+  InputNumber
 } from 'antd';
+import { Exercise } from './CalisthenicsTracker';
 
 
 type CalisthenicSubmission = {
   count: number;
-  type: string;
   date: Date;
 }
 
 type CalisthenicsFormProps = {
   userId: string;
+  exercise: Exercise;
+  onCountSet: (newGoal: number) => void;
 };
 
 const CalisthenicsForm = forwardRef<HTMLDivElement, CalisthenicsFormProps>(({
   userId,
+  exercise,
+  onCountSet
 }, ref) => {
   const [form] = Form.useForm();
   const [isLoadingSubmit, setIsLoadingSubmit] = useState<boolean>(false);
 
-  // const handleSubmit = async (values: CalisthenicSubmission) => {
-  //   console.log("Calisthenic Submission: " + values);
-  //   setIsLoadingSubmit(true);
-  //   form.resetFields();
+  const handleSubmit = async (values: CalisthenicSubmission) => {
+    console.log("Calisthenic Submission: " + JSON.stringify(values, null, 2));
+    setIsLoadingSubmit(true);
+    form.resetFields();
 
-  //   try {
-  //     const response = await fetch('/api/health/add', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json', },
-  //       body: JSON.stringify({
-  //         userId,
-  //         count: values.count,
-  //         type: values.type,
-  //         timeStamp: values.date
-  //       }),
-  //     });
+    try {
+      const response = await fetch('/api/exercise', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify({
+          userId,
+          exerciseId: exercise.id,
+          count: values.count,
+          timestamp: values.date
+        }),
+      });
 
-  //     if (response.ok) {
-  //       console.log('Progress updated!');
-  //       //updateCategoryWithProgress(values.category); // Trigger parent state update
-  //     } else {
-  //       console.error('Failed to update progress.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error submitting progress:', error);
-  //   }
+      if (response.ok) {
+        console.log('Count updated!');
+        onCountSet(values.count); // Trigger parent state update
+      } else {
+        console.error('Failed to update count.');
+      }
+    } catch (error) {
+      console.error('Error submitting count:', error);
+    }
 
-  //   setIsLoadingSubmit(false);
-  // };
+    setIsLoadingSubmit(false);
+  };
 
   return (
     <Flex>
       <Form
         layout="inline"
         form={form}
-        name="control-hooks"
-        //onFinish={handleSubmit}
+        name={`add-exercise-${exercise.id}`}
+        onFinish={handleSubmit}
         variant="filled"
         initialValues={{
-          ["count"]: 1,
+          ["count"]: 50,
           ["date"]: dayjs()
 
         }}
@@ -97,7 +100,6 @@ const CalisthenicsForm = forwardRef<HTMLDivElement, CalisthenicsFormProps>(({
             type="primary"
             htmlType="submit"
             loading={isLoadingSubmit}
-            //style={{ paddingTop: "8px" }}
           >
             +
           </Button>

@@ -1,6 +1,7 @@
 import { and, eq, inArray } from 'drizzle-orm';
 import { db } from '../index';
-import { InsertCategory, InsertUser, categoriesTable, foodItemsTable, progressTable, users, foodSubmissionLogTable } from '../schema';
+import { InsertCategory, InsertUser, categoriesTable, foodItemsTable, progressTable, users, foodSubmissionLogTable, exercisesTable } from '../schema';
+import { Exercise } from '@/components/custom/calisthenics/CalisthenicsTracker';
 
 export async function createUser(data: InsertUser) {
   await db.insert(users).values(data);
@@ -88,5 +89,30 @@ export async function logFoodSubmission(
   } catch (error) {
     console.error("Error logging food submission:", error);
     throw new Error("Failed to log food submission.");
+  }
+}
+
+export async function addExercise(
+  userId: string,
+  name: string,
+  goal: number | null,
+  isDefault: boolean
+): Promise<Exercise> {
+  try {
+    const [createdExercise] = await db
+      .insert(exercisesTable)
+      .values({
+        userId,
+        name,
+        goal,
+        count: 0, // Initialize count to 0
+        isDefault,
+      })
+      .returning(); // Use `.returning()` to get the inserted row
+
+    return createdExercise;
+  } catch (error) {
+    console.error("Error adding exercise:", error);
+    throw new Error("Failed to add exercise.");
   }
 }

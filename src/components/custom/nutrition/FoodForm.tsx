@@ -96,7 +96,7 @@ const FoodForm = forwardRef<HTMLDivElement, FoodFormProps>(({
     form.resetFields();
 
     try {
-      const response = await fetch('/api/health/add', {
+      const response = await fetch('/api/nutrition/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify({

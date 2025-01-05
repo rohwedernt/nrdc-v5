@@ -1,0 +1,23 @@
+.container {
+  background: var(--neutral-alpha-light);
+
+  @media (--s) {
+    grid-column: unset !important;
+    width: 65% !important;
+    place-self: center;
+  }
+
+  @media (--xs) {
+    grid-column: unset !important;
+    width: 100% !important;
+    place-self: center;
+  }
+}
+
+.cardShadow {
+  box-shadow: inset 0px 0px 40px 20px var(--glass), var(--shadow-xl);
+}
+
+.span3 {
+  grid-column: span 3;
+}

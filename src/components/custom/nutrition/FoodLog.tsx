@@ -43,7 +43,7 @@ const FoodLog = forwardRef<HTMLDivElement, FoodLogProps>(({
     setIsLoading(true);
 
     try {
-      const response = await fetch(`/api/health/log?userId=${userId}`, {
+      const response = await fetch(`/api/nutrition/log?userId=${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });

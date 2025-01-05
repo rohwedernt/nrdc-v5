@@ -52,7 +52,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
     setIsLoading(true);
 
     try {
-      const response = await fetch(`/api/categories?userId=${userId}`);
+      const response = await fetch(`/api/nutrition/categories?userId=${userId}`);
 
       if (response.ok) {
         const data = await response.json();
@@ -71,7 +71,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/health/progress', {
+      const response = await fetch('/api/nutrition/progress', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId, selectedWeek }),
