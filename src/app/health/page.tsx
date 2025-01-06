@@ -73,6 +73,7 @@ export default async function HealthPage() {
           items={items}
           tabBarExtraContent={
             <IconButton
+              href="mailto:rohwedernt@gmail.com?subject=Feature%20or%20Bug%20Report&body=Details:"
               icon="bug"
               tooltip="Request a feature or file a bug"
               tooltipPosition="left"

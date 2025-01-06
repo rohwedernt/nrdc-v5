@@ -2,7 +2,7 @@
 
 import React, { forwardRef } from 'react';
 import { Flex, Grid, IconButton, Text } from '../../generic';
-import styles from './Category.module.scss';
+import styles from './CategoryGroup.module.scss';
 import { truncateDecimalsIfWhole } from '@/app/utils/utils';
 
 
@@ -46,7 +46,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
   return (
     <Flex
       fillWidth
-      className={styles.container}
+      className={styles.card}
       direction="column"
       justifyContent='space-around'
       border='neutral-strong'
@@ -90,7 +90,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
                 tooltip="Edit"
                 tooltipPosition="top"
                 variant="ghost"
-                style={{ color: 'var(--brand-on-solid-weak)', cursor: "pointer", marginLeft: "4px" }}
+                style={{ color: 'var(--nuetral-weak)', cursor: "pointer", marginLeft: "4px" }}
               />
               <IconButton
                 icon="close"
@@ -98,7 +98,7 @@ const CategoryGroup = forwardRef<HTMLDivElement, CategoryGroupProps>(({
                 tooltip="Delete"
                 tooltipPosition="top"
                 variant="ghost"
-                style={{ color: 'var(--brand-on-solid-weak)', cursor: "pointer" }}
+                style={{ color: 'var(--nuetral-weak)', cursor: "pointer" }}
               />
             </Flex> */}
             <Flex

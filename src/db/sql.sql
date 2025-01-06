@@ -74,11 +74,11 @@ WHERE id = 1;
 
 -- Delete an exercise from that table
 DELETE FROM exercises
-WHERE id = '3998d8ff-6c9e-486b-8a58-991302c8936d'
+WHERE id = 'ba6cde9a-5b14-4b81-beba-32dc298aafe1'
 
 -- Delete exercise with list of ids
 DELETE FROM exercises
-WHERE id IN ('87cf91cd-35a6-418a-b726-9fc21f8cdcfd', 'ad60f0a9-2f3a-413f-b9ce-618b32d10690', '16628b1a-108f-4973-bb37-95d1f2ed3060', '43666027-c902-4513-826e-f2cfb0a34b9e');
+WHERE id IN ('9029a40a-5636-4d59-8eaf-46278b1f0140', 'd470bc7d-30d0-4f87-822a-d8f3f6eff86e', '55fa7de1-1427-4f75-80cc-82cef066822f', 'ba6cde9a-5b14-4b81-beba-32dc298aafe1	');
 
 -- or
 DELETE FROM exercises;

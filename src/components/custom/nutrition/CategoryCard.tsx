@@ -25,7 +25,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
   return (
     <Flex
       fillWidth
-      className={styles.container}
+      className={styles.card}
       direction="column"
       justifyContent='space-around'
       border='neutral-strong'
@@ -34,7 +34,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
 
       <Flex direction='column' justifyContent='center'>
         {/* <Flex
-          justifyContent='space-between'
+          justifyContent='end'
           alignItems='center'
           gap='4'
           paddingTop='4'
@@ -45,7 +45,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
             tooltip="Edit"
             tooltipPosition="top"
             variant="ghost"
-            style={{ color: 'var(--brand-on-solid-weak)', cursor: "pointer", marginLeft: "4px" }}
+            style={{ color: 'var(--neutral-weak)', cursor: "pointer", marginLeft: "4px" }}
             />
           <IconButton
             icon="close"
@@ -53,7 +53,7 @@ const CategoryCard = forwardRef<HTMLDivElement, CategoryCardProps>(({
             tooltip="Delete"
             tooltipPosition="top"
             variant="ghost"
-            style={{ color: 'var(--brand-on-solid-weak)', cursor: "pointer" }}
+            style={{ color: 'var(--neutral-weak)', cursor: "pointer" }}
             />
         </Flex> */}
         <Flex

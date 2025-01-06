@@ -7,3 +7,7 @@ export function truncateDecimalsIfWhole(num: number | string): string | number {
 
   return parsedNum % 1 === 0 ? parsedNum.toFixed(0) : parsedNum;
 }
+
+export function formatNumber(num: number): string {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}

@@ -70,13 +70,6 @@ export async function PATCH(req: NextRequest) {
     const body = await req.json();
     const { exerciseId, goal, count, userId, timestamp } = body;
 
-    console.log("exerciseId: " + JSON.stringify(exerciseId, null, 2));
-    console.log("goal: " + JSON.stringify(goal, null, 2));
-    console.log("count: " + JSON.stringify(count, null, 2));
-    console.log("userId: " + JSON.stringify(userId, null, 2));
-    console.log("timestamp: " + JSON.stringify(timestamp, null, 2));
-
-
     if (!exerciseId || !userId) {
       return NextResponse.json(
         { error: "Invalid request body: exerciseId and userId are required" },

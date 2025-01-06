@@ -10,6 +10,7 @@ import { WeekSelector } from './WeekSelector';
 import { FoodForm } from './FoodForm';
 import { FoodLog } from './FoodLog';
 import { MoreInfoDialog } from '@/components/generic/MoreInfoDialog';
+import { useRouter } from 'next/navigation';
 
 
 export type Category = {
@@ -36,6 +37,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
   userId,
   userStartDate
 }, ref) => {
+  const router = useRouter();
   const [categories, setCategories] = useState<Category[]>([]);
   const [categoriesWithProgress, setCategoriesWithProgress] = useState<Array<Category & { progressCount: number }>>([]);
   const [selectedWeek, setSelectedWeek] = useState<Date>(getDefaultCurrentWeek());
@@ -57,8 +59,8 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
       if (response.ok) {
         const data = await response.json();
         setCategories(data);
-
         setIsLoading(false);
+        router.refresh();
       } else {
         console.error("Failed to fetch category data");
       }
@@ -203,7 +205,9 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
           tabletColumns="2col"
           mobileColumns="1col"
           fillWidth
-          gap="20">
+          gap="20"
+          style={{ perspective: "800px" }}
+        >
 
           {Object.entries(groupedCategories).map(([type, group]) => (
             <CategoryGroup key={type} type={type} categories={group} />
@@ -220,7 +224,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
             />
           ))}
 
-          <CategoryAdd />
+          <CategoryAdd userId={userId} getCategories={getCategories} />
         </Grid>
         <FoodLog userId={userId} isDialogOpen={isLogDialogOpen} setIsDialogOpen={setIsLogDialogOpen} />
         <MoreInfoDialog

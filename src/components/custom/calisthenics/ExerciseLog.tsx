@@ -1,11 +1,8 @@
 'use client';
 
 import React, { forwardRef, useEffect, useState } from 'react';
-import { Flex } from '../../generic/Flex';
-import { Grid, Spinner, Text } from '../../generic';
+import { Flex, Text } from '../../generic';
 import { List } from 'antd';
-import styles from './Calisthenic.module.scss';
-import classNames from 'classnames';
 import dayjs from 'dayjs';
 
 export type ExerciseLogType = {
@@ -17,10 +14,12 @@ export type ExerciseLogType = {
 
 type ExerciseLogProps = {
   userId: string;
+  exerciseId: string;
 };
 
 const ExerciseLog = forwardRef<HTMLDivElement, ExerciseLogProps>(({
-  userId
+  userId,
+  exerciseId
 }, ref) => {
   const [exerciseLogs, setExerciseLogs] = useState<Array<ExerciseLogType>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -38,11 +37,12 @@ const ExerciseLog = forwardRef<HTMLDivElement, ExerciseLogProps>(({
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/exercise-log", {
+      const response = await fetch(`/api/exercise/log`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           "user-id": userId,
+          "exercise-id": exerciseId,
         },
       });
 
@@ -75,9 +75,9 @@ const ExerciseLog = forwardRef<HTMLDivElement, ExerciseLogProps>(({
         bordered
         dataSource={exerciseLogs}
         renderItem={(item) => (
-          <List.Item styles={{ extra: { borderRight: "1px solid" } }}>
-            <Flex fillWidth justifyContent='space-between' alignItems='center'>
-              <Text>{dayjs(item.timestamp).format('MMMM DD')}</Text>
+          <List.Item>
+            <Flex fillWidth justifyContent='space-between' alignItems='center' paddingX='l'>
+              <Text>{dayjs(item.timestamp).format('ddd, MMMM DD')}</Text>
               <Text>{item.count}</Text>
             </Flex>
           </List.Item>

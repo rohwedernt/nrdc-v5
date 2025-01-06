@@ -140,7 +140,7 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
                         <Heading
                             className={styles.title}
                             id="dialog-title"
-                            variant="display-default-s">
+                            variant="display-default-xs">
                             {title}
                         </Heading>
                         <IconButton

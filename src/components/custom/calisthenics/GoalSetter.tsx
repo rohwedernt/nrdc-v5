@@ -1,9 +1,11 @@
 'use client';
 
 import React, { forwardRef, useState } from 'react';
-import { Flex, Text, RevealFx } from '../../generic';
-import { Form, Slider, Button } from 'antd';
+import { Flex, Text, RevealFx, IconButton } from '../../generic';
+import { Form, Slider, Button, Popconfirm } from 'antd';
 import { Exercise } from './CalisthenicsTracker';
+import { deleteExercise } from './CalisthenicView';
+import { useRouter } from 'next/navigation';
 
 
 type GoalSubmission = {
@@ -22,6 +24,7 @@ const GoalSetter = forwardRef<HTMLDivElement, GoalSetterProps>(({
   onGoalSet
 }, ref) => {
   const [form] = Form.useForm();
+  const router = useRouter();
   const [isHelpDialogOpen, setIsHelpDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -55,47 +58,68 @@ const GoalSetter = forwardRef<HTMLDivElement, GoalSetterProps>(({
     setIsLoading(false);
   };
 
+    const handleDelete = (exerciseId: string) => {
+      deleteExercise(exerciseId);
+      router.refresh();
+    };
+
   return (
+    <>
+      <Popconfirm
+        title="Delete the exercise"
+        description="Are you sure to delete this exercise?"
+        onConfirm={() => handleDelete(exercise.id)}
+        placement="bottomRight"
+        okText="Yes"
+        cancelText="No"
+      >
+        <IconButton
+          icon="close"
+          size='l'
+          variant="ghost"
+        />
+      </Popconfirm>
 
-        <Flex direction="column" fillWidth paddingY='l'>
-          <RevealFx
-            speed="medium"
-            delay={0}
-            translateY={0}
-          >
-            <Flex fillWidth paddingBottom='xl' justifyContent='center'>
-              <Text variant="display-default-xxs">
-                To get started set a goal for this exercise for the calendar year
-              </Text>
-            </Flex>
-          </RevealFx>
+      <Flex direction="column" fillWidth paddingY='l'>
+        <RevealFx
+          speed="medium"
+          delay={0}
+          translateY={0}
+        >
+          <Flex fillWidth paddingBottom='xl' justifyContent='center'>
+            <Text variant="display-default-xxs">
+              To get started set a goal for this exercise for the calendar year
+            </Text>
+          </Flex>
+        </RevealFx>
 
 
-          <Form
-            form={form}
-            name={`set-goal-${exercise.id}`}
-            onFinish={handleSubmit}
-            initialValues={{ ["goal"]: 10000 }}
-          >
-            <Form.Item name="goal" style={{ marginBottom: 0 }}>
-              <Slider autoFocus min={1000} max={50000} step={100} />
+        <Form
+          form={form}
+          name={`set-goal-${exercise.id}`}
+          onFinish={handleSubmit}
+          initialValues={{ ["goal"]: 10000 }}
+        >
+          <Form.Item name="goal" style={{ marginBottom: 0 }}>
+            <Slider autoFocus min={1000} max={50000} step={100} />
+          </Form.Item>
+          <Flex fillWidth justifyContent='center'>
+            <Text variant="label-default-m" onBackground="neutral-medium" style={{ fontStyle: "italic" }}>
+              (number of total reps)
+            </Text>
+          </Flex>
+
+          <Flex fillWidth justifyContent='center' paddingTop='l'>
+            <Form.Item style={{ paddingTop: "8px" }}>
+              <Button type="primary" htmlType="submit" loading={isLoading}>SET</Button>
             </Form.Item>
-            <Flex fillWidth justifyContent='center'>
-              <Text variant="label-default-m" onBackground="neutral-medium" style={{ fontStyle: "italic" }}>
-                (number of total reps)
-              </Text>
-            </Flex>
 
-            <Flex fillWidth justifyContent='center' paddingTop='l'>
-              <Form.Item style={{ paddingTop: "8px" }}>
-                <Button type="primary" htmlType="submit" loading={isLoading}>SET</Button>
-              </Form.Item>
-
-            </Flex>
-          </Form>
+          </Flex>
+        </Form>
 
 
-        </Flex>
+      </Flex>
+    </>
 
   );
 });

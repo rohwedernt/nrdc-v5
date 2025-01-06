@@ -5,17 +5,20 @@ import { Flex } from '../../generic/Flex';
 import { Text } from '../../generic';
 import styles from './Calisthenic.module.scss';
 import classNames from 'classnames';
+import { formatNumber } from '@/app/utils/utils';
 
 
 type CalisthenicCardProps = {
   name: string;
   count: number;
+  description?: string;
   shadow?: boolean;
 };
 
 const CalisthenicCard = forwardRef<HTMLDivElement, CalisthenicCardProps>(({
   name,
   count,
+  description,
   shadow = false
 }, ref) => {
   return (
@@ -36,9 +39,14 @@ const CalisthenicCard = forwardRef<HTMLDivElement, CalisthenicCardProps>(({
           </Text>
         </Flex>
         <Text
-          variant="display-default-s" onBackground="neutral-strong" align='center' paddingY='m'>
-          {count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          variant="body-default-s" onBackground="neutral-weak" align='center'>
+          {description}
         </Text>
+        <Text
+          variant="display-default-s" onBackground="neutral-strong" align='center' paddingY='m'>
+          {formatNumber(count)}
+        </Text>
+
       </Flex>
     </Flex>
   );

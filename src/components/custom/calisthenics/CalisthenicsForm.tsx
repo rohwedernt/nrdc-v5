@@ -66,7 +66,7 @@ const CalisthenicsForm = forwardRef<HTMLDivElement, CalisthenicsFormProps>(({
       <Form
         layout="inline"
         form={form}
-        name={`add-exercise-${exercise.id}`}
+        name={`add-reps-${exercise.id}`}
         onFinish={handleSubmit}
         variant="filled"
         initialValues={{
@@ -78,7 +78,6 @@ const CalisthenicsForm = forwardRef<HTMLDivElement, CalisthenicsFormProps>(({
         <Form.Item
           name="count"
           label="Reps"
-          colon={false}
           required={false}
           rules={[{ required: true }]}
           style={{ paddingTop: "8px" }}
@@ -88,7 +87,6 @@ const CalisthenicsForm = forwardRef<HTMLDivElement, CalisthenicsFormProps>(({
         <Form.Item
           name="date"
           label="Date"
-          colon={false}
           required={false}
           rules={[{ required: true }]}
           style={{ paddingTop: "8px" }}
