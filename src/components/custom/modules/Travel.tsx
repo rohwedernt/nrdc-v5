@@ -17,7 +17,7 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
       fillWidth
       style={{ minHeight: "150px" }}
     >
-      <ModuleLink
+      <div
         style={{ height: '150px' }}
         href={'/travel'}
         className={styles.hoverlink}
@@ -39,7 +39,7 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
           alt="travel"
           style={{ cursor: "pointer" }}
         />
-      </ModuleLink>
+      </div>
     </Flex>
   );
 });

@@ -31,6 +31,7 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
       case 'profile':
         return console.log("Action not implemented");
       case 'settings':
+        console.log('Settings option selected, current dialog state:', isSettingsDialogOpen);
         return setIsSettingsDialogOpen(true);
       case 'logout':
         return signOut({ redirectTo: "/home" });
@@ -40,6 +41,7 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
   }
 
   const handleSettingsDialogClose = () => {
+    console.log('Dialog closing, current state:', isSettingsDialogOpen);
     setIsSettingsDialogOpen(false);
     router.refresh();
   }
@@ -86,6 +88,7 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
               value: 'logout'
             }
           ]}
+          dropdownProps={{ onOptionSelect: handleOptionSelect }}
         />
       </Flex>
 

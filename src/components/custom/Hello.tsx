@@ -7,7 +7,7 @@ import { Arrow } from '../generic/Arrow';
 import { Button } from '../generic/Button';
 import { Dialog } from '../generic/Dialog';
 import { Grid } from '../generic/Grid';
-import { Avatar } from '../generic/Avatar';
+import { ProfileImage } from '../generic/ProfileImage';
 import { IconButton } from '../generic/IconButton';
 import { Text } from '../generic/Text';
 import { social } from "@/components/resources/config"
@@ -59,7 +59,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
                 <Text className={styles.text} variant="body-default-s">When I'm not helping teams build things that (hopefully) don't crash in production, I'm making music—a passion I've been chasing for over 20 years. I love cooking elaborate meals just to use my favorite knife and justify caring for my cast iron like it's a member of the family. I am always searching for the next historical fiction to read, because apparently I enjoy stress but prefer it set in the 12th century. I'm married to an incredible partner, part of a wonderfully chaotic extended family, learning Spanish, and always planning the next travel adventure to keep perspective wide and curiosity sharp.</Text>
               </div>
             </Flex>
-            <Avatar size="xl" src="/images/profile.jpg" />
+            <ProfileImage src="/images/profile.jpg" />
           </Flex>
           <Flex direction="row" justifyContent="space-evenly" paddingTop='32' fillWidth>
             <IconButton

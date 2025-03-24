@@ -228,7 +228,7 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
         </Grid>
         <FoodLog userId={userId} isDialogOpen={isLogDialogOpen} setIsDialogOpen={setIsLogDialogOpen} />
         <MoreInfoDialog
-title="🍎 How To"
+title="How To"
 text={`### 🥦 What is the Nutrition Tracker and Why Use It?
 
   ---

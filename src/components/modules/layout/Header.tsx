@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { Flex, Logo, NavIcon, SmartLink, ToggleButton } from '@/components/generic';
+import { Flex, Logo, NavIcon, SmartLink, ToggleButton, Dropdown } from '@/components/generic';
 
 
 interface HeaderProps {}
@@ -11,6 +11,34 @@ interface HeaderProps {}
 const Header: React.FC<HeaderProps> = ({}) => {
     const session = useSession();
     const pathname = usePathname() ?? '';
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const handleMobileMenuToggle = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const handleOptionSelect = (option: any) => {
+        setIsMobileMenuOpen(false);
+        // The navigation will be handled by the href in the option
+    };
+
+    const mobileNavOptions = [
+        {
+            label: 'Home',
+            value: 'home',
+            link: '/home'
+        },
+        {
+            label: 'Travel',
+            value: 'travel',
+            link: '/travel'
+        },
+        {
+            label: 'Health',
+            value: 'health',
+            link: '/health'
+        }
+    ];
 
     return (
         <Flex
@@ -25,9 +53,23 @@ const Header: React.FC<HeaderProps> = ({}) => {
             <Flex
                 show="s"
                 gap="4"
-                alignItems="center">
-                <NavIcon />
-                {/* <Logo wordmark={false} /> */}
+                alignItems="center"
+                position="relative">
+                <NavIcon onClick={handleMobileMenuToggle} />
+                {isMobileMenuOpen && (
+                    <Flex
+                        style={{
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            zIndex: 100
+                        }}>
+                        <Dropdown
+                            options={mobileNavOptions}
+                            onOptionSelect={handleOptionSelect}
+                        />
+                    </Flex>
+                )}
             </Flex>
             {session.status === "authenticated" ? (
                 <Flex

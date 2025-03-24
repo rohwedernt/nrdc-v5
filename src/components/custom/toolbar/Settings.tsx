@@ -25,13 +25,14 @@ const Settings = forwardRef<HTMLDivElement, SettingsProps>(({ }, ref) => {
         variant="ghost"
       />
 
-      {/* Card Dialog */}
+      {/* Settings Dialog */}
       <Dialog
         onClose={() => setIsSettingsDialogOpen(false)}
         isOpen={isSettingsDialogOpen}
         title="Settings"
+        wide
       >
-        <Flex direction='column' gap="l" padding='l'>
+        <Flex direction='column' gap="l" padding='l' style={{ maxWidth: '100%', overflowX: 'hidden' }}>
           {/* <ThemeSelect /> */}
           <FeatureSwitch
             label="Enable Feature 1"
