@@ -13,7 +13,7 @@
     align-items: stretch;
     position: relative;
     border: 1px solid var(--neutral-border-medium);
-    background-color: var(--neutral-alpha-weak);
+    background-color: var(--neutral-background-medium);
     backdrop-filter: var(--backdrop-filter);
     border-radius: var(--radius-l);
     //min-height: var(--static-space-56);
@@ -25,7 +25,7 @@
     }
 
     &:focus-within, &:hover {
-        background-color: var(--neutral-alpha-medium);
+        background-color: var(--neutral-background-strong);
     }
 
     &:has(.labelAsPlaceholder) {
@@ -121,6 +121,9 @@
     color: var(--neutral-on-background-strong);
     padding: 0 var(--static-space-16);
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
     &.labelAsPlaceholder {
         padding-top: 0;
