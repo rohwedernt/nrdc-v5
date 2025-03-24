@@ -1,0 +1,130 @@
+// Ant Design Theme Overrides
+[data-theme="dark"] {
+  // Form elements
+  .ant-input,
+  .ant-input-number-input,
+  .ant-select-selector,
+  .ant-picker {
+    background-color: var(--neutral-background-medium) !important;
+    border-color: var(--neutral-border-medium) !important;
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  // Form labels
+  .ant-form-item-label > label {
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  // TreeSelect dropdown
+  .ant-select-tree {
+    background-color: var(--neutral-background-medium) !important;
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-select-tree-node-content-wrapper {
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-select-tree-node-content-wrapper:hover {
+    background-color: var(--neutral-background-weak) !important;
+  }
+
+  // DatePicker dropdown
+  .ant-picker-dropdown {
+    background-color: var(--neutral-background-medium) !important;
+  }
+
+  .ant-picker-panel-container {
+    background-color: var(--neutral-background-medium) !important;
+  }
+
+  .ant-picker-cell {
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-picker-cell-inner {
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-picker-cell-inner:hover {
+    background-color: var(--neutral-background-weak) !important;
+  }
+
+  // Tabs
+  .ant-tabs-tab {
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #a2cf6e !important;
+  }
+
+  .ant-tabs-ink-bar {
+    background-color: #a2cf6e !important;
+  }
+
+  // Buttons
+  .ant-btn {
+    background-color: var(--neutral-background-medium) !important;
+    border-color: var(--neutral-border-medium) !important;
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-btn-primary {
+    background-color: #a2cf6e !important;
+    border-color: #a2cf6e !important;
+    color: #000000 !important;
+  }
+
+  .ant-btn-primary:hover {
+    background-color: #8ab85c !important;
+    border-color: #8ab85c !important;
+  }
+
+  // Modal/Dialog
+  .ant-modal-content,
+  .ant-modal-header {
+    background-color: var(--neutral-background-medium) !important;
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-modal-title {
+    color: var(--neutral-on-background-strong) !important;
+  }
+
+  .ant-modal-close-x {
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  // Table
+  .ant-table {
+    background-color: var(--neutral-background-medium) !important;
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-table-thead > tr > th {
+    background-color: var(--neutral-background-strong) !important;
+    color: var(--neutral-on-background-strong) !important;
+  }
+
+  .ant-table-tbody > tr > td {
+    color: var(--neutral-on-background-medium) !important;
+  }
+
+  .ant-table-tbody > tr:hover > td {
+    background-color: var(--neutral-background-weak) !important;
+  }
+
+  // List
+  .ant-list {
+    background-color: var(--neutral-background-medium) !important;
+  }
+
+  .ant-list-bordered .ant-list-item {
+    border-color: var(--neutral-border-medium) !important;
+  }
+
+  .ant-list-bordered .ant-list-item:last-child {
+    border-bottom: 1px solid var(--neutral-border-medium) !important;
+  }
+} 

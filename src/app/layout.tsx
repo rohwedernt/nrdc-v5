@@ -11,6 +11,7 @@ import { auth } from "@/app/auth"
 
 import { baseURL, style, meta, og, schema, social } from "@/components/resources/config"
 import { Background, Flex } from '@/components/generic'
+import { LoadingProvider } from '@/components/generic/LoadingProvider';
 
 import { Roboto_Mono, Montserrat, Pacifico } from 'next/font/google';
 import { getUserSettings } from "@/db/queries/select";
@@ -153,7 +154,7 @@ export default async function RootLayout({
 				fillHeight background="page"
 				data-neutral={style.neutral} data-brand={style.brand} data-accent={style.accent}
 				data-border={style.border}
-				data-theme={userSettings.theme} //data-theme={style.theme}
+				data-theme={userSettings.theme}
 				data-solid={style.solid} data-solid-style={style.solidStyle}
 				data-surface={style.surface} data-transition={style.transition}
 				data-scaling={style.scaling}
@@ -182,7 +183,9 @@ export default async function RootLayout({
 						flex={1} direction="column">
 						<SessionProvider>
 							<DynamicThemeWrapper>
-								{children}
+								<LoadingProvider>
+									{children}
+								</LoadingProvider>
 							</DynamicThemeWrapper>
 						</SessionProvider>
 					</Flex>

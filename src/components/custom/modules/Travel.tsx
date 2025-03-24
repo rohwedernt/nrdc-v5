@@ -3,8 +3,7 @@
 import React, { forwardRef } from 'react';
 import { Flex, SmartImage, Badge } from '../../generic';
 import styles from './Travel.module.scss';
-import Link from 'next/link';
-
+import { ModuleLink } from '../../generic/ModuleLink';
 
 type TravelProps = {};
 
@@ -18,12 +17,12 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
       fillWidth
       style={{ minHeight: "150px" }}
     >
-      <Link
+      <ModuleLink
         style={{ height: '150px' }}
         href={'/travel'}
         className={styles.hoverlink}
         id="travel_module"
-        >
+      >
         <Badge
           arrow
           effect
@@ -40,7 +39,7 @@ const Travel = forwardRef<HTMLDivElement, TravelProps>(({ }, ref) => {
           alt="travel"
           style={{ cursor: "pointer" }}
         />
-      </Link>
+      </ModuleLink>
     </Flex>
   );
 });

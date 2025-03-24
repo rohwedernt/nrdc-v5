@@ -3,8 +3,7 @@
 import React, { forwardRef } from 'react';
 import { Flex, Text, SmartImage, Badge } from '../../generic';
 import styles from './Health.module.scss';
-import Link from 'next/link';
-
+import { ModuleLink } from '../../generic/ModuleLink';
 
 type HealthModuleProps = {};
 
@@ -18,12 +17,12 @@ const HealthModule = forwardRef<HTMLDivElement, HealthModuleProps>(({ }, ref) =>
       fillWidth
       style={{ minHeight: "150px" }}
     >
-      <Link
+      <ModuleLink
         style={{ height: '150px' }}
         href={'/health'}
         className={styles.hoverlink}
         id="travel_module"
-        >
+      >
         <Badge
           effect
           className={styles.healthbadge}
@@ -37,7 +36,7 @@ const HealthModule = forwardRef<HTMLDivElement, HealthModuleProps>(({ }, ref) =>
           alt="travel"
           style={{ cursor: "pointer" }}
         />
-      </Link>
+      </ModuleLink>
     </Flex>
   );
 });

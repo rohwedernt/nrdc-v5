@@ -79,8 +79,8 @@ const ExerciseLog = forwardRef<HTMLDivElement, ExerciseLogProps>(({
         renderItem={(item) => (
           <List.Item>
             <Flex fillWidth justifyContent='space-between' alignItems='center' paddingX='l'>
-              <Text>{dayjs(item.timestamp).format('ddd, MMMM DD')}</Text>
-              <Text>{item.count}</Text>
+              <Text onBackground="neutral-medium">{dayjs(item.timestamp).format('ddd, MMMM DD')}</Text>
+              <Text onBackground="neutral-medium">{item.count}</Text>
             </Flex>
           </List.Item>
         )}

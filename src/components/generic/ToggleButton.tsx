@@ -2,6 +2,7 @@
 
 import React, { forwardRef, ReactNode, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 import Link from 'next/link';
+import { useLoading } from './LoadingProvider';
 
 import { Icon } from '.';
 import styles from './ToggleButton.module.scss';
@@ -41,9 +42,18 @@ const ToggleButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     style,
     children,
     href,
+    onClick,
     ...props
 }, ref) => {
+    const { setIsLoading } = useLoading();
     const iconSize = size === 'l' ? 'm' : 's';
+
+    const handleClick = (e: React.MouseEvent) => {
+        if (href && !isExternalLink(href)) {
+            setIsLoading(true);
+        }
+        onClick?.(e as any);
+    };
 
     const content = (
         <>
@@ -73,6 +83,7 @@ const ToggleButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         style: { ...style, textDecoration: 'none' },
         'aria-pressed': selected,
         tabIndex: 0,
+        onClick: handleClick,
     };
 
     if (href) {

@@ -4,6 +4,7 @@ import React, { forwardRef, ReactNode } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { Icon } from '.';
+import { useLoading } from './LoadingProvider';
 
 interface SmartLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     href: string;
@@ -27,9 +28,18 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(({
         selected,
         unstyled = false,
         children,
+        onClick,
         ...props
     }, ref) => {
+        const { setIsLoading } = useLoading();
         const isExternal = href.startsWith('http') || href.startsWith('//');
+
+        const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+            if (!isExternal) {
+                setIsLoading(true);
+            }
+            onClick?.(e);
+        };
 
         const content = (
             <>
@@ -56,6 +66,7 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(({
                 color: 'inherit',
                 ...style
             },
+            onClick: handleClick,
             ...props
         };
 
@@ -74,8 +85,7 @@ const SmartLink = forwardRef<HTMLAnchorElement, SmartLinkProps>(({
         return (
             <Link
                 href={href}
-                {...commonProps}
-                {...props}>
+                {...commonProps}>
                 {content}
             </Link>
         );
