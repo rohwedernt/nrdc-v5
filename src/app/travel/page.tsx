@@ -10,8 +10,7 @@ export default function Travel() {
       position="relative"
       style={{ 
         height: "calc(100vh - 60px)",
-        overflow: "hidden",
-        //marginTop: "56px"
+        overflow: "hidden"
       }}
     >
       <Flex 
@@ -25,11 +24,17 @@ export default function Travel() {
         <MasonryGrid />
       </Flex>
       <Flex 
-        className={styles.overlay}
+        position="absolute"
         direction="column"
         alignItems="center"
         justifyContent="center"
         gap="l"
+        style={{ 
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 1
+        }}
       >
         <Text
           variant="display-strong-xxl"

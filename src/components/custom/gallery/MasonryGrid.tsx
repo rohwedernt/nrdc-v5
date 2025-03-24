@@ -21,14 +21,16 @@ export default function MasonryGrid() {
             style={{ height: "100%" }}
         >
             {gallery.images.slice(0, 6).map((image, index) => (
-                <SmartImage
-                    key={index}
-                    radius="m"
-                    aspectRatio={image.orientation === "horizontal" ? "16 / 9" : "9 / 16"}
-                    src={image.src}
-                    alt={image.alt}
-                    className={styles.gridItem}
-                />
+                <div key={index} className={styles.imageWrapper}>
+                    <SmartImage
+                        radius="m"
+                        aspectRatio={image.orientation === "horizontal" ? "16 / 9" : "9 / 16"}
+                        src={image.src}
+                        alt={image.alt}
+                        className={styles.gridItem}
+                    />
+                    <div className={styles.darkOverlay} />
+                </div>
             ))}
         </Masonry>
     );
