@@ -2,6 +2,8 @@
     @media (--s) {
         //align-items: end;
     }
+    position: relative;
+    z-index: 1;
 }
 
 .heading {
@@ -11,4 +13,19 @@
     @media (--xs) {
         text-align: right;
     }
+    position: relative;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, 
+        rgb(156, 162, 203) 0%,
+        rgba(255, 255, 255, 0.85) 50%,
+        rgba(20, 38, 34, .8) 90%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    letter-spacing: 0.02em;
 }
