@@ -17,8 +17,10 @@ export default function MasonryGrid() {
         <Masonry
             breakpointCols={breakpointColumnsObj}
             className={styles.masonryGrid}
-            columnClassName={styles.masonryGridColumn}>
-            {gallery.images.map((image, index) => (
+            columnClassName={styles.masonryGridColumn}
+            style={{ height: "100%" }}
+        >
+            {gallery.images.slice(0, 6).map((image, index) => (
                 <SmartImage
                     key={index}
                     radius="m"

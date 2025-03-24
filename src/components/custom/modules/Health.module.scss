@@ -19,11 +19,12 @@
 
 .hoverlink {
     cursor: pointer;
-    transition: outline-color 0.6s ease, outline-width 0.6s ease;
+    transition: outline-color 0.6s ease, outline-width 0.6s ease, filter 0.3s ease;
 
     &:hover,
     &:focus {
         outline: 4px solid var(--solid);
         border-radius: 1.1rem;
+        filter: brightness(1.2) saturate(1.2);
     }
 }
