@@ -2,8 +2,10 @@
 
 import React, { forwardRef, useEffect, useState } from 'react';
 import { Flex, Text } from '../../generic';
+import styles from './Calisthenic.module.scss';
 import { List } from 'antd';
 import dayjs from 'dayjs';
+
 
 export type ExerciseLogType = {
   id: string;
@@ -63,7 +65,7 @@ const ExerciseLog = forwardRef<HTMLDivElement, ExerciseLogProps>(({
   };
 
   return (
-    <Flex fillWidth direction="column" style={{ gridColumn: "span 3" }}>
+    <Flex fillWidth direction="column" className={styles.logWrapper}>
       <List
         loading={isLoading}
         header={<Flex justifyContent='center'>

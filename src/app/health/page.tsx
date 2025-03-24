@@ -9,7 +9,7 @@ import { getExercisesByUser } from "@/db/queries/select";
 import { addExercise } from "@/db/queries/insert";
 
 
-export async function fetchOrCreateExercises(userId?: string): Promise<Exercise[]> {
+async function fetchOrCreateExercises(userId?: string): Promise<Exercise[]> {
   if (!userId) {
     console.log("No userId when invoking fetchOrCreateExercises");
     return [];

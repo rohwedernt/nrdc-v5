@@ -1,7 +1,7 @@
 'use client';
 
 import React, { forwardRef, useEffect, useState } from 'react';
-import { Grid, Spinner } from '../../generic';
+import { Flex, Grid, Spinner } from '../../generic';
 import { CalisthenicCard } from './CalisthenicCard';
 import dayjs from 'dayjs';
 import { ExerciseLog } from './ExerciseLog';
@@ -104,7 +104,9 @@ const CalisthenicStats = forwardRef<HTMLDivElement, CalisthenicStatsProps>(({
       fillWidth
       gap="20">
       {isLoading ? (
-        <Spinner size="xl" />
+        <Flex fillWidth justifyContent='center'>
+          <Spinner size="xl" />
+        </Flex>
       ) : (
         <>
           <CalisthenicCard name="Completed" count={count} shadow />

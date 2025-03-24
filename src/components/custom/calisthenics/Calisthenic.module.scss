@@ -21,3 +21,19 @@
 .span3 {
   grid-column: span 3;
 }
+
+.logWrapper {
+  grid-column: span 3;
+
+  @media (--m) {
+    grid-column: span 2;
+  }
+
+  @media (--s) {
+    grid-column: span 1;
+  }
+
+  @media (--xs) {
+    grid-column: span 1;
+  }
+}
