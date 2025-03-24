@@ -1,8 +1,8 @@
 'use client';
 
-import React, { forwardRef, useEffect, useState } from 'react';
-import { Dialog, Flex, Spinner } from '../generic';
-import { List } from 'antd';
+import React, { forwardRef } from 'react';
+import { Dialog } from '../generic';
+import Markdown from 'react-markdown';
 
 
 type MoreInfoDialogProps = {
@@ -25,7 +25,7 @@ const MoreInfoDialog = forwardRef<HTMLDivElement, MoreInfoDialogProps>(({
       title={title}
       wide
     >
-      {text}
+      <Markdown>{text}</Markdown>
     </Dialog>
   );
 });

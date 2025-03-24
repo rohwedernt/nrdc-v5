@@ -116,13 +116,16 @@ const Dialog: React.FC<DialogProps> = forwardRef<HTMLDivElement, DialogProps>(({
             role="dialog"
             aria-modal="true"
             aria-labelledby="dialog-title"
-            //onClick={onClose}
+            onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                    onClose();
+                }
+            }}
             >
             <Flex
                 style={{ maxHeight: '100%', minWidth: wide ? '75%' : undefined }}
                 className={classNames({[styles.dialoganimate]: animate}, {[styles.dialog]: !animate}, { [styles.open]: isAnimating })}
                 ref={dialogRef}
-                //fillWidth
                 radius="s"
                 direction="column">
                 <Flex

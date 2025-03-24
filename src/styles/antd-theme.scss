@@ -8,6 +8,11 @@
     background-color: var(--neutral-background-medium) !important;
     border-color: var(--neutral-border-medium) !important;
     color: var(--neutral-on-background-medium) !important;
+
+    &::placeholder {
+      color: var(--neutral-on-background-weak) !important;
+      opacity: 0.7 !important;
+    }
   }
 
   // Form labels
@@ -19,14 +24,32 @@
   .ant-select-tree {
     background-color: var(--neutral-background-medium) !important;
     color: var(--neutral-on-background-medium) !important;
+
+    .ant-select-tree-node-content-wrapper {
+      color: var(--neutral-on-background-medium) !important;
+    }
+
+    .ant-select-tree-node-content-wrapper:hover {
+      background-color: var(--neutral-background-weak) !important;
+    }
+
+    .ant-select-tree-switcher {
+      color: var(--neutral-on-background-medium) !important;
+    }
+
+    .ant-select-tree-title {
+      color: var(--neutral-on-background-medium) !important;
+    }
+
+    .ant-select-tree-node-selected {
+      background-color: var(--neutral-background-weak) !important;
+    }
   }
 
-  .ant-select-tree-node-content-wrapper {
-    color: var(--neutral-on-background-medium) !important;
-  }
-
-  .ant-select-tree-node-content-wrapper:hover {
-    background-color: var(--neutral-background-weak) !important;
+  // TreeSelect placeholder
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-placeholder {
+    color: var(--neutral-on-background-weak) !important;
+    opacity: 0.7 !important;
   }
 
   // DatePicker dropdown
@@ -117,7 +140,7 @@
 
   // List
   .ant-list {
-    background-color: var(--neutral-background-medium) !important;
+    background-color: transparent !important;
   }
 
   .ant-list-bordered .ant-list-item {
@@ -126,5 +149,81 @@
 
   .ant-list-bordered .ant-list-item:last-child {
     border-bottom: 1px solid var(--neutral-border-medium) !important;
+  }
+
+  .ant-list-item {
+    border-color: var(--neutral-on-background-weak);
+    
+    .ant-list-item-meta {
+      .ant-list-item-meta-title {
+        color: var(--neutral-on-background) !important;
+        
+        > span {
+          color: var(--neutral-on-background) !important;
+        }
+      }
+      
+      .ant-list-item-meta-description {
+        color: var(--neutral-on-background-medium) !important;
+        
+        > span {
+          color: var(--neutral-on-background-medium) !important;
+        }
+      }
+    }
+  }
+
+  .ant-pagination {
+    .ant-pagination-item {
+      background: transparent;
+      border-color: var(--neutral-on-background-weak);
+      
+      a {
+        color: var(--neutral-on-background) !important;
+      }
+      
+      &:hover {
+        border-color: var(--neutral-on-background);
+      }
+    }
+    
+    .ant-pagination-item-active {
+      background: var(--neutral-on-background-weak);
+      border-color: var(--neutral-on-background-weak);
+      
+      a {
+        color: var(--neutral-on-background) !important;
+      }
+    }
+    
+    .ant-pagination-prev,
+    .ant-pagination-next {
+      button {
+        background: transparent;
+        border-color: var(--neutral-on-background-weak);
+        color: var(--neutral-on-background) !important;
+      }
+      
+      &:hover button {
+        border-color: var(--neutral-on-background);
+      }
+
+      .anticon {
+        color: var(--neutral-on-background) !important;
+      }
+    }
+
+    .ant-pagination-options {
+      .ant-select {
+        .ant-select-selector {
+          background: transparent !important;
+          border-color: var(--neutral-on-background-weak) !important;
+        }
+        
+        .ant-select-selection-item {
+          color: var(--neutral-on-background) !important;
+        }
+      }
+    }
   }
 } 

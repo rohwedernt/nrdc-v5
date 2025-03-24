@@ -228,8 +228,102 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
         </Grid>
         <FoodLog userId={userId} isDialogOpen={isLogDialogOpen} setIsDialogOpen={setIsLogDialogOpen} />
         <MoreInfoDialog
-          title="How to use the Nutrition Tracker"
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+title="🍎 How To"
+text={`### 🥦 What is the Nutrition Tracker and Why Use It?
+
+  ---
+
+Most nutrition apps focus on restricting foods, counting calories, or cutting out entire food groups. But that's not what this tool is about.
+
+---
+
+This nutrition tracker was designed with a different goal in mind: helping you nourish your body by ensuring you're getting the full spectrum of essential macro- and micronutrients each week. Instead of telling you what *not* to eat, this tracker helps you focus on what your body *does* need—whole, nutrient-dense foods that support energy, performance, and long-term health.
+
+---
+
+Many people unknowingly fall short on key nutrients like fiber, potassium, magnesium, omega-3 fatty acids, or phytonutrients—not because they eat poorly, but because they simply aren’t tracking what's missing in a meaningful way. That’s where this tracker comes in.
+
+---
+
+🧠 The approach is grounded in nutrition science and dietary research from fields like functional medicine, nutritional epidemiology, and public health. The default food categories and targets in this tool reflect recommendations from reputable sources such as:
+- The Harvard School of Public Health
+- The Mediterranean and DASH dietary patterns
+- Nutrient Density Index (ANDI) and other food quality scoring systems
+- Evidence-based guidelines for anti-inflammatory, gut-friendly, and cardioprotective diets
+
+---
+
+By aiming for weekly intake goals across diverse food categories—like leafy greens, cruciferous vegetables, whole grains, legumes, omega-rich foods, and fermented items—you’re giving your body the foundational inputs it needs to support:
+- Cellular repair and regeneration
+- Immune system function
+- Gut health and microbiome diversity
+- Cognitive performance
+- Hormonal balance
+- Reduced inflammation and chronic disease risk
+
+---
+
+It’s not about perfection. It’s about developing awareness, building habits, and making nutrition more holistic and less restrictive.
+
+---
+
+You can also customize your own food groups and targets if you have personal nutrition goals beyond the defaults—whether that's for athletic performance, managing specific conditions, or simply experimenting with a new way of eating.
+
+---
+
+
+---
+
+
+### 🍽️ How to Use the Nutrition Tracker
+
+---
+
+🗂 **View Your Weekly Categories**
+- The main area displays all of your nutrition categories—everything from leafy greens and proteins to nuts, seeds, and even dark chocolate.
+- Each category shows your progress for the current week, with the first number representing how many portions you've logged and the second number showing your weekly goal.
+
+---
+
+📅 **Navigate Weeks**
+- At the top of the tracker, you can select which week you want to view. This allows you to review your nutrition history and see how your habits have changed over time.
+
+---
+
+📝 **Add a Food Entry**
+- Just above the category grid, you’ll find the food submission form.
+- Type the name of the food you ate
+- Select the category it belongs to
+- Enter how many portions you had (the serving unit is shown for each category)
+- Choose the date of the entry (defaults to today, but you can backdate it)
+- Hit the submit button to log your entry—it’ll update your weekly progress immediately.
+
+---
+
+📖 **View the Food Log**
+- Click the “Log” button to view a list of all food submissions you’ve made, including dates, categories, and portion sizes.
+
+---
+
+➕ **Add Custom Categories**
+- Scroll to the bottom of your category list and click “Add Category” to create a custom nutrition target.
+- You’ll be asked to provide:
+- A category name (e.g., “Smoothies” or “Herbs & Spices”)
+- A serving unit (e.g., “servings” or “tablespoons”)
+- A weekly target goal
+
+---
+
+❌ **Delete Custom Categories**
+- To remove a category you’ve added, click the small ✕ icon on the category card.
+- (Note: Default categories cannot be deleted.)
+
+---
+
+🐞 **Report a Bug or Suggest a Feature**
+- Found something that isn’t working or have an idea to make this better?
+- Click the bug icon in the top-right corner of the page to submit feedback or request a new feature. We’d love to hear from you.
+`}
           isDialogOpen={isHelpDialogOpen}
           setIsDialogOpen={setIsHelpDialogOpen}
         />

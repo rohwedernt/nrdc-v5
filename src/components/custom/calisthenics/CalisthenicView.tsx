@@ -43,7 +43,7 @@ const CalisthenicView = forwardRef<HTMLDivElement, CalisthenicViewProps>(({
   const router = useRouter();
   const [currentExercise, setCurrentExercise] = useState<Exercise>(exercise);
   const [isHelpDialogOpen, setIsHelpDialogOpen] = useState(false);
-  
+
   const updateGoal = (newGoal: number) => {
     setCurrentExercise((prev) => ({
       ...prev,
@@ -98,8 +98,31 @@ const CalisthenicView = forwardRef<HTMLDivElement, CalisthenicViewProps>(({
           </Flex>
           <CalisthenicStats userId={userId} exerciseId={exercise.id} count={currentExercise.count} goal={currentExercise.goal || 0} />
           <MoreInfoDialog
-            title="How to use the Calisthenics Tracker"
-            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            title="How To"
+            text={`🏋️‍♂️ **Calisthenics Tracker Overview**
+
+The Calisthenics Tracker is designed to help you build long-term consistency with your workouts. Inspired by challenges like _10,000 push-ups in a year_, this simple tool keeps you motivated toward an annual rep goal.
+
+---
+
+🛠 **How It Works**
+
+- ✅ The tool starts with two default exercises: Push-ups and Crunches, each with a target of 10,000 reps per year.
+- ❌ You can remove any exercise you don't want by clicking the **X** icon in the top right corner of the exercise card.
+- ➕ Add new exercises by clicking the plus button at the top. Enter a name and target, and it’ll appear as a new tab.
+- 📝 Use the form at the top of each exercise view to log reps. The date defaults to today but you can backdate entries if needed.
+
+---
+
+📜 **Exercise Log**
+
+- Every submission is recorded in a log so you can track your consistency over time.
+
+---
+
+🐞 **Feedback?**
+
+- Use the bug icon in the top right to report issues or request features.`}
             isDialogOpen={isHelpDialogOpen}
             setIsDialogOpen={setIsHelpDialogOpen}
           />

@@ -22,15 +22,19 @@
     box-shadow: var(--shadow-xl);
     max-width: 40rem;
     transition: var(--transition-macro-medium);
-    background-image: black;
     z-index: 10;
 
     &.open {
         transform: scale(1);
         opacity: 1;
         visibility: visible;
-        background: linear-gradient(135deg, var(--brand-border-weak), var(--brand-background-weak));
-        border: 1px solid var(--static-white-medium)
+        background: linear-gradient(135deg, #E0EFFC, var(--static-white));
+        border: 1px solid var(--neutral-border-medium);
+        color: #333333;
+
+        * {
+            color: #333333;
+        }
     }
 
     // @media (--s) {
@@ -43,6 +47,7 @@
 }
 
 .title {
+    color: black;
     @media (--xs) {
         width: 100%;
         text-align: center;
