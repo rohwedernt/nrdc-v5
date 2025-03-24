@@ -9,7 +9,7 @@ import { CustomUserMenu } from './CustomUserMenu';
 
 type SignInProps = {};
 
-const SignIn = forwardRef<HTMLDivElement, SignInProps>(({}, ref) => {
+const SignIn = forwardRef<HTMLDivElement, SignInProps>(({ }, ref) => {
   const { data: session, status } = useSession(); // Adjust to match your session setup
   const [content, setContent] = useState<JSX.Element | null>(null);
   const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
@@ -82,6 +82,14 @@ const SignIn = forwardRef<HTMLDivElement, SignInProps>(({}, ref) => {
       >
         <Flex direction='column' gap="l" padding='xl'>
           <Button
+            onClick={() => signIn("github")}
+            variant="white"
+            size="l"
+            label="Sign In With Github"
+            prefixIcon="github"
+            fillWidth
+          />
+          <Button
             onClick={() => signIn("google")}
             disabled
             variant="white"
@@ -97,14 +105,6 @@ const SignIn = forwardRef<HTMLDivElement, SignInProps>(({}, ref) => {
             size="l"
             label="Sign In With Apple"
             prefixIcon="apple"
-            fillWidth
-          />
-          <Button
-            onClick={() => signIn("github")}
-            variant="white"
-            size="l"
-            label="Sign In With Github"
-            prefixIcon="github"
             fillWidth
           />
         </Flex>
