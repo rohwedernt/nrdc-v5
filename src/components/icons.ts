@@ -24,7 +24,9 @@ import {
 	HiOutlineSun,
 	HiOutlineMoon,
 	HiPencil,
-	HiClipboardDocumentList
+	HiClipboardDocumentList,
+	HiArrowTopRightOnSquare,
+	HiDocumentArrowUp
 } from "react-icons/hi2";
 
 import { HiCog } from "react-icons/hi";
@@ -76,7 +78,7 @@ export const iconLibrary: Record<string, IconType> = {
 	arrowUpRight: HiArrowUpRight,
 	minus: HiMiniMinus,
 	plus: HiMiniPlus,
-	resume: GrDocumentDownload,
+	resume: HiDocumentArrowUp,
 	email: MdOutlineEmail,
 	code: BiCodeCurly,
 	music: HiOutlineMusicalNote,
@@ -91,5 +93,6 @@ export const iconLibrary: Record<string, IconType> = {
 	load: IoReload,
 	log: HiClipboardDocumentList,
 	exercise: GiJumpingRope,
-	bug: AiFillBug
+	bug: AiFillBug,
+	tab: HiArrowTopRightOnSquare
 };

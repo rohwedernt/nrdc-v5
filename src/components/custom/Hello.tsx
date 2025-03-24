@@ -94,7 +94,9 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
               className={styles.icon}
             />
             <IconButton
-              onClick={()=>{}}
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               icon="resume"
               size="l"
               tooltip="Resume"
