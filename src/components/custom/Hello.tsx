@@ -19,19 +19,6 @@ type HelloProps = {};
 const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
   const [isHelloDialogOpen, setIsHelloDialogOpen] = useState(false);
 
-  useEffect(() => {
-    if (isHelloDialogOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    // Cleanup function to ensure we restore scroll when component unmounts
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isHelloDialogOpen]);
-
   return (
     <>
       <Flex fillWidth justifyContent='center' paddingBottom='xl'>
@@ -55,15 +42,17 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
         title="Nate Rohweder"
         data-border="conservative"
         animate
+        wide
       >
         <Grid
           columns="repeat(1, 1fr)"
           tabletColumns="1col"
           mobileColumns="1col"
           fillWidth
-          gap="s">
-          <Flex className={styles.wrapper} gap="s" direction="row" alignItems="center" fillWidth>
-            <Flex direction="column" justifyContent='center' fillWidth>
+          gap="s"
+          style={{ width: '100%', maxWidth: '100%' }}>
+          <Flex className={styles.wrapper} style={{ width: '100%' }}>
+            <Flex direction="column" justifyContent='center' fillWidth style={{ flex: 1 }}>
               <div className={styles.textContainer}>
                 <Text className={styles.text} variant="body-default-s">I'm a software engineering leader who believes that great teams build great systems—and that good management is about more than just process and delivery. It's about coaching humans to grow, thrive, and do the best work of their lives.</Text>
                 <Text className={styles.text} variant="body-default-s">I've led teams across the stack, coached people of all levels through growth, helped rewrite platforms without (completely) breaking everything, worked side by side with product and design teams, overhauled hiring systems and helped teams find clarity in chaos.</Text>

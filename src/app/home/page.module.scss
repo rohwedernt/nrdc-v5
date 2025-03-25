@@ -1,12 +1,15 @@
 .container {
+
   @media (--xs) {
     flex-direction: column;
+    padding-bottom: 40px;
   }
 }
 
 .logo {
   padding-right: var(--responsive-space-xxl);
   padding-left: var(--responsive-space-xxl);
+  min-height: 200px;
 
   @media (--s) {
     padding-left: 0;
@@ -15,6 +18,7 @@
   }
 
   @media (--xs) {
+    min-height: 100px;
     padding-left: 0;
   }
 }

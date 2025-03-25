@@ -43,7 +43,7 @@ export default function Home() {
 						alignItems='end'
 						//paddingTop="40"
 						className={styles.logo}
-						style={{ maxWidth: "100%", minHeight: "200px" }}
+						style={{ maxWidth: "100%" }}
 					>
 						<Logo size="xxl" icon={false} style={{ zIndex: '1' }} />
 					</Flex>

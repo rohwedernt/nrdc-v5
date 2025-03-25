@@ -1,8 +1,9 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { Flex, SmartImage } from '.';
+import { Flex } from '.';
 import styles from './ProfileImage.module.scss';
+import Image from 'next/image';
 
 interface ProfileImageProps {
     src: string;
@@ -26,23 +27,20 @@ const ProfileImage: React.FC<ProfileImageProps> = forwardRef<HTMLDivElement, Pro
             border="neutral-strong"
             borderStyle="solid-1"
             background="surface"
+            className={`profile-image ${styles.profileImage} ${className || ''}`}
             style={{
-                ...style,
                 width: '160px',
-                height: '40vh'
+                height: '40vh',
+                ...style
             }}
-            className={`${styles.profileImage} ${className || ''}`}>
-            <SmartImage
-                radius="s"
+        >
+            <Image
                 src={src}
-                fill
                 alt="Profile"
-                sizes="160px"
-                className={styles.image}
-                style={{
-                    width: '100%',
-                    height: '100%'
-                }}
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, 200px"
+                priority
             />
         </Flex>
     );
