@@ -74,16 +74,27 @@ export async function GET(req: NextRequest) {
       // Calculate daily record
       const dailyRecord = Math.max(...Object.values(dailyCounts));
 
-      // Calculate current streak
+      // Get all dates in the current year up to today
+      const allDatesInYear: string[] = [];
+      let currentDate = dayjs(currentYearStart);
+      const endDate = dayjs(today);
+      
+      while (currentDate.isBefore(endDate) || currentDate.isSame(endDate, 'day')) {
+        allDatesInYear.push(currentDate.startOf('day').toISOString());
+        currentDate = currentDate.add(1, 'day');
+      }
+
+      // Calculate current and longest streaks
       let currentStreak = 0;
-      const sortedDays = Object.keys(dailyCounts).sort(); // Oldest to newest
-      const yesterday = dayjs().subtract(1, "day").startOf("day");
+      let longestStreak = 0;
+      let tempStreak = 0;
 
-      for (let i = sortedDays.length - 1; i >= 0; i--) {
-        const currentDay = dayjs(sortedDays[i]);
-        const expectedDay = yesterday.subtract(currentStreak, "day");
+      // Reverse the dates array to start from most recent
+      const reversedDates = [...allDatesInYear].reverse();
 
-        if (currentDay.isSame(expectedDay, "day") && dailyCounts[sortedDays[i]] > 0) {
+      // Calculate current streak (from most recent)
+      for (const date of reversedDates) {
+        if (dailyCounts[date]) {
           currentStreak++;
         } else {
           break;
@@ -91,25 +102,22 @@ export async function GET(req: NextRequest) {
       }
 
       // Calculate longest streak
-      let longestStreak = 0;
-      let tempStreak = 0;
-
-      for (let i = 0; i < sortedDays.length; i++) {
-        if (dailyCounts[sortedDays[i]] > 0) {
+      for (const date of allDatesInYear) {
+        if (dailyCounts[date]) {
           tempStreak++;
           longestStreak = Math.max(longestStreak, tempStreak);
         } else {
-          tempStreak = 0; // Reset the streak
+          tempStreak = 0;
         }
       }
 
       // Return the stats
       return NextResponse.json(
         {
-          dailyAverage: Math.ceil(dailyAverage), // Rounded up
+          dailyAverage: Math.ceil(dailyAverage),
           dailyRecord,
-          currentStreak: currentStreak > 0 ? currentStreak - 1 : currentStreak,
-          longestStreak: longestStreak - 1,
+          currentStreak: currentStreak,
+          longestStreak: longestStreak,
         },
         { status: 200 }
       );
