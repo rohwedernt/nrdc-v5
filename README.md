@@ -1,48 +1,105 @@
-# **Once UI for Next.js**
+# Nate Rohweder Dot Com
 
-<span style="font-size: 22px;">Once UI is a lightweight, versatile design system with easy customization and practical components.
-<br>
+A personal playground for software, music, health data, bloggy vibes, and the occasional existential crisis — all built on a modern stack with Next.js, TypeScript, PostCSS, Drizzle, and Vercel
 
-![Once UI](public/images/cover.png)
+## 🧹 Features
 
-<span style="font-size: 18px;">Start building your Next.js app in minutes with:</span> 
-* **A robust token and style system** that simplifies customization and ensures consistency. 
-* **A copy-and-paste component library** that integrates seamlessly into your project.
-* **Interactive documentation** to apply your branding and set component properties.
-<br><br>
+Sure, it's got the résumé stuff, but it's also got *actual tools* you can use — and some fun stuff just because. Here’s what’s inside:
 
-# **Documentation**
-The documentation is available at [once-ui.com/docs](https://once-ui.com/docs).
-<br><br>
+- 🥦 **Nutrition Tracker**: Science-backed weekly food tracking to help you nourish your body, not restrict it. No calorie counting. No food shaming. Just real nutrients, good habits, and the occasional dark chocolate.
+- 💪 **Calisthenics Tracker**: Inspired by the "10,000 push-ups a year" challenge. Add any exercise, set your rep goal for the year, and track your streaks, daily averages, and heroic effort to not skip leg day.
+- 🗽 **Travel Blog**: A journal of adventures near and far, with beautiful layouts, hand-picked images, and stories for the curious and wanderlust-prone.
+- 🎵 **Spotify Playlists**: Embedded vibes — curated playlists powered by Spotify so you can work, chill, or lift to the soundtrack of Nate's brain.
+- 🤖 **AI Chatbot**: A custom GPT-powered chatbot baked into the site. Ask it stuff. Try to break it. Talk about kale. Your call.
+- 🐞 **Feedback Button**: Click the bug icon to report a bug or suggest a feature. It's wired directly to the Nate Hive Mind™.
 
-# **Authors**
-Connect with us!
+## 🛠️ Tech Stack
 
-Lorant One: [Site](https://lorant.one), [Threads](https://www.threads.net/@lorant.one), [LinkedIn](https://www.linkedin.com/in/lorant-one/)  
-Zsofia Komaromi: [Site](https://zsofia.pro), [Threads](https://www.threads.net/@zsofia_kom), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
-<br><br>
+- **Framework**: Next.js 14  
+- **Language**: TypeScript  
+- **Styling**: CSS Modules + PostCSS
+- **State & Fetching**: Server + client-side rendering with async goodies  
+- **Database**: Drizzle ORM (Postgres), managed via Vercel  
+- **Deployment**: Vercel magic ✨
 
-# **Get involved**
-- Join the [Design Engineers Club](https://discord.com/invite/5EyAQ4eNdS) on Discord to connect with designers, developers and share your projects.
-- Report a [bug](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=bug&template=bug_report.md).
-- Submit a [feature request](https://github.com/once-ui-system/nextjs-starter/issues/new?labels=feature%20request&template=feature_request.md).
-<br><br>
+## 🚀 Getting Started
 
-# **License**
+### Prerequisites
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-<br><br>
+- Node.js 18.x+
+- npm or yarn
 
-# **Once UI for Figma**
+### Installation
 
-Once UI is also available for Figma.  
-Design and prototype entire products from scratch in hours. Use the same tokens and components as the Next.js design system.
+```bash
+git clone https://github.com/naterohweder/nrdc-v5.git
+cd nrdc-v5
+npm install
+# or
+yarn install
+npm run dev
+# then open http://localhost:3000
+```
 
-Grab a copy from the [Figma Community](https://figma.com/).
-<br><br>
+## 📁 Project Structure
 
-# **Deploy your project**
+```
+nrdc-v5/
+├── app/                    # Next.js app directory
+│   ├── health/            # Nutrition + calisthenics trackers
+│   ├── home/              # Home page
+│   └── travel/            # Travel blog
+├── components/            # React components
+│   ├── custom/            # Feature-specific components
+│   └── generic/           # Reusable UI elements
+├── public/                # Static files
+└── styles/                # Global + module-specific CSS
+```
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/76DR9Q?referralCode=QW2HBC)
+## 🎨 Styling
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fnextjs-starter&redirect-url=https%3A%2F%2Fonce-ui.com%2Fdocs%2F)
+- CSS Modules for scoped styles  
+- Custom properties (`--like-this`) for theming  
+- Responsive layouts using media queries and grid-based thinking  
+
+## 💻 Dev Commands
+
+- `npm run dev` – Fire up local dev  
+- `npm run build` – Make it production ready  
+- `npm run lint` – ESLint all the things  
+- `npm run type-check` – Ensure your types behave  
+
+## 🌍 Deployment
+
+Powered by Vercel. Just push to `main` and go drink a coffee.
+
+## 📊 Browser Support
+
+Supports all modern browsers:
+
+- Chrome  
+- Firefox  
+- Safari  
+- Edge  
+- Mobile browsers (iOS/Android)
+
+## 🤝 Contributing
+
+```bash
+# Fork it
+git checkout -b feature/your-awesome-thing
+# Make changes
+git commit -m "Add your awesome thing"
+git push origin feature/your-awesome-thing
+# Then open a PR
+```
+
+## 📄 License
+
+MIT. Do what you want.
+
+## 📩 Contact
+
+Nate Rohweder – [LinkedIn](https://www.linkedin.com/in/naterohweder/)  
+Project Repo: [https://github.com/naterohweder/nrdc-v5](https://github.com/naterohweder/nrdc-v5)
+
