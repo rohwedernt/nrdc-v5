@@ -4,7 +4,7 @@ A personal playground for software, music, health data, bloggy vibes, and the oc
 
 ## 🧹 Features
 
-Sure, it's got the résumé stuff, but it's also got *actual tools* you can use — and some fun stuff just because. Here’s what’s inside:
+Sure, it's got the resume stuff, but it's also got *actual tools* you can use — and some fun stuff just because. Here’s what’s inside:
 
 - 🥦 **Nutrition Tracker**: Science-backed weekly food tracking to help you nourish your body, not restrict it. No calorie counting. No food shaming. Just real nutrients, good habits, and the occasional dark chocolate.
 - 💪 **Calisthenics Tracker**: Inspired by the "10,000 push-ups a year" challenge. Add any exercise, set your rep goal for the year, and track your streaks, daily averages, and heroic effort to not skip leg day.

@@ -26,7 +26,7 @@ const HealthModule = forwardRef<HTMLDivElement, HealthModuleProps>(({ }, ref) =>
         <Badge
           effect
           className={styles.healthbadge}
-          title="Health Trackers"
+          title="Exercise and Nutrition Tools"
         />
         <SmartImage
           radius="l"
