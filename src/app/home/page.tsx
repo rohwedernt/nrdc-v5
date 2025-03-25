@@ -32,7 +32,7 @@ export default function Home() {
 				<Flex
 					className={styles.container}
 					fillWidth
-					gap="56"
+					gap="20"
 					paddingTop='l'
 					paddingBottom='l'
 					style={{ minHeight: "200px", maxWidth: "100%" }}
