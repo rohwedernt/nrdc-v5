@@ -68,7 +68,10 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
               value: 'logout'
             }
           ]}
-          dropdownProps={{ onOptionSelect: handleOptionSelect }}
+          dropdownProps={{ 
+            onOptionSelect: handleOptionSelect,
+            style: { zIndex: 1000 }
+          }}
         />
       </Flex>
       <Flex
@@ -88,7 +91,10 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
               value: 'logout'
             }
           ]}
-          dropdownProps={{ onOptionSelect: handleOptionSelect }}
+          dropdownProps={{ 
+            onOptionSelect: handleOptionSelect,
+            style: { zIndex: 1000 }
+          }}
         />
       </Flex>
 

@@ -94,10 +94,6 @@ git push origin feature/your-awesome-thing
 # Then open a PR
 ```
 
-## 📄 License
-
-MIT. Do what you want.
-
 ## 📩 Contact
 
 Nate Rohweder – [LinkedIn](https://www.linkedin.com/in/naterohweder/)  

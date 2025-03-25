@@ -23,8 +23,6 @@
 
     &:hover,
     &:focus {
-        outline: 4px solid var(--solid);
-        border-radius: 1.1rem;
-        filter: brightness(1.2) saturate(1.2);
+        filter: brightness(1.3) saturate(1.4);
     }
 }
