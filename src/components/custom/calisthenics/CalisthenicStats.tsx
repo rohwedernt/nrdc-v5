@@ -105,7 +105,7 @@ const CalisthenicStats = forwardRef<HTMLDivElement, CalisthenicStatsProps>(({
       gap="20">
       {isLoading ? (
         <Flex fillWidth justifyContent='center'>
-          <Spinner size="xl" />
+          <Spinner size="s" />
         </Flex>
       ) : (
         <>

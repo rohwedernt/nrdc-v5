@@ -94,7 +94,7 @@ const ChatBot = forwardRef<HTMLDivElement, ChatBotProps>(({ }, ref) => {
               <span>{message.content}</span>
             </Flex>
           ))}
-          {isLoading && <Spinner size="l" />}
+          {isLoading && <Spinner size="m" />}
         </Flex>
         <Flex padding="s" style={{ borderTop: "solid #303030" }}>
           <Input

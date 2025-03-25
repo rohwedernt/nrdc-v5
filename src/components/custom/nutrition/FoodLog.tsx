@@ -71,7 +71,7 @@ const FoodLog = forwardRef<HTMLDivElement, FoodLogProps>(({
       title="Food Log"
       wide
     >
-      {isLoading ? <Spinner size='l' /> : (
+      {isLoading ? <Spinner size='s' /> : (
         <List
           pagination={{ align: 'center' }}
           dataSource={mealLogs}

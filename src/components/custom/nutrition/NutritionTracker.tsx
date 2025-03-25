@@ -160,8 +160,8 @@ const NutritionTracker = forwardRef<HTMLDivElement, NutritionTrackerProps>(({
 
   if (isLoading) {
     return (
-      <Flex fillWidth justifyContent='center'>
-        <Spinner size="xl" />
+      <Flex fillWidth justifyContent='center' paddingTop='l'>
+        <Spinner size="s" />
       </Flex>
     );
   } else {

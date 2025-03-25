@@ -13,7 +13,7 @@ import { baseURL, style, meta, og, schema, social } from "@/components/resources
 import { Background, Flex } from '@/components/generic'
 import { LoadingProvider } from '@/components/generic/LoadingProvider';
 
-import { Roboto_Mono, Montserrat, Raleway_Dots } from 'next/font/google';
+import { Roboto_Mono, Montserrat, Reddit_Mono } from 'next/font/google';
 import { getUserSettings } from "@/db/queries/select";
 import { Theme } from "@/components/types";
 import { AppContextProvider, useAppContext } from "./context/AppContext";
@@ -55,7 +55,7 @@ const secondary = Montserrat({
 	display: 'swap'
 });
 
-const tertiary = Raleway_Dots({
+const tertiary = Reddit_Mono({
 	variable: '--font-tertiary',
 	subsets: ['latin'],
 	weight: '400'

@@ -16,7 +16,7 @@ export default function HealthLayout({
 
   const renderContent = () => (
     (session.status === "loading") ? (
-      <Spinner size="xl" />
+      <Spinner size="m" />
     ) : (
       children
     )

@@ -97,7 +97,7 @@ const FoodSelector = forwardRef<HTMLDivElement, FoodSelectorProps>(({
       />
       <Flex alignItems='center' minHeight={2}>
         {isLoadingSubmit ? (
-          <Spinner size="l" />
+          <Spinner size="s" />
         ) : (
           <IconButton
             icon="plus"

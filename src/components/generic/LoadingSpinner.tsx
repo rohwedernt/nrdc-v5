@@ -23,7 +23,7 @@ export const LoadingSpinner = () => {
         backdropFilter: 'blur(4px)',
       }}
     >
-      <Spinner size="xl" />
+      <Spinner size="xxl" />
     </Flex>
   );
 }; 
