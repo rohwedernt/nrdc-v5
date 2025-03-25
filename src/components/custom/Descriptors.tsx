@@ -6,7 +6,6 @@ import { Heading } from '../generic/Heading';
 import { LetterFxMultiWord } from '../generic/LetterFxMultiWord';
 import styles from './Descriptors.module.scss';
 
-
 type DescriptorsProps = {};
 
 const Descriptors = forwardRef<HTMLDivElement, DescriptorsProps>(({ }, ref) => {
@@ -16,26 +15,37 @@ const Descriptors = forwardRef<HTMLDivElement, DescriptorsProps>(({ }, ref) => {
       flex={4}
       direction="column"
       className={styles.wrapper}
+      ref={ref}
     >
-      <Heading
-        wrap="balance"
-        variant="display-strong-xs" paddingBottom='24' className={styles.heading}>
-        <span className="font-code" style={{ display: "block" }}>
-          <LetterFxMultiWord
-            speed="slow" wordSet={["Leader", "Collaborator", "Engineer", "Agilist"]}>
-          </LetterFxMultiWord>
-        </span>
-        <span className="font-code" style={{ display: "block" }}>
-          <LetterFxMultiWord
-            speed="medium" wordSet={["Hobbyist", "Musician", "Creator"]}>
-          </LetterFxMultiWord>
-        </span>
-        <span className="font-code" style={{ display: "block" }}>
-          <LetterFxMultiWord
-            speed="fast" wordSet={["Mentor", "Learner", "Mentee", "Coach"]}>
-          </LetterFxMultiWord>
-        </span>
-      </Heading>
+      <Flex direction="column" gap="8">
+        <Flex justifyContent="flex-start" style={{ width: '100%' }}>
+          <Heading variant="display-strong-l" className={styles.heading}>
+            <span className="font-code">
+              <LetterFxMultiWord
+                speed="slow" wordSet={["leader", "collaborator", "engineer", "agilist"]}
+              />
+            </span>
+          </Heading>
+        </Flex>
+        <Flex justifyContent="flex-end" style={{ width: '80%' }}>
+          <Heading variant="display-strong-s" className={styles.heading}>
+            <span className="font-code">
+              <LetterFxMultiWord
+                speed="medium" wordSet={["hobbyist", "musician", "creator"]}
+              />
+            </span>
+          </Heading>
+        </Flex>
+        <Flex justifyContent="center" style={{ width: '100%', paddingRight: '15%' }}>
+          <Heading variant="display-strong-m" className={styles.heading}>
+            <span className="font-code">
+              <LetterFxMultiWord
+                speed="fast" wordSet={["mentor", "learner", "mentee", "coach"]}
+              />
+            </span>
+          </Heading>
+        </Flex>
+      </Flex>
     </Flex>
   );
 });
