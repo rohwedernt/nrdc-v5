@@ -14,8 +14,6 @@ export async function GET(req: NextRequest) {
     const userId = req.headers.get("user-id"); 
     const exerciseId = req.headers.get("exercise-id"); 
 
-    console.log('DEBUG: ' + exerciseId)
-
     if (!userId) {
       return NextResponse.json(
         { error: "Missing user ID" },
@@ -96,19 +94,36 @@ export async function GET(req: NextRequest) {
       let longestStreak = 0;
       let tempStreak = 0;
 
-      // Get today's date at start of day in UTC for comparison
-      const todayStart = dayjs().utc().startOf('day');
+      // Get today's and yesterday's dates in UTC
+      const todayUTC = dayjs().utc().startOf('day');
+      const yesterdayUTC = todayUTC.subtract(1, 'day');
+      
+      console.log('Today:', todayUTC.toISOString());
+      console.log('Yesterday:', yesterdayUTC.toISOString());
 
-      // Calculate current streak by checking consecutive days from today backwards
-      let checkDate = todayStart;
-      while (true) {
-        const dateString = checkDate.toISOString();
-        console.log('Checking date:', dateString, 'Has entry:', !!dailyCounts[dateString]);
-        if (dailyCounts[dateString]) {
-          currentStreak++;
-          checkDate = checkDate.subtract(1, 'day');
-        } else {
-          break;
+      // Check if we have an entry for today
+      const hasTodayEntry = !!dailyCounts[todayUTC.toISOString()];
+      console.log('Has today entry:', hasTodayEntry);
+
+      // If we have today's entry, start counting from today
+      // If not, check yesterday - if yesterday exists, start counting from there
+      // If neither exists, streak is broken
+      let checkDate = hasTodayEntry ? todayUTC : yesterdayUTC;
+      
+      // If we don't have today's entry and yesterday's entry is missing, streak is broken
+      if (!hasTodayEntry && !dailyCounts[yesterdayUTC.toISOString()]) {
+        currentStreak = 0;
+      } else {
+        // Calculate streak by checking consecutive days backwards
+        while (true) {
+          const dateString = checkDate.toISOString();
+          console.log('Checking date:', dateString, 'Has entry:', !!dailyCounts[dateString]);
+          if (dailyCounts[dateString]) {
+            currentStreak++;
+            checkDate = checkDate.subtract(1, 'day');
+          } else {
+            break;
+          }
         }
       }
 

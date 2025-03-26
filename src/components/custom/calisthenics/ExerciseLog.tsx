@@ -51,7 +51,7 @@ const ExerciseLog = forwardRef<HTMLDivElement, ExerciseLogProps>(({
       if (response.ok) {
         const data = await response.json();
 
-        console.log("Fetched exercise logs:", data);
+        console.log("Exercise data:", data);
 
         setExerciseLogs(data);
       } else {

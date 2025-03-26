@@ -58,7 +58,7 @@ const CalisthenicStats = forwardRef<HTMLDivElement, CalisthenicStatsProps>(({
       if (response.ok) {
         const data = await response.json();
 
-        console.log("Fetched exercise logs:", data);
+        console.log("Exercise stats:", data);
 
         setStats(data);
       } else {

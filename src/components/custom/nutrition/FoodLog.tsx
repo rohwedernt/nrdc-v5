@@ -51,7 +51,7 @@ const FoodLog = forwardRef<HTMLDivElement, FoodLogProps>(({
       if (response.ok) {
         const data = await response.json();
 
-        console.log("Fetched meal logs:", data);
+        console.log("Meal logs:", data);
 
         setMealLogs(data);
       } else {
