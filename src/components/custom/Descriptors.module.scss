@@ -14,10 +14,10 @@
     }
     @media (--xs) {
         text-align: right;
+        text-shadow: none;
     }
     position: relative;
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     background: linear-gradient(135deg,
         rgba(180, 180, 180, 0.1) 0%,
         rgba(200, 200, 200, 0.4) 30%,

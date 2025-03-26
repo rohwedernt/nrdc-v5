@@ -22,7 +22,7 @@ const Descriptors = forwardRef<HTMLDivElement, DescriptorsProps>(({ }, ref) => {
           <Heading variant="display-strong-l" className={styles.heading}>
             <span className="font-label">
               <LetterFxMultiWord
-                speed="slow" wordSet={["leader", "collaborator", "engineer", "agilist"]}
+                speed="slow" wordSet={["leader", "collaborator", "engineer", "agilist", "strategist", "facilitator", "developer"]}
               />
             </span>
           </Heading>
@@ -31,7 +31,7 @@ const Descriptors = forwardRef<HTMLDivElement, DescriptorsProps>(({ }, ref) => {
           <Heading variant="display-strong-s" className={styles.heading}>
             <span className="font-label">
               <LetterFxMultiWord
-                speed="medium" wordSet={["hobbyist", "musician", "creator"]}
+                speed="medium" wordSet={["hobbyist", "musician", "creator", "tinkerer"]}
               />
             </span>
           </Heading>
@@ -40,7 +40,7 @@ const Descriptors = forwardRef<HTMLDivElement, DescriptorsProps>(({ }, ref) => {
           <Heading variant="display-strong-m" className={styles.heading}>
             <span className="font-label">
               <LetterFxMultiWord
-                speed="fast" wordSet={["mentor", "learner", "mentee", "coach"]}
+                speed="fast" wordSet={["mentor", "learner", "mentee", "coach", "teammate", "enabler"]}
               />
             </span>
           </Heading>
