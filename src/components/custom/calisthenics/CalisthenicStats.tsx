@@ -117,7 +117,7 @@ const CalisthenicStats = forwardRef<HTMLDivElement, CalisthenicStatsProps>(({
             shadow
           />
           <CalisthenicCard
-            name="Per Day"
+            name="Min. Per Day"
             description={`${formatNumber(goal - count)} to go / ${daysRemaininginYear()} days left this year`}
             count={calculatePerDayToReachGoal(goal, count)}
             shadow
