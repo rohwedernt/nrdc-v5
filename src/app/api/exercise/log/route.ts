@@ -69,6 +69,9 @@ export async function GET(req: NextRequest) {
         dailyCounts[day] = (dailyCounts[day] || 0) + log.count;
       });
 
+      // Debug logging for daily counts
+      console.log('Daily counts:', dailyCounts);
+
       // Calculate daily average
       const firstLogDate = dayjs(Object.keys(dailyCounts).sort()[0]);
       const daysInRange = dayjs(today).diff(firstLogDate, "day") + 1; // Including today
@@ -100,6 +103,7 @@ export async function GET(req: NextRequest) {
       let checkDate = todayStart;
       while (true) {
         const dateString = checkDate.toISOString();
+        console.log('Checking date:', dateString, 'Has entry:', !!dailyCounts[dateString]);
         if (dailyCounts[dateString]) {
           currentStreak++;
           checkDate = checkDate.subtract(1, 'day');
@@ -107,6 +111,8 @@ export async function GET(req: NextRequest) {
           break;
         }
       }
+
+      console.log('Final current streak:', currentStreak);
 
       // Calculate longest streak
       for (const date of allDatesInYear) {
