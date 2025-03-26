@@ -2,6 +2,7 @@
 
 import React, { forwardRef, useState } from 'react';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { Flex } from "@/components/generic";
 import {
   Button,
@@ -13,6 +14,8 @@ import {
 } from 'antd';
 import { Category } from './NutritionTracker';
 
+// Initialize dayjs with UTC plugin
+dayjs.extend(utc);
 
 type TreeNode = {
   title: string;
@@ -96,6 +99,9 @@ const FoodForm = forwardRef<HTMLDivElement, FoodFormProps>(({
     form.resetFields();
 
     try {
+      // Convert the local date to UTC
+      const utcTimestamp = dayjs(values.date).utc().toISOString();
+
       const response = await fetch('/api/nutrition/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
@@ -105,7 +111,7 @@ const FoodForm = forwardRef<HTMLDivElement, FoodFormProps>(({
           categoryId: values.category,
           count: values.count,
           foodName: values.food,
-          timeStamp: values.date
+          timeStamp: utcTimestamp
         }),
       });
 

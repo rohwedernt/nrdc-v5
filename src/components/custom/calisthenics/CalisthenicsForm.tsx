@@ -2,6 +2,7 @@
 
 import React, { forwardRef, useState } from 'react';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { Flex } from "@/components/generic";
 import {
   Button,
@@ -11,6 +12,8 @@ import {
 } from 'antd';
 import { Exercise } from './CalisthenicsTracker';
 
+// Initialize dayjs with UTC plugin
+dayjs.extend(utc);
 
 type CalisthenicSubmission = {
   count: number;
@@ -37,6 +40,9 @@ const CalisthenicsForm = forwardRef<HTMLDivElement, CalisthenicsFormProps>(({
     form.resetFields();
 
     try {
+      // Convert the local date to UTC
+      const utcTimestamp = dayjs(values.date).utc().toISOString();
+
       const response = await fetch('/api/exercise', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json', },
@@ -44,7 +50,7 @@ const CalisthenicsForm = forwardRef<HTMLDivElement, CalisthenicsFormProps>(({
           userId,
           exerciseId: exercise.id,
           count: values.count,
-          timestamp: values.date
+          timestamp: utcTimestamp
         }),
       });
 
