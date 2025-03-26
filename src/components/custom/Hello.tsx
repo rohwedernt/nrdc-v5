@@ -21,7 +21,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
 
   return (
     <>
-      <Flex fillWidth justifyContent='center' paddingBottom='xl'>
+      <Flex fillWidth justifyContent='center' paddingBottom='xl' className={styles.btnWrapper}>
         <Button
           id="helloBtn"
           variant="accent"

@@ -1,3 +1,9 @@
+.btnWrapper {    
+    @media (--xs) {
+        margin-top: 60px;
+    }
+}
+
 .wrapper {
     display: flex;
     gap: var(--space-s);

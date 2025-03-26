@@ -41,7 +41,6 @@ export default function Home() {
 						position="relative"
 						flex={2}
 						alignItems='end'
-						//paddingTop="40"
 						className={styles.logo}
 						style={{ maxWidth: "100%" }}
 					>
