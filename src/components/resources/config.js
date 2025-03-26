@@ -16,7 +16,7 @@ const style = {
 
 // default metadata
 const meta = {
-    title: 'Nate Rohweder Dot Com',
+    title: 'Nate Rohweder',
     description: ''
 }
 
