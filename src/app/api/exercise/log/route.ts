@@ -3,6 +3,10 @@ import { db } from "@/db";
 import { exerciseLogTable } from "@/db/schema";
 import { eq, and, desc, sql } from "drizzle-orm";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+// Initialize dayjs with UTC plugin
+dayjs.extend(utc);
 
 export async function GET(req: NextRequest) {
   try {
@@ -89,8 +93,8 @@ export async function GET(req: NextRequest) {
       let longestStreak = 0;
       let tempStreak = 0;
 
-      // Get today's date at start of day for comparison
-      const todayStart = dayjs().startOf('day');
+      // Get today's date at start of day in UTC for comparison
+      const todayStart = dayjs().utc().startOf('day');
 
       // Calculate current streak by checking consecutive days from today backwards
       let checkDate = todayStart;
