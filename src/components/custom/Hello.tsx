@@ -39,7 +39,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
       <Dialog
         onClose={() => setIsHelloDialogOpen(false)}
         isOpen={isHelloDialogOpen}
-        title="Nate Rohweder"
+        title="Hi, I'm Nate"
         data-border="conservative"
         animate
         wide
@@ -58,7 +58,7 @@ const Hello = forwardRef<HTMLDivElement, HelloProps>(({ }, ref) => {
                 <Text className={styles.text} variant="body-default-s">I'm a software engineering leader who believes that great teams build great systems—and that good management is about more than just process and delivery. It's about coaching humans to grow, thrive, and do the best work of their lives.</Text>
                 <Text className={styles.text} variant="body-default-s">I've led teams across the stack, coached people of all levels through growth, helped rewrite platforms without (completely) breaking everything, worked side by side with product and design teams, overhauled hiring systems and helped teams find clarity in chaos.</Text>
                 <Text className={styles.text} variant="body-default-s">As our world becomes increasingly automated the most valuable things we can invest in are still deeply human: trust, curiosity, resilience, empathy, thoughtful leadership, and occasionally saying, "That's a weird idea… let's try it."</Text>
-                <Text className={styles.text} variant="body-default-s">When I'm not helping teams build things that (hopefully) don't crash in production, I'm making music—a passion I've been chasing for over 20 years. I also love cooking elaborate meals just to use my favorite knife and justify caring for my cast iron like it's a member of the family. I am always searching for the next historical fiction to read, because apparently I enjoy stress but prefer it set in the 12th century. I'm married to an incredible partner, part of a wonderfully chaotic extended family, learning Spanish, and always planning the next travel adventure to keep perspective wide and curiosity sharp.</Text>
+                <Text className={styles.text} variant="body-default-s">Away from the keyboard, I’m often writing and recording music—a passion I've been chasing for over 20 years. I also love cooking elaborate meals just to use my favorite knife and justify caring for my cast iron like it's a member of the family. I am always searching for the next historical fiction to read, because apparently I enjoy stress but prefer it set in the 12th century. I'm married to an incredible partner, part of a wonderfully chaotic extended family, learning Spanish, and always planning the next travel adventure to keep perspective wide and curiosity sharp.</Text>
               </div>
             </Flex>
             <ProfileImage src="/images/profile.jpg" />

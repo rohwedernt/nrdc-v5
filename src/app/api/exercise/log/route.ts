@@ -89,13 +89,16 @@ export async function GET(req: NextRequest) {
       let longestStreak = 0;
       let tempStreak = 0;
 
-      // Reverse the dates array to start from most recent
-      const reversedDates = [...allDatesInYear].reverse();
+      // Get today's date at start of day for comparison
+      const todayStart = dayjs().startOf('day');
 
-      // Calculate current streak (from most recent)
-      for (const date of reversedDates) {
-        if (dailyCounts[date]) {
+      // Calculate current streak by checking consecutive days from today backwards
+      let checkDate = todayStart;
+      while (true) {
+        const dateString = checkDate.toISOString();
+        if (dailyCounts[dateString]) {
           currentStreak++;
+          checkDate = checkDate.subtract(1, 'day');
         } else {
           break;
         }
@@ -116,8 +119,8 @@ export async function GET(req: NextRequest) {
         {
           dailyAverage: Math.ceil(dailyAverage),
           dailyRecord,
-          currentStreak: currentStreak,
-          longestStreak: longestStreak,
+          currentStreak,
+          longestStreak,
         },
         { status: 200 }
       );
