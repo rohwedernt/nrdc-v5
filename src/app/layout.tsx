@@ -55,8 +55,14 @@ const secondary = Montserrat({
 	display: 'swap'
 });
 
-const tertiary = Reddit_Mono({
+const tertiary = Montserrat({
 	variable: '--font-tertiary',
+	subsets: ['latin'],
+	display: 'swap'
+});
+
+const descriptor = Reddit_Mono({
+	variable: '--font-descriptor',
 	subsets: ['latin'],
 	weight: '400'
 });
@@ -160,7 +166,8 @@ export default async function RootLayout({
 				data-scaling={style.scaling}
 				className={classNames(
 					primary.variable, code.variable,
-					secondary.variable, tertiary.variable
+					secondary.variable, tertiary.variable,
+					descriptor.variable
 				)}>
 				<head>
 					<script

@@ -3,16 +3,18 @@
     --font-family-body:     var(--font-primary);
     --font-family-heading:  var(--font-secondary);
     --font-family-label:    var(--font-tertiary);
-
+    --font-family-descriptor: var(--font-descriptor);
     --font-family-code:     var(--font-code);
 
     --font-size-heading-multiplier:   1;
     --font-size-body-multiplier:      1;
     --font-size-label-multiplier:     1;
+    --font-size-descriptor-multiplier: 1;
 
     --line-height-heading-multiplier: 1;
     --line-height-body-multiplier:    1;
     --line-height-label-multiplier:   1;
+    --line-height-descriptor-multiplier: 1;
 
     /* FONT SCALING */
     --font-scaling-desktop: 16px;

@@ -19,24 +19,26 @@ const Header: React.FC<HeaderProps> = ({}) => {
 
     const handleOptionSelect = (option: any) => {
         setIsMobileMenuOpen(false);
-        // The navigation will be handled by the href in the option
+        if (option.href) {
+            window.location.href = option.href;
+        }
     };
 
     const mobileNavOptions = [
         {
             label: 'Home',
             value: 'home',
-            link: '/home'
+            href: '/home'
         },
         {
             label: 'Travel',
             value: 'travel',
-            link: '/travel'
+            href: '/travel'
         },
         {
             label: 'Health',
             value: 'health',
-            link: '/health'
+            href: '/health'
         }
     ];
 

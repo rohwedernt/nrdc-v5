@@ -203,3 +203,30 @@ h1, h2, h3, h4, h5, h6, p {
         line-height: calc(var(--line-height-label-s) * var(--line-height-label-multiplier));
     }
 }
+
+.font-descriptor {
+    font-family: var(--font-family-descriptor);
+
+    &.font-strong, & > .font-strong {
+        font-weight: var(--font-weight-30);
+    }
+
+    &.font-default, & > .font-default {
+        font-weight: var(--font-weight-20);
+    }
+
+    &.font-l, & > .font-l {
+        font-size:   calc(var(--font-size-display-l) * var(--font-size-descriptor-multiplier));
+        line-height: calc(var(--line-height-display-l) * var(--line-height-descriptor-multiplier));
+    }
+    
+    &.font-m, & > .font-m {
+        font-size:   calc(var(--font-size-display-m) * var(--font-size-descriptor-multiplier));
+        line-height: calc(var(--line-height-display-m) * var(--line-height-descriptor-multiplier));
+    }
+    
+    &.font-s, & > .font-s {
+        font-size:   calc(var(--font-size-display-s) * var(--font-size-descriptor-multiplier));
+        line-height: calc(var(--line-height-display-s) * var(--line-height-descriptor-multiplier));
+    }
+}
