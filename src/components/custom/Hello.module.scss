@@ -81,7 +81,7 @@
 
 .icon {
     transition: transform 0.2s ease-in-out;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--neutral-on-background-medium);
     
     &:hover {
         transform: scale(1.1);

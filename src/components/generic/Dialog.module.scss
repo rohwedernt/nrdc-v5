@@ -88,10 +88,7 @@
         transform: scale(1), translate(-50%, 0);
         opacity: 1;
         visibility: visible;
-        background: linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.15),
-            rgba(255, 255, 255, 0.08)
-        );
+        background: var(--gradient-dialog);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.15);
     }

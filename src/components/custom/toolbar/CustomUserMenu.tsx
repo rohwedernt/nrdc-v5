@@ -47,7 +47,7 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
   }
 
   return (
-    <Flex as="nav">
+    <Flex as="nav" style={{ position: 'relative', zIndex: 1000 }}>
       <Flex
         hide="s">
         <UserMenu
@@ -75,7 +75,8 @@ const CustomUserMenu = forwardRef<HTMLDivElement, CustomUserMenuProps>(({
         />
       </Flex>
       <Flex
-        show="s">
+        show="s"
+        style={{ position: 'relative', zIndex: 1000 }}>
         <UserMenu
           avatarProps={{
             empty: !avatar,

@@ -4,6 +4,7 @@
         //align-items: start;
         //width: 100%;
     }
+
     position: relative;
     z-index: 1;
 }
@@ -12,18 +13,29 @@
     @media (--s) {
         text-align: right;
     }
+
     @media (--xs) {
         text-align: right;
         text-shadow: none;
+        background: linear-gradient(135deg,
+                var(--neutral-on-background-weak) 0%,
+                rgba(136, 138, 149, 0.8) 70%,
+                rgba(180, 180, 180, 0.3) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        letter-spacing: 0.02em;
     }
+
     position: relative;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     background: linear-gradient(135deg,
         rgba(180, 180, 180, 0.1) 0%,
         rgba(200, 200, 200, 0.4) 30%,
         rgba(220, 220, 220, 0.5) 70%,
-        rgba(180, 180, 180, 0.1) 100%
-    );
+        rgba(180, 180, 180, 0.1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
