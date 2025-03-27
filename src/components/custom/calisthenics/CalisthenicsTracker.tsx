@@ -1,11 +1,11 @@
 'use client';
 
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import { Dialog, Flex, IconButton } from '../../generic';
-import { Button, Form, Input, Tabs, TabsProps } from 'antd';
+import { Button, Form, Input, Tabs } from 'antd';
 import { CalisthenicView } from './CalisthenicView';
 import { useRouter } from 'next/navigation';
-
+import styles from './CalisthenicsTracker.module.scss';
 
 export type Exercise = {
   id: string;
@@ -33,6 +33,26 @@ const CalisthenicsTracker = forwardRef<HTMLDivElement, CalisthenicsTrackerProps>
   const [form] = Form.useForm();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isLoadingSubmit, setIsLoadingSubmit] = useState<boolean>(false);
+  const [tabPosition, setTabPosition] = useState<'left' | 'top'>('left');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        setTabPosition('top');
+      } else {
+        setTabPosition('left');
+      }
+    };
+
+    // Set initial position
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSubmit = async (values: AddExerciseSubmission) => {
     setIsLoadingSubmit(true);
@@ -67,7 +87,7 @@ const CalisthenicsTracker = forwardRef<HTMLDivElement, CalisthenicsTrackerProps>
     <Flex direction="column" gap="24" padding="s" fillWidth>
       <Tabs
         defaultActiveKey="1"
-        tabPosition="left"
+        tabPosition={tabPosition}
         items={userExercises.map((exercise, idx) => ({
           key: idx.toString(),
           label: exercise.name,
@@ -80,9 +100,10 @@ const CalisthenicsTracker = forwardRef<HTMLDivElement, CalisthenicsTrackerProps>
             tooltip="Add an exercise"
             tooltipPosition="top"
             variant="ghost"
-            style={{ paddingBottom: "24px" }}
-          />
+            style={{ paddingBottom: window.matchMedia('(max-width: 768px)').matches ? "0" : "24px", marginRight: window.matchMedia('(max-width: 768px)').matches ? "24px" : "0" }}
+            />
         }}
+        className={styles.tabs}
       />
       <Dialog
         onClose={() => setIsDialogOpen(false)}
